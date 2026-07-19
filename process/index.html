@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Process — The design thinking behind Orvantis Intelligence</title>
+<meta name="description" content="The design-thinking case study behind the Orvantis Intelligence site: the brief, the problem, the directions rejected, the decisions taken, and the goals the work is held to.">
+<meta property="og:title" content="Process — Orvantis Intelligence">
+<meta property="og:description" content="A case study in restraint: how a firm that promises quiet AI adoption earned a website that proves it.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2307090D'/%3E%3Cg fill='none' stroke='%23AEBECD' stroke-width='2.5' stroke-linecap='round'%3E%3Ccircle cx='32' cy='32' r='24' stroke-dasharray='104 46.8' transform='rotate(300 32 32)'/%3E%3Ccircle cx='32' cy='32' r='15' stroke-dasharray='62 32.2' transform='rotate(120 32 32)'/%3E%3C/g%3E%3Ccircle cx='32' cy='32' r='5' fill='%23B89B5E'/%3E%3C/svg%3E">
+<link rel="preload" href="../assets/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/main.css">
+<noscript><style>.fade{opacity:1;transform:none}</style></noscript>
+</head>
+<body class="doc-page">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- sigil symbol -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="sigil">
+      <g fill="none" stroke-width="1" stroke-linecap="round" class="sigil-arcs" style="stroke:var(--sigil-stroke,#AEBECD)">
+        <circle class="sigil-arc" cx="32" cy="32" r="30" stroke-dasharray="62.8 125.7" transform="rotate(96 32 32)"/>
+        <circle class="sigil-arc" cx="32" cy="32" r="24" stroke-dasharray="104.7 46.1" transform="rotate(300 32 32)"/>
+        <circle class="sigil-arc" cx="32" cy="32" r="18" stroke-dasharray="47.1 66" transform="rotate(190 32 32)"/>
+        <circle class="sigil-arc" cx="32" cy="32" r="12" stroke-dasharray="41.9 33.5" transform="rotate(40 32 32)"/>
+      </g>
+      <circle class="sigil-core" cx="32" cy="32" r="2" style="fill:var(--sigil-fill,#B89B5E)"/>
+    </g>
+  </defs>
+</svg>
+
+<canvas class="field-canvas" id="field" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="hud-top">
+  <a class="hud-brand" href="../" aria-label="Orvantis Intelligence — home">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#sigil"/></svg>
+    <span>Orvantis <b>Intelligence</b></span>
+  </a>
+  <nav class="hud-links" aria-label="Site">
+    <a href="../guide/">Guide</a>
+    <a href="./" aria-current="page">Process</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <div class="doc-hero">
+    <p class="doc-kicker">The house · design process</p>
+    <h1>A firm that promises quiet <em>cannot arrive loudly.</em></h1>
+    <p class="doc-standfirst">This is the case study behind the Orvantis Intelligence site: what was asked, what was rejected, what was decided, and the standard the finished work is held to.</p>
+  </div>
+
+  <section class="doc-section" aria-labelledby="p-brief">
+    <span class="sec-label">01 — The client &amp; the brief</span>
+    <h2 id="p-brief">Who this is for</h2>
+    <p>Orvantis Intelligence is a real brand: an advisory and engineering house, based in Accra, helping serious organizations adopt artificial intelligence deliberately — advisory, systems, and operations under one discipline. It is the parent of two real initiatives with their own sites: <a href="https://hk-ai-operations-launch.netlify.app" rel="noopener">AI Operations Launch™</a>, a 30-day operations framework, and <a href="https://hk-next-builders-lab.netlify.app" rel="noopener">Next Builders Lab™</a>, its education arm.</p>
+    <p>The brief, in one line: <strong>stepping into the headquarters of a company quietly shaping the future of AI adoption</strong>. Elegant, cinematic, restrained, unforgettable. Visitors should leave inspired — not sold to. As a young firm, Orvantis also set one hard honesty rule: no invented clients, no borrowed logos, no fabricated results.</p>
+  </section>
+
+  <section class="doc-section" aria-labelledby="p-problem">
+    <span class="sec-label">02 — The problem</span>
+    <h2 id="p-problem">The credibility trap</h2>
+    <p>Every AI consultancy website makes the same promises in the same voice: neon gradients, rocket metaphors, a wall of client logos, “10x” claims nobody audits. For a firm whose entire position is <em>we are not that</em>, borrowing that visual language would falsify the message before the first sentence. But the opposite failure is just as real: restraint executed timidly reads as emptiness, and a young firm with no case studies has nothing else to stand on.</p>
+    <p>So the site had to do two hard things at once: <strong>prove taste under constraint</strong> — demonstrate, in its own construction, the discipline Orvantis sells — and <strong>convert absence into position</strong>, saying “principles, not case studies” with enough confidence that the absence reads as integrity rather than inexperience.</p>
+  </section>
+
+  <section class="doc-section" aria-labelledby="p-directions">
+    <span class="sec-label">03 — Directions</span>
+    <h2 id="p-directions">Chosen, and rejected</h2>
+    <h3>Chosen — the headquarters at night</h3>
+    <p>Seven cinematic chapters on a single continuous field of intelligence: six thousand points that move from chaos to constellation to lattice as the argument proceeds, a thin HUD framing the film, near-monochrome with a single aurum beam. The visitor doesn’t read about quiet adoption; they scroll through its shape — disorder becoming structure, slowly, without announcement.</p>
+    <h3>Rejected — the Swiss white paper</h3>
+    <p>A light, editorial, ink-on-paper direction: serious, credible, cheap to execute well. Rejected because it communicates <em>publishing</em>, not <em>building</em>. Orvantis is an engineering house; the site needed one moment of undeniable technical craft, and a static page has nowhere to put it.</p>
+    <h3>Rejected — the product-marketing site</h3>
+    <p>Feature grids, comparison rows, pricing psychology, three CTAs above the fold. The most familiar pattern and the most corrosive here: it converts by pressure, and Orvantis converts by patience. A visitor pushed toward a button has already been told this firm is like the others.</p>
+    <h3>Rejected — the tech-noir spectacle</h3>
+    <p>The maximal version of the dark direction: 3D neural meshes, glitch type, scan-lines, terminal cursors. Dark, but loud — spectacle about AI rather than evidence of discipline. It was the useful rejection, because it forced the rule the final site is built on: <strong>light is the color, and restraint is the special effect.</strong></p>
+  </section>
+
+  <section class="doc-section" aria-labelledby="p-decisions">
+    <span class="sec-label">04 — Decisions &amp; trade-offs</span>
+    <h2 id="p-decisions">What it cost</h2>
+    <ul>
+      <li><strong>Raw WebGL over a library.</strong> Three.js would have saved a day and cost 160&nbsp;KB plus a dependency this 370-line effect doesn’t need. Writing the shader by hand kept the payload small and made the fallback story clean — but it meant engineering the failure paths (no WebGL, lost context, reduced motion) ourselves.</li>
+      <li><strong>One theme, committed.</strong> No light mode. The headquarters is a place, and places have weather. The cost is real — dark UIs punish weak contrast — which is why the silver text tokens were measured and retuned against AA rather than eyeballed.</li>
+      <li><strong>Principles instead of case studies.</strong> The honest choice, stated plainly in Chapter 03: “we are a young house, and we will not borrow credibility.” The trade-off is a weaker proof section today, in exchange for a page that never has to be walked back.</li>
+      <li><strong>A letter instead of a contact form.</strong> Salutation, “the matter”, a postscript promising a human reply. It filters for the right kind of first conversation — fewer inquiries, better ones — and it turns the most generic component on the web into the most in-character page on the site.</li>
+      <li><strong>Slow motion as a filter.</strong> 0.9–1.4&nbsp;s eases everywhere. Some visitors will find it unhurried; those are not Orvantis clients. The pacing is a statement of how the firm works.</li>
+    </ul>
+  </section>
+
+  <section class="doc-section" aria-labelledby="p-impact">
+    <span class="sec-label">05 — Intended impact</span>
+    <h2 id="p-impact">Held to, not hoped for</h2>
+    <p>No invented metrics. These are the design goals the site is accountable to, framed the way Orvantis frames its own engagements:</p>
+    <ul>
+      <li>A first-time visitor can say what Orvantis believes — not just what it does — after one uninterrupted scroll.</li>
+      <li>The site survives being screenshotted anywhere: any chapter, cropped at any width, still looks deliberate.</li>
+      <li>Correspondence arrives written like letters, because the form asked for a letter.</li>
+      <li>The craft is the credential: a visitor who views source or reads the <a href="../guide/">guide</a> finds the same discipline promised on the surface.</li>
+      <li>Nothing on the page needs to be retracted as the firm grows — no claims, no logos, no numbers waiting to be checked.</li>
+    </ul>
+    <p>Direction and taste: <a href="https://hannah-kwakye.netlify.app" rel="noopener">Hannah Kwakye</a>. Engineering companion: Fable&nbsp;5. The full build is documented, honestly, in the <a href="../guide/">guide</a>.</p>
+  </section>
+
+  <nav class="doc-nav" aria-label="Documentation">
+    <a href="../">← The house</a>
+    <a href="../guide/">How it was built →</a>
+    <a href="https://hannah-kwakye.netlify.app" rel="noopener">The collection</a>
+  </nav>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-hud">
+    <span>05.6037° N — 000.1870° W · Accra</span>
+    <span><a href="https://hannah-kwakye.netlify.app" rel="noopener">Designed &amp; built by Hannah Kwakye — engineered with Fable&nbsp;5</a></span>
+    <span>© MMXXVI Orvantis Intelligence</span>
+  </div>
+</footer>
+
+<script src="../assets/js/field.js" defer></script>
+</body>
+</html>

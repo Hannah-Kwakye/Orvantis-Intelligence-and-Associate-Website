@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orvantis Intelligence — The Quiet Adoption of Intelligence</title>
+<meta name="description" content="Orvantis Intelligence is an advisory and engineering house helping serious organizations adopt artificial intelligence quietly, deliberately, and in the service of people.">
+<meta property="og:title" content="Orvantis Intelligence">
+<meta property="og:description" content="An advisory and engineering house for organizations adopting intelligence the way lasting things are built — quietly, deliberately, in the service of people.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2307090D'/%3E%3Cg fill='none' stroke='%23AEBECD' stroke-width='2.5' stroke-linecap='round'%3E%3Ccircle cx='32' cy='32' r='24' stroke-dasharray='104 46.8' transform='rotate(300 32 32)'/%3E%3Ccircle cx='32' cy='32' r='15' stroke-dasharray='62 32.2' transform='rotate(120 32 32)'/%3E%3C/g%3E%3Ccircle cx='32' cy='32' r='5' fill='%23B89B5E'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/main.css">
+<noscript><style>.fade{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- sigil symbol -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="sigil">
+      <g fill="none" stroke-width="1" stroke-linecap="round" class="sigil-arcs" style="stroke:var(--sigil-stroke,#AEBECD)">
+        <circle class="sigil-arc" cx="32" cy="32" r="30" stroke-dasharray="62.8 125.7" transform="rotate(96 32 32)"/>
+        <circle class="sigil-arc" cx="32" cy="32" r="24" stroke-dasharray="104.7 46.1" transform="rotate(300 32 32)"/>
+        <circle class="sigil-arc" cx="32" cy="32" r="18" stroke-dasharray="47.1 66" transform="rotate(190 32 32)"/>
+        <circle class="sigil-arc" cx="32" cy="32" r="12" stroke-dasharray="41.9 33.5" transform="rotate(40 32 32)"/>
+      </g>
+      <circle class="sigil-core" cx="32" cy="32" r="2" style="fill:var(--sigil-fill,#B89B5E)"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- preloader: the aperture opens -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <svg viewBox="0 0 64 64">
+    <circle class="pl-arc" cx="32" cy="32" r="30" stroke-dasharray="62.8 125.7" transform="rotate(96 32 32)"/>
+    <circle class="pl-arc" cx="32" cy="32" r="24" stroke-dasharray="104.7 46.1" transform="rotate(300 32 32)"/>
+    <circle class="pl-arc" cx="32" cy="32" r="18" stroke-dasharray="47.1 66" transform="rotate(190 32 32)"/>
+    <circle class="pl-arc" cx="32" cy="32" r="12" stroke-dasharray="41.9 33.5" transform="rotate(40 32 32)"/>
+    <circle class="pl-core" cx="32" cy="32" r="2"/>
+  </svg>
+</div>
+
+<!-- the intelligence field -->
+<canvas class="field-canvas" id="field" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- HUD -->
+<header class="hud-top">
+  <a class="hud-brand" href="#arrival" aria-label="Orvantis Intelligence — back to the beginning">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#sigil"/></svg>
+    <span>Orvantis <b>Intelligence</b></span>
+  </a>
+  <nav class="hud-links" aria-label="Site">
+    <a href="guide/">Guide</a>
+    <a href="process/">Process</a>
+  </nav>
+</header>
+
+<nav class="hud-index" aria-label="Chapters">
+  <a href="#arrival" aria-current="true">00</a>
+  <a href="#thesis">01</a>
+  <a href="#practice">02</a>
+  <a href="#approach">03</a>
+  <a href="#launch">04</a>
+  <a href="#builders">05</a>
+  <a href="#correspondence">06</a>
+</nav>
+
+<div class="hud-bottom" aria-hidden="true">
+  <span class="hud-coords">05.6037° N — 000.1870° W · Accra</span>
+  <span class="hud-chapter">
+    CH. <span id="hud-num">00</span> — <em id="hud-name">Arrival</em>
+    <span class="hud-progress"><i id="hud-progress-bar"></i></span>
+  </span>
+</div>
+
+<main id="main">
+
+  <!-- 00 ARRIVAL -->
+  <section class="chapter arrival" id="arrival" data-chapter="00" data-chapter-name="Arrival" aria-label="Chapter 00 — Arrival">
+    <div class="chapter-inner scene">
+      <p class="ch-label fade"><span class="num">CH.&nbsp;00</span> Arrival</p>
+      <h1 aria-label="Orvantis Intelligence">
+        <span class="wordmark" aria-hidden="true"><span class="wm" style="--wl:0"><span class="wl">O</span></span><span class="wm" style="--wl:1"><span class="wl lig">rv</span></span><span class="wm" style="--wl:2"><span class="wl a-it">a</span></span><span class="wm" style="--wl:3"><span class="wl">ntis</span></span><svg class="lig-stroke" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M 8 38 C 30 16, 66 16, 88 40" vector-effect="non-scaling-stroke"/></svg></span>
+        <span class="subline" aria-hidden="true">Intelligence</span>
+      </h1>
+      <p class="sentence fade" style="--d:300">An advisory and engineering house for organizations adopting intelligence the way lasting things are built — <span class="au">quietly, deliberately, in the service of people.</span></p>
+      <a class="begin fade" style="--d:600" href="#thesis">Begin</a>
+    </div>
+  </section>
+
+  <!-- 01 THESIS -->
+  <section class="chapter" id="thesis" data-chapter="01" data-chapter-name="Thesis" aria-label="Chapter 01 — Thesis">
+    <div class="chapter-inner scene">
+      <p class="ch-label fade"><span class="num">CH.&nbsp;01</span> Thesis</p>
+      <div class="thesis-grid">
+        <div>
+          <h2 class="rise">The future does not announce itself. <em>It settles in.</em></h2>
+          <blockquote class="pull fade" style="--d:250">
+            When intelligence is adopted well, nobody calls it a transformation. They call it Tuesday.
+            <span class="fine">The Orvantis position</span>
+          </blockquote>
+        </div>
+        <div class="thesis-copy">
+          <p class="first-line fade" style="--d:150">Most artificial intelligence arrives loudly and leaves quietly. We work in the opposite direction. Quiet adoption means systems that enter an organization the way good infrastructure does — studied first, trusted early, invisible eventually.</p>
+          <p class="fade" style="--d:300">It means fewer pilots and more commitments. Decisions that survive the demo. Tools wired into the work people already do, governed by the people who already do it.</p>
+          <p class="fade" style="--d:450">We are not in the business of spectacle. We are in the business of Monday mornings that run better than they did in March — and still do, years on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 PRACTICE -->
+  <section class="chapter" id="practice" data-chapter="02" data-chapter-name="Practice" aria-label="Chapter 02 — Practice">
+    <div class="chapter-inner scene">
+      <p class="ch-label fade"><span class="num">CH.&nbsp;02</span> Practice</p>
+      <h2 class="rise">Three movements, <em>one discipline.</em></h2>
+      <div class="movements">
+        <article class="movement fade" style="--d:100">
+          <p class="numeral" aria-hidden="true">I</p>
+          <h3>Advisory</h3>
+          <p class="role">Where intelligence belongs</p>
+          <p>We map an organization before we change it: what should be automated, what must never be, and the order in which trust is earned. Roadmaps, governance, readiness — decided with the people who will live with them.</p>
+        </article>
+        <article class="movement fade" style="--d:250">
+          <p class="numeral" aria-hidden="true">II</p>
+          <h3>Systems</h3>
+          <p class="role">What we build</p>
+          <p>Agents, pipelines, and integrations engineered into the tools already on the desk — the CRM, the calendar, the phone line, the spreadsheet. Nothing exotic for its own sake; everything accountable to a working day.</p>
+        </article>
+        <article class="movement fade" style="--d:400">
+          <p class="numeral" aria-hidden="true">III</p>
+          <h3>Operations</h3>
+          <p class="role">What stays running</p>
+          <p>Deployment is the beginning, not the deliverable. We instrument, measure, and steward each system until the organization can run it alone — and then we hand it over, on purpose.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 PROOF OF APPROACH -->
+  <section class="chapter" id="approach" data-chapter="03" data-chapter-name="Approach" aria-label="Chapter 03 — Proof of approach">
+    <div class="chapter-inner scene">
+      <p class="ch-label fade"><span class="num">CH.&nbsp;03</span> Proof of approach</p>
+      <h2 class="rise">Principles, <em>not case studies.</em></h2>
+      <p class="approach-intro lede fade" style="--d:150">We are a young house, and we will not borrow credibility. What we can show you is the standard every engagement is held to — written down before the first one, kept after each.</p>
+      <div class="principles">
+        <div class="principle fade" style="--d:100">
+          <h3><span class="tick" aria-hidden="true">P—1</span> Measured</h3>
+          <p>Every system ships with its own instrumentation. If a result cannot be observed in the organization's own numbers, we do not claim it — to clients, or to ourselves.</p>
+        </div>
+        <div class="principle fade" style="--d:220">
+          <h3><span class="tick" aria-hidden="true">P—2</span> Human-governed</h3>
+          <p>A person can always see what the system did, veto what it is about to do, and take the wheel entirely. Authority stays with people. The software has duties, not opinions.</p>
+        </div>
+        <div class="principle fade" style="--d:340">
+          <h3><span class="tick" aria-hidden="true">P—3</span> Compounding</h3>
+          <p>Each engagement leaves the organization more capable of the next one — cleaner data, clearer process, staff who understand the machinery. Adoption should accrue, not depend.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 THE LAUNCH -->
+  <section class="chapter bridge" id="launch" data-chapter="04" data-chapter-name="The Launch" aria-label="Chapter 04 — The Launch">
+    <div class="chapter-inner scene">
+      <p class="ch-label fade"><span class="num">CH.&nbsp;04</span> The Launch</p>
+      <p class="kicker fade" style="--d:100">First engagement · a thirty-day framework</p>
+      <h2 class="rise">AI Operations Launch<span class="tm">™</span></h2>
+      <p class="lede fade" style="--d:200">Thirty days to wire voice agents, WhatsApp, web chat, lead qualification, booking, and follow-up into one accountable system — every conversation captured to the CRM, staff always holding the handover rules, a summary on the desk each morning.</p>
+      <div class="bridge-meta fade" style="--d:320">
+        <span>W1 — Map</span><span>W2 — Build</span><span>W3 — Connect</span><span>W4 — Measure</span>
+      </div>
+      <a class="cta fade" style="--d:440" href="https://hk-ai-operations-launch.netlify.app" rel="noopener">Enter the framework <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <!-- 05 NEXT BUILDERS -->
+  <section class="chapter bridge" id="builders" data-chapter="05" data-chapter-name="Next Builders" aria-label="Chapter 05 — Next Builders">
+    <div class="chapter-inner scene">
+      <p class="ch-label fade"><span class="num">CH.&nbsp;05</span> Next Builders</p>
+      <p class="kicker fade" style="--d:100">Education arm · learn by shipping</p>
+      <h2 class="rise">Next Builders Lab<span class="tm">™</span></h2>
+      <p class="lede fade" style="--d:200">Adoption is a human skill before it is a technical one. The Lab teaches kids, professionals, founders, and teams to build with intelligence — apps, sites, workflows, whole small businesses — by shipping real things, in rooms with other people doing the same.</p>
+      <div class="bridge-meta fade" style="--d:320">
+        <span>Kids Saturdays</span><span>Professionals</span><span>Founders</span><span>Teams</span>
+      </div>
+      <a class="cta fade" style="--d:440" href="https://hk-next-builders-lab.netlify.app" rel="noopener">Visit the Lab <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <!-- 06 CORRESPONDENCE -->
+  <section class="chapter" id="correspondence" data-chapter="06" data-chapter-name="Correspondence" aria-label="Chapter 06 — Correspondence">
+    <div class="chapter-inner scene">
+      <p class="ch-label fade"><span class="num">CH.&nbsp;06</span> Correspondence</p>
+      <h2 class="rise">Write <em>to us.</em></h2>
+
+      <form class="letter fade" style="--d:200" id="letter-form" name="correspondence" method="POST" action="/?sent=1#correspondence" data-netlify="true" netlify-honeypot="bp-field">
+        <input type="hidden" name="form-name" value="correspondence">
+        <p class="bp-field" aria-hidden="true">
+          <label>Leave this field empty <input name="bp-field" tabindex="-1" autocomplete="off"></label>
+        </p>
+        <p class="salutation">To Orvantis Intelligence —</p>
+        <div class="fieldrow">
+          <label for="c-name">From</label>
+          <input id="c-name" name="name" type="text" autocomplete="name" required placeholder="Your name">
+        </div>
+        <div class="fieldrow">
+          <label for="c-org">Organization <span class="opt">· optional</span></label>
+          <input id="c-org" name="organization" type="text" autocomplete="organization" placeholder="Where you work">
+        </div>
+        <div class="fieldrow">
+          <label for="c-email">Reply to</label>
+          <input id="c-email" name="email" type="email" autocomplete="email" required placeholder="you@organization.com">
+        </div>
+        <div class="fieldrow">
+          <label for="c-matter">The matter</label>
+          <textarea id="c-matter" name="message" required placeholder="What are you considering, and what would 'quietly working' look like for you?"></textarea>
+        </div>
+        <button class="send" type="submit">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#sigil"/></svg>
+          Send the letter
+        </button>
+        <p class="postscript">Every letter is read by a person. Replies come from one, too.</p>
+      </form>
+
+      <div class="letter letter-success hidden" id="letter-success" role="status">
+        <p class="salutation">Received, with thanks —</p>
+        <p>Your letter has reached us. We will read it carefully and reply from a real desk, usually within a few working days.</p>
+        <p class="postscript">— Orvantis Intelligence, Accra</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#sigil"/></svg>
+      <p class="fb-name">Orvantis Intelligence</p>
+      <p class="fb-sub">The quiet adoption of intelligence</p>
+    </div>
+    <nav class="footer-col" aria-label="Chapters">
+      <h4>Chapters</h4>
+      <ul>
+        <li><a href="#thesis">01 — Thesis</a></li>
+        <li><a href="#practice">02 — Practice</a></li>
+        <li><a href="#approach">03 — Approach</a></li>
+        <li><a href="#correspondence">06 — Correspondence</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="The house">
+      <h4>The house</h4>
+      <ul>
+        <li><a href="guide/">How it was built</a></li>
+        <li><a href="process/">Design process</a></li>
+        <li><a href="https://hannah-kwakye.netlify.app" rel="noopener">Hannah Kwakye</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Constellation">
+      <h4>Constellation</h4>
+      <ul>
+        <li><a href="https://hk-ai-operations-launch.netlify.app" rel="noopener">AI Operations Launch™</a></li>
+        <li><a href="https://hk-next-builders-lab.netlify.app" rel="noopener">Next Builders Lab™</a></li>
+        <li><a href="https://hannah-kwakye.netlify.app" rel="noopener">The collection</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="footer-hud">
+    <span>05.6037° N — 000.1870° W · Accra</span>
+    <span><a href="https://hannah-kwakye.netlify.app" rel="noopener">Designed &amp; built by Hannah Kwakye — engineered with Fable&nbsp;5</a></span>
+    <span>© MMXXVI Orvantis Intelligence</span>
+  </div>
+</footer>
+
+<script src="assets/js/field.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

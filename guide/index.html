@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guide — How Orvantis Intelligence was built</title>
+<meta name="description" content="How the Orvantis Intelligence site was designed and engineered: the identity system, the raw-WebGL intelligence field, the film-grain atmosphere, and the iteration log.">
+<meta property="og:title" content="Guide — How Orvantis Intelligence was built">
+<meta property="og:description" content="The identity system, the raw-WebGL intelligence field, and the craft decisions behind a cinematic headquarters — explained so another designer could reproduce them.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2307090D'/%3E%3Cg fill='none' stroke='%23AEBECD' stroke-width='2.5' stroke-linecap='round'%3E%3Ccircle cx='32' cy='32' r='24' stroke-dasharray='104 46.8' transform='rotate(300 32 32)'/%3E%3Ccircle cx='32' cy='32' r='15' stroke-dasharray='62 32.2' transform='rotate(120 32 32)'/%3E%3C/g%3E%3Ccircle cx='32' cy='32' r='5' fill='%23B89B5E'/%3E%3C/svg%3E">
+<link rel="preload" href="../assets/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/main.css">
+<noscript><style>.fade{opacity:1;transform:none}</style></noscript>
+</head>
+<body class="doc-page">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- sigil symbol -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="sigil">
+      <g fill="none" stroke-width="1" stroke-linecap="round" class="sigil-arcs" style="stroke:var(--sigil-stroke,#AEBECD)">
+        <circle class="sigil-arc" cx="32" cy="32" r="30" stroke-dasharray="62.8 125.7" transform="rotate(96 32 32)"/>
+        <circle class="sigil-arc" cx="32" cy="32" r="24" stroke-dasharray="104.7 46.1" transform="rotate(300 32 32)"/>
+        <circle class="sigil-arc" cx="32" cy="32" r="18" stroke-dasharray="47.1 66" transform="rotate(190 32 32)"/>
+        <circle class="sigil-arc" cx="32" cy="32" r="12" stroke-dasharray="41.9 33.5" transform="rotate(40 32 32)"/>
+      </g>
+      <circle class="sigil-core" cx="32" cy="32" r="2" style="fill:var(--sigil-fill,#B89B5E)"/>
+    </g>
+  </defs>
+</svg>
+
+<canvas class="field-canvas" id="field" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="hud-top">
+  <a class="hud-brand" href="../" aria-label="Orvantis Intelligence — home">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#sigil"/></svg>
+    <span>Orvantis <b>Intelligence</b></span>
+  </a>
+  <nav class="hud-links" aria-label="Site">
+    <a href="./" aria-current="page">Guide</a>
+    <a href="../process/">Process</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <div class="doc-hero">
+    <p class="doc-kicker">The house · how it was built</p>
+    <h1>Everything you are looking at <em>was written.</em></h1>
+    <p class="doc-standfirst">No photography, no stock, no generated rasters. Every visible thing on this site — the field of six thousand points, the aperture, the grain, the letterforms’ entrance — is authored in code. This page explains how, specifically enough that another designer could rebuild it.</p>
+  </div>
+
+  <section class="doc-section" aria-labelledby="g-concept">
+    <span class="sec-label">01 — Concept</span>
+    <h2 id="g-concept">A headquarters, filmed</h2>
+    <p>Orvantis Intelligence helps organizations adopt AI quietly. The site had to make that argument by demonstration: no hype, no gradients screaming “AI”, no dashboard screenshots. The direction we committed to is <strong>a headquarters you walk through at night</strong> — seven full-viewport chapters, framed by a thin HUD (chapter index, Accra coordinates), shot in near-monochrome where <em>light is the only color</em>.</p>
+    <p>The palette is four values of one atmosphere plus a single beam: obsidian, graphite, moon silver, porcelain — and aurum, spent like money. If aurum appears more than a few times per viewport, it stops being a beam and becomes a theme. We rationed it: the sigil core, the chapter numerals, the ligature hairline, focus rings, one italic phrase in the opening sentence.</p>
+    <div class="swatches" aria-label="Palette">
+      <div class="swatch" style="background:#07090D;color:#AEBECD"><span class="sw-name">Obsidian</span><span class="sw-hex">#07090D</span></div>
+      <div class="swatch" style="background:#11151C;color:#AEBECD"><span class="sw-name">Graphite</span><span class="sw-hex">#11151C</span></div>
+      <div class="swatch" style="background:#AEBECD;color:#07090D"><span class="sw-name">Moon silver</span><span class="sw-hex">#AEBECD</span></div>
+      <div class="swatch" style="background:#E8ECF1;color:#07090D"><span class="sw-name">Porcelain</span><span class="sw-hex">#E8ECF1</span></div>
+      <div class="swatch" style="background:#B89B5E;color:#07090D"><span class="sw-name">Aurum</span><span class="sw-hex">#B89B5E</span></div>
+    </div>
+  </section>
+
+  <section class="doc-section" aria-labelledby="g-identity">
+    <span class="sec-label">02 — Identity</span>
+    <h2 id="g-identity">The sigil, the wordmark, the voice</h2>
+    <p>The mark is an <strong>aperture</strong>: four concentric arcs, each deliberately incomplete, around a small aurum core. Incompleteness is the point — an iris mid-open, an organization mid-adoption. Each arc is a plain SVG <code>&lt;circle&gt;</code> whose visible portion is cut with <code>stroke-dasharray</code> and rotated into position, so the whole mark is about ten lines of markup and scales from a 16-pixel favicon to the preloader without redrawing.</p>
+    <div class="sigil-figure">
+      <svg viewBox="0 0 64 64" role="img" aria-label="The Orvantis sigil: four broken concentric arcs around a gold core">
+        <use href="#sigil"/>
+      </svg>
+      <div>
+        <h3>Anatomy</h3>
+        <ul>
+          <li>Four arcs, radii 12 / 18 / 24 / 30 — a fifth would read as a target, three as a spinner.</li>
+          <li>Every arc is broken; the gaps rotate at different phases so no two openings align.</li>
+          <li>The core is the only filled shape and the only aurum — attention lands there by default.</li>
+          <li>As preloader, the arcs sweep in staggered, then all rotate open together and dissolve onto the field: the aperture opens, the film begins.</li>
+        </ul>
+      </div>
+    </div>
+    <p>The wordmark is set in Newsreader at display optical size, with one engineered moment: a hairline aurum swash drawn as an absolutely-positioned SVG path across the full measure of the word, and an italic <em>a</em> seated among roman letters — a single character borrowed from the italic file, which variable fonts make free.</p>
+    <div class="type-specimen" aria-label="Type specimen">
+      <div class="ts-row">
+        <span class="ts-note">Newsreader · display · 380 &amp; italic 330</span>
+        <p class="ts-display">The future settles <em>in.</em></p>
+      </div>
+      <div class="ts-row">
+        <span class="ts-note">Geist · interface &amp; body · 400</span>
+        <p class="ts-body">Quiet adoption means systems that enter an organization the way good infrastructure does — studied first, trusted early, invisible eventually.</p>
+      </div>
+      <div class="ts-row">
+        <span class="ts-note">Geist Mono · labels &amp; coordinates · 400</span>
+        <p class="ts-mono">CH. 03 — Approach · 05.6037° N — 000.1870° W</p>
+      </div>
+    </div>
+    <p>All three families ship as self-hosted variable woff2 — four files, ~330&nbsp;KB, the whole typographic system. <code>font-display: swap</code> plus a preload on the two critical files keeps first paint honest.</p>
+  </section>
+
+  <section class="doc-section" aria-labelledby="g-field">
+    <span class="sec-label">03 — Signature</span>
+    <h2 id="g-field">The intelligence field</h2>
+    <p>The site’s one big idea: a fixed WebGL canvas behind everything, holding <strong>6,400 points (3,200 on small screens) that reorganize as you read</strong>. Chapter 00 is chaos — a slow spiral galaxy. By Practice the points have gathered into constellations of thought-clusters. By Approach they lock into a lattice. Disorder becomes structure as the argument for disciplined adoption unfolds. No library — raw WebGL 1, one draw call, about 370 lines.</p>
+    <h3>Three formations, one buffer each</h3>
+    <p>Every point owns a position in all three formations, uploaded once as static vertex attributes. The CPU never touches them again; the morph happens entirely in the vertex shader, driven by a single uniform <code>uPhase</code> that scrolls from 0 → 2:</p>
+    <pre><code><span class="c">// vertex shader — the whole choreography</span>
+float p1 = ease(clamp(uPhase, 0.0, 1.0));       <span class="c">// chaos → constellation</span>
+float p2 = ease(clamp(uPhase - 1.0, 0.0, 1.0)); <span class="c">// constellation → lattice</span>
+
+<span class="c">// per-point lag so formations knit rather than snap</span>
+float lag = aSeed.y * 0.28;
+p1 = clamp(p1 * (1.0 + lag) - lag, 0.0, 1.0);
+
+vec3 pos = mix(aChaos, aConst, p1);
+pos = mix(pos, aLattice, p2);</code></pre>
+    <p>The lag line is what makes the morph feel biological: each point starts moving at a slightly different scroll position (seeded per-point), so the field <em>knits</em> into its next shape instead of tweening in lockstep.</p>
+    <h3>Parting around the cursor</h3>
+    <p>After projection, each point knows its own screen position in normalized device coordinates. We push it radially away from the cursor with a Gaussian falloff — aspect-corrected so the “hand” is circular on any viewport:</p>
+    <pre><code>vec2 sd = vec2((ndc.x - uMouse.x) * uAspect, ndc.y - uMouse.y);
+float len = max(length(sd), 0.0001);
+float push = uMouseF * exp(-(len * len) / 0.085);
+ndc += vec2(sd.x / uAspect, sd.y) / len * push;</code></pre>
+    <p>Because the push happens in screen space <em>after</em> the camera, it costs nothing and works identically at every dolly distance. <code>uMouseF</code> eases toward 0 when the pointer leaves, so the field closes behind you like water.</p>
+    <h3>Scroll as camera</h3>
+    <p>A keyframe table maps document positions to <code>phase</code> and <code>dolly</code> (camera distance); scroll interpolates between rows, and the render loop eases toward those targets at different rates — position slower than intent, which is what makes the motion feel weighty rather than bouncy:</p>
+    <pre><code><span class="c">// main.js — keypoints; field.js eases toward these each frame</span>
+{ y: 0,                  phase: 0,    dolly: 3.1  }  <span class="c">// arrival · chaos</span>
+{ y: centerOf(thesis),   phase: 0.55, dolly: 2.65 }
+{ y: centerOf(practice), phase: 1.0,  dolly: 2.9  }  <span class="c">// constellation</span>
+{ y: centerOf(approach), phase: 2.0,  dolly: 2.45 }  <span class="c">// lattice</span>
+{ y: centerOf(corr),     phase: 2.0,  dolly: 4.1  }  <span class="c">// pull away</span></code></pre>
+    <h3>When the field cannot run</h3>
+    <p>Under <code>prefers-reduced-motion</code>, or when WebGL is unavailable, the same canvas gets a <strong>static long-exposure render</strong> drawn once with 2D arcs — nine hundred faint orbital streaks and a scatter of resolved stars, seeded deterministically so it composes identically on every visit. The metaphor survives with zero motion.</p>
+  </section>
+
+  <section class="doc-section" aria-labelledby="g-atmosphere">
+    <span class="sec-label">04 — Atmosphere</span>
+    <h2 id="g-atmosphere">Grain, vignette, and the grammar of motion</h2>
+    <p>Film grain is one CSS rule: an SVG <code>feTurbulence</code> texture encoded as a data URI, tiled at 8% opacity above everything, stepped through three positions per second so it shimmers like print stock rather than swimming like video noise:</p>
+    <pre><code>.grain {
+  background-image: url("data:image/svg+xml,…feTurbulence
+    type='fractalNoise' baseFrequency='0.82'…");
+  opacity: 0.08;
+  animation: grain-shift 0.9s steps(3) infinite;
+}</code></pre>
+    <p>The vignette is two stacked gradients — a radial pool centered slightly above the fold and a top/bottom letterbox — which keeps every chapter feeling lit from within the frame. Motion everywhere follows one grammar: 0.9–1.4&nbsp;s durations, exponential-out easing, headline words rising through overflow masks like end credits, sections dollying ±26&nbsp;px and settling as they cross center. Nothing bounces; nothing arrives faster than a held breath.</p>
+    <p>The wordmark’s first-load entrance follows the same grammar: four masked chunks rise in 130&nbsp;ms steps while the preloader’s aperture rotates open, then the aurum swash draws itself across the word via <code>pathLength="100"</code> and a dash-offset animation, and “INTELLIGENCE” tracks in from a whisper of extra letter-spacing. Pure CSS — it still runs with JavaScript disabled, and disappears entirely under reduced motion.</p>
+  </section>
+
+  <section class="doc-section" aria-labelledby="g-toolchain">
+    <span class="sec-label">05 — Toolchain</span>
+    <h2 id="g-toolchain">How it was made, honestly</h2>
+    <p>This site was designed and engineered by <strong>Fable&nbsp;5</strong> (Anthropic’s model) working as designer-engineer, directed by <a href="https://hannah-kwakye.netlify.app" rel="noopener">Hannah Kwakye</a> — art direction, brief, taste, and final cut are hers. That division of labor is the thesis of the whole collection: AI does not replace taste, it amplifies the designer who has it.</p>
+    <ul>
+      <li><strong>Stack:</strong> hand-authored static HTML, one CSS file, two small JS files. No framework, no build step, no external request of any kind at runtime.</li>
+      <li><strong>Assets:</strong> every visual is code — SVG (sigil, favicon, grain texture), raw WebGL (the field), CSS gradients (vignette, glow). The constraint began as an environment rule and became the creative position.</li>
+      <li><strong>Fonts:</strong> Newsreader, Geist, and Geist Mono, fetched once as variable woff2 subsets and served from <code>assets/fonts/</code>.</li>
+      <li><strong>Performance:</strong> device-pixel ratio capped at 2, one draw call per frame, rAF paused when the tab hides, <code>content-visibility: auto</code> on long documentation sections, transform/opacity-only animation.</li>
+      <li><strong>Access:</strong> semantic landmarks, skip link, visible focus, AA contrast throughout (the dim-silver tokens were specifically re-tuned for it), full reduced-motion replacement rather than mere reduction.</li>
+    </ul>
+  </section>
+
+  <section class="doc-section" aria-labelledby="g-passes">
+    <span class="sec-label">06 — Iteration log</span>
+    <h2 id="g-passes">Four passes before done</h2>
+    <div class="passlog">
+      <div class="pass">
+        <div><span class="pass-kicker">Pass 1</span><h3>Design critique</h3></div>
+        <ul>
+          <li>Screenshots at 390/834/1440 showed the dim-silver text tokens drifting below AA contrast on obsidian — retuned <code>--silver-dim</code> to 72% and moved every text-bearing “faint” usage up a step; hierarchy kept, compliance earned.</li>
+          <li>The wordmark simply <em>existed</em> when the aperture opened — no arrival for a chapter named Arrival. Flagged the hero entrance as the site’s weakest beat.</li>
+          <li>The chapter rail read as decoration at 38% alpha; active-state aurum was the only legible entry. Lifted inactive numerals to the dim tier.</li>
+          <li>The tablet shot caught the hero lockup drifting off-center: “INTELLIGENCE” was still an inline span, overflowing the wordmark’s line and colliding with the chapter rail. One <code>display: block</code> restored the centered lockup at every width.</li>
+        </ul>
+      </div>
+      <div class="pass">
+        <div><span class="pass-kicker">Pass 2</span><h3>Elevation</h3></div>
+        <ul>
+          <li>Built the credit-roll entrance: four masked wordmark chunks rise in step as the preloader iris opens, the ligature hairline draws itself, the subline tracks in — one continuous 3-second opening shot instead of a loader then a page.</li>
+          <li>Held the arrival copy behind an <code>intro</code> body class so sentence and “Begin” land after the title, then removed the class so scroll-back reveals stay instant.</li>
+          <li>Added a restrained pool of light behind the title — two faint radial gradients, silver then aurum — so the hero reads as lit rather than pasted.</li>
+          <li>Wrote /guide and /process as full editorial pages in the same language: HUD, dimmed field, grain, chapter-label rhythm.</li>
+        </ul>
+      </div>
+      <div class="pass">
+        <div><span class="pass-kicker">Pass 3</span><h3>Ship quality</h3></div>
+        <ul>
+          <li>Walked every route at three viewports and scrolled every chapter — zero console errors, all links resolve (anchors, sibling routes, registry URLs for the Launch and the Lab, the hub) — and proofread every word against the voice rule: sparse, assured, no hype.</li>
+          <li>Verified reduced-motion end to end: preloader skipped, long-exposure render in place of the field, reveals instant, credit-roll suppressed. Verified the no-WebGL path takes the same fallback.</li>
+          <li>Exercised the correspondence letter: Netlify attributes, honeypot, required fields, and the <code>?sent=1</code> success state that swaps the form for a reply.</li>
+          <li>Audited this guide’s own claims against the code — added the promised <code>content-visibility: auto</code> to the doc sections, and gave the doc pages’ HUD a soft scrim so scrolling body text never collides with the brand.</li>
+        </ul>
+      </div>
+      <div class="pass">
+        <div><span class="pass-kicker">Pass 4</span><h3>The quiet polish</h3></div>
+        <ul>
+          <li>Lifted body copy in chapters 03–06 one step toward porcelain and pooled a tighter vignette behind each text block, so prose over the particle field never sits at the legibility floor.</li>
+          <li>Gave the two bridge chapters their one aurum gesture: on section entry the beam sweeps once beneath each CTA and stays as its underline — the doors now announce themselves. Nothing else was touched.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-section" aria-labelledby="g-deploy">
+    <span class="sec-label">07 — Deploy</span>
+    <h2 id="g-deploy">Shipping</h2>
+    <p>The site deploys to Netlify from a static directory — <code>publish = "."</code>, immutable cache headers on <code>assets/</code>, conservative security headers on everything. The correspondence letter is a native Netlify Form: detected at deploy time from the <code>data-netlify</code> attribute, protected by a honeypot field, answered inline via a <code>?sent=1</code> redirect. No serverless functions, no client-side form library — the platform does the work.</p>
+    <p>Orvantis is the second of twenty-six sites in this collection, and its headquarters: <a href="https://hk-ai-operations-launch.netlify.app" rel="noopener">AI Operations Launch™</a> and <a href="https://hk-next-builders-lab.netlify.app" rel="noopener">Next Builders Lab™</a> are its first engagement and its education arm, each built as its own world.</p>
+  </section>
+
+  <nav class="doc-nav" aria-label="Documentation">
+    <a href="../">← The house</a>
+    <a href="../process/">Design process →</a>
+    <a href="https://hannah-kwakye.netlify.app" rel="noopener">The collection</a>
+  </nav>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-hud">
+    <span>05.6037° N — 000.1870° W · Accra</span>
+    <span><a href="https://hannah-kwakye.netlify.app" rel="noopener">Designed &amp; built by Hannah Kwakye — engineered with Fable&nbsp;5</a></span>
+    <span>© MMXXVI Orvantis Intelligence</span>
+  </div>
+</footer>
+
+<script src="../assets/js/field.js" defer></script>
+</body>
+</html>
