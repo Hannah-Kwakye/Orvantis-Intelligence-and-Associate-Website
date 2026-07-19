@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build guide — Makers Intelligence™</title>
+<meta name="description" content="How the Makers Intelligence site was woven: a raw-WebGL loom shader, a thread-drawn identity system, woven CSS band transitions — and, in its second edition, AI-generated photographic plates woven into the same cloth. A teaching artifact.">
+<meta property="og:title" content="Build guide — Makers Intelligence™">
+<meta property="og:description" content="The loom shader, the thread-drawn icon system and the woven-band layout, explained well enough to reproduce.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A3B2E'/%3E%3Cpath d='M14 50V16l18 24 18-24v34' fill='none' stroke='%23F7F2E9' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M6 33h14M26 33h18M50 33h8' fill='none' stroke='%23C9973B' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" href="/assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- shared SVG defs: monogram + thread icons + weave motif -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="mono" viewBox="0 0 64 64">
+      <path d="M12 54V12l20 28 20-28v42" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4 33h19.5M29.5 33H49M55 33h5" fill="none" stroke="#C9973B" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ic-customers" viewBox="0 0 48 48">
+      <path pathLength="1" d="M13 19a7 7 0 1 0 14 0 7 7 0 1 0-14 0"/>
+      <path pathLength="1" d="M7 41c1-8 6-12 13-12s12 4 13 12"/>
+      <path pathLength="1" d="M32 13a5.5 5.5 0 0 1 4 10m3 4c2.5 2 4 5 4.5 9"/>
+    </symbol>
+    <symbol id="ic-orders" viewBox="0 0 48 48">
+      <path pathLength="1" d="M9 17l15-8 15 8v17l-15 8-15-8z"/>
+      <path pathLength="1" d="M9 17l15 8 15-8"/>
+      <path pathLength="1" d="M24 25v17"/>
+    </symbol>
+    <symbol id="ic-bookings" viewBox="0 0 48 48">
+      <path pathLength="1" d="M9 14h30a3 3 0 0 1 3 3v21a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V17a3 3 0 0 1 3-3z"/>
+      <path pathLength="1" d="M16 8v9m16-9v9M6 23h36"/>
+      <path pathLength="1" d="M17 31l5 5 9-9"/>
+    </symbol>
+    <symbol id="ic-followup" viewBox="0 0 48 48">
+      <path pathLength="1" d="M39 26a15 15 0 1 1-4.5-12.5"/>
+      <path pathLength="1" d="M39 7l-.8 7.2L31 13"/>
+      <path pathLength="1" d="M18 25l5 5 8-9"/>
+    </symbol>
+    <symbol id="ic-content" viewBox="0 0 48 48">
+      <path pathLength="1" d="M10 11h28a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4H23l-9 9v-9h-4a4 4 0 0 1-4-4V15a4 4 0 0 1 4-4z"/>
+      <path pathLength="1" d="M24 17v10"/>
+      <path pathLength="1" d="M19 22h10"/>
+    </symbol>
+    <symbol id="ic-growth" viewBox="0 0 48 48">
+      <path pathLength="1" d="M7 41c9 0 12-5 16-13s8-13 17-15"/>
+      <path pathLength="1" d="M33 14c3-4 7-5.5 9.5-4.5.3 4-2.5 7.5-7 7.5"/>
+      <path pathLength="1" d="M27 23c-.6-4-3.4-6.4-7-6.5-.2 4 2 7.3 6.4 7.5"/>
+    </symbol>
+    <symbol id="weave-motif" viewBox="0 0 96 96">
+      <g fill="currentColor">
+        <rect x="0" y="0" width="20" height="96" rx="8"/>
+        <rect x="28" y="0" width="20" height="96" rx="8"/>
+        <rect x="56" y="0" width="20" height="96" rx="8"/>
+        <rect x="84" y="0" width="12" height="96" rx="6"/>
+      </g>
+      <g fill="#C9973B">
+        <rect x="-2" y="28" width="100" height="18" rx="8"/>
+        <rect x="-2" y="66" width="100" height="12" rx="6"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Makers Intelligence — home">
+      <svg aria-hidden="true"><use href="#mono"/></svg>
+      <span class="wordmark">Makers<span class="tm">™</span></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/" class="nav-hide">Home</a>
+      <a href="/process/" class="nav-hide">Design process</a>
+      <a href="https://hannah-kwakye.netlify.app" rel="noopener" class="nav-hide">Portfolio hub</a>
+      <a class="btn btn--gold" href="/#waitlist">Join the waitlist</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero" aria-label="Introduction">
+    <svg class="hero-pattern" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="gp" width="96" height="96" patternUnits="userSpaceOnUse">
+          <use href="#weave-motif" width="96" height="96" style="color:#F7F2E9"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#gp)"/>
+    </svg>
+    <div class="wrap">
+      <p class="eyebrow">The making of this site</p>
+      <h1>How this site was <em class="gold-it">woven</em></h1>
+      <p class="lede">The structure here is drawn in code — the loom in the hero is a fragment shader, the icons are single threads of SVG, the section edges interlock like cloth. In its second edition the site also gained photographic plates, generated with an image model and woven into the same cloth. This guide explains both, honestly and completely, so another designer could weave their own.</p>
+      <nav class="guide-toc" aria-label="On this page">
+        <a href="#concept">Concept</a>
+        <a href="#identity">Identity system</a>
+        <a href="#shader">The loom shader</a>
+        <a href="#weave">Woven bands</a>
+        <a href="#threads">Thread icons</a>
+        <a href="#plates">The plates</a>
+        <a href="#toolchain">Toolchain</a>
+        <a href="#log">Iteration log</a>
+      </nav>
+    </div>
+  </section>
+
+  <div class="weave-edge" style="--above:var(--emerald);--below:var(--ivory)" aria-hidden="true"><i></i></div>
+
+  <!-- ============ CONCEPT ============ -->
+  <section class="band band--ivory section" id="concept" aria-labelledby="concept-h">
+    <div class="wrap--narrow prose">
+      <p class="eyebrow">Creative direction</p>
+      <h2 id="concept-h" style="margin-top:0">The page is a loom</h2>
+      <p>Makers Intelligence serves seamstresses, weavers, braiders — people whose work is literally made of thread. So the metaphor is not decoration; it is the <strong>layout system</strong>. The page composes as horizontal strips, like cloth coming off a kente loom: ivory strips for reading, full-bleed emerald strips for chapters that need weight, and gold only ever as a thread running through — never as a slab.</p>
+      <p>Even the transitions between sections obey the metaphor: strip edges interlock with rounded warp-thread tabs instead of meeting in a straight line. Scroll the <a href="/">home page</a> slowly and you can watch each band being woven into the next.</p>
+      <p>The palette is cut from the same cloth: deep emerald grounds, warm gold wefts, ivory for air, and a clay accent used the way a weaver uses a contrast thread — sparingly, on purpose.</p>
+      <div class="swatches" role="list" aria-label="Brand palette">
+        <div class="swatch" role="listitem" style="background:#0A3B2E;color:#F7F2E9"><b>Deep emerald</b><span>#0A3B2E</span></div>
+        <div class="swatch" role="listitem" style="background:#0E4D3A;color:#F7F2E9"><b>Forest</b><span>#0E4D3A</span></div>
+        <div class="swatch" role="listitem" style="background:#C9973B;color:#062B21"><b>Warm gold</b><span>#C9973B</span></div>
+        <div class="swatch" role="listitem" style="background:#E3B65C;color:#062B21"><b>Gold light</b><span>#E3B65C</span></div>
+        <div class="swatch" role="listitem" style="background:#F7F2E9;color:#26362F"><b>Ivory</b><span>#F7F2E9</span></div>
+        <div class="swatch" role="listitem" style="background:#B4552D;color:#F7F2E9"><b>Clay accent</b><span>#B4552D</span></div>
+      </div>
+      <h3>Type: one serif, worked hard</h3>
+      <p><strong>Fraunces</strong> is a variable font with an optical-size axis, which means the same family can be a soft, wonky display face and a sharp small-caption italic. We push that axis to both extremes on purpose — it is the typographic version of thick and thin thread from one spool. <strong>Archivo</strong> carries the interface and body text underneath it.</p>
+      <div class="spec-row">
+        <div class="spec-card">
+          <small>Fraunces · opsz 144 · display</small>
+          <span class="big" style="font-size:clamp(2.6rem,6vw,4.2rem);font-variation-settings:'opsz' 144;font-weight:480">held.</span>
+          <small>hero headlines — high contrast, confident</small>
+        </div>
+        <div class="spec-card">
+          <small>Fraunces italic · opsz 9 · captions</small>
+          <span class="big" style="font-size:1.35rem;font-style:italic;font-variation-settings:'opsz' 9;font-weight:420">drawn entirely in code, like everything on this site</span>
+          <small>captions — soft, low contrast, bookish</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IDENTITY ============ -->
+  <section class="band band--ivory2 section" id="identity" aria-labelledby="identity-h">
+    <div class="wrap--narrow prose">
+      <p class="eyebrow">Brand identity</p>
+      <h2 id="identity-h" style="margin-top:0">A monogram made of thread</h2>
+      <p>The mark is an <strong>M whose uprights are the warp</strong> — the vertical threads a loom holds in tension — and a single <strong>gold weft</strong> passing across it: over the uprights, under the diagonals, the way plain weave actually interlaces. The wordmark sets “Makers” in Fraunces with the ™ tucked high, like a maker’s label stitched into a hem.</p>
+      <figure class="mono-anatomy">
+        <svg viewBox="0 0 240 200" role="img" aria-label="Anatomy of the Makers monogram: an M drawn as warp threads with a gold weft thread passing over and under">
+          <g stroke="rgba(247,242,233,0.18)" stroke-width="1" stroke-dasharray="3 5">
+            <line x1="40" y1="24" x2="40" y2="176"/>
+            <line x1="200" y1="24" x2="200" y2="176"/>
+            <line x1="16" y1="100" x2="224" y2="100"/>
+          </g>
+          <path d="M60 160V40l60 84 60-84v120" fill="none" stroke="#F7F2E9" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22 100h44M78 100h60M150 100h44M206 100h16" fill="none" stroke="#C9973B" stroke-width="12" stroke-linecap="round"/>
+          <g font-family="Archivo, sans-serif" font-size="9.5" letter-spacing="1.6" fill="rgba(247,242,233,0.65)">
+            <text x="30" y="18">WARP · THE M, HELD IN TENSION</text>
+            <text x="130" y="192">WEFT · ONE GOLD THREAD, OVER AND UNDER</text>
+          </g>
+        </svg>
+        <figcaption class="caption-it" style="margin-top:1rem">The weft breaks where it passes “under” the diagonals — the gaps are the weave.</figcaption>
+      </figure>
+      <h3>Six services, one continuous thread</h3>
+      <p>Each of the six things Makers carries gets an icon drawn in the same voice: <strong>a single stroke weight, round caps, no fills</strong> — as if each icon were bent from one length of wire, or sewn in one run of the machine. On scroll they draw themselves in like thread pulled through cloth.</p>
+      <div class="icon-grid">
+        <div class="icon-cell"><svg class="t-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#ic-customers"/></svg><span>Customers</span></div>
+        <div class="icon-cell"><svg class="t-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#ic-orders"/></svg><span>Orders</span></div>
+        <div class="icon-cell"><svg class="t-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#ic-bookings"/></svg><span>Bookings</span></div>
+        <div class="icon-cell"><svg class="t-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#ic-followup"/></svg><span>Follow-up</span></div>
+        <div class="icon-cell"><svg class="t-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#ic-content"/></svg><span>Content</span></div>
+        <div class="icon-cell"><svg class="t-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#ic-growth"/></svg><span>Growth</span></div>
+      </div>
+      <h3>The pattern, derived from the mark</h3>
+      <p>Tile the monogram’s grid — warp bars crossed by two gold wefts — and you get the brand pattern used on story-card corners and this page’s header. One drawing, three jobs: mark, motif, texture.</p>
+      <div class="pattern-strip" role="img" aria-label="The brand weave pattern: vertical emerald bars crossed by gold horizontal bands, tiling seamlessly">
+        <svg width="100%" height="96" aria-hidden="true">
+          <defs>
+            <pattern id="pstrip" width="96" height="96" patternUnits="userSpaceOnUse">
+              <rect width="96" height="96" fill="#0A3B2E"/>
+              <use href="#weave-motif" width="96" height="96" style="color:#0E4D3A"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="96" rx="14" fill="url(#pstrip)"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="weave-edge" style="--above:var(--ivory-2);--below:var(--emerald)" aria-hidden="true"><i></i></div>
+
+  <!-- ============ LOOM SHADER ============ -->
+  <section class="band band--emerald band--texture section" id="shader" aria-labelledby="shader-h">
+    <div class="wrap--narrow prose prose--dark">
+      <p class="eyebrow">Signature technique</p>
+      <h2 id="shader-h" style="margin-top:0">The loom shader, explained</h2>
+      <p>The hero is a single fragment shader on a raw WebGL context — no Three.js, no library, about 8&nbsp;KB of hand-written code. Every pixel decides for itself whether it belongs to a vertical <strong>warp</strong> thread, a horizontal <strong>weft</strong> thread, or the gap between them.</p>
+      <h3>1 · A grid of threads</h3>
+      <p>Divide the canvas into columns and rows about 15–30&nbsp;px wide. Within each cell, the fractional position gives a thread profile: a rounded highlight via <code>sqrt(1 − x²)</code> so each thread reads as a soft cylinder, not a flat stripe. Colours come from a hash of the thread index, grouped into bands of four so neighbouring threads share a shade — that banding is what makes it read as kente rather than a checker.</p>
+      <h3>2 · Plain weave, one line of math</h3>
+      <p>Real cloth interlaces: each warp goes over one weft, under the next. In a shader that is a parity test — and shading whichever thread goes “under” with the other thread’s curve makes the interlace read as depth:</p>
+      <pre aria-label="GLSL excerpt"><code><span class="c">// column ci, row ri — who is on top at this crossing?</span>
+<span class="k">float</span> warpTop = mod(ci + ri, <span class="s">2.0</span>);
+<span class="k">if</span> (warpTop &lt; <span class="s">0.5</span>) {
+  c = mix(c, warpC * (<span class="s">0.62</span> + <span class="s">0.38</span> * abs(wpy)), warpA); <span class="c">// warp dips under</span>
+  c = mix(c, weftC, weftA);
+} <span class="k">else</span> {
+  c = mix(c, weftC * (<span class="s">0.62</span> + <span class="s">0.38</span> * abs(wpx)), weftA); <span class="c">// weft dips under</span>
+  c = mix(c, warpC, warpA);
+}</code></pre>
+      <h3>3 · The shuttle weaves it in</h3>
+      <p>On load, only the warp hangs there, dim and slack. A progress uniform sweeps a “weaving front” down the canvas, and each weft row switches on as the front passes — <strong>alternating direction row by row</strong>, the way a shuttle actually travels. Rows above the front brighten as the cloth tightens:</p>
+      <pre aria-label="GLSL excerpt"><code><span class="c">// rTop: row index from the top · sx: position along the row,</span>
+<span class="c">// flipped on alternating rows like a shuttle pass</span>
+<span class="k">float</span> t      = u_weave * (rowsTotal + <span class="s">10.0</span>) - rTop;
+<span class="k">float</span> sx     = mix(uv.x, <span class="s">1.0</span> - uv.x, mod(rTop, <span class="s">2.0</span>));
+<span class="k">float</span> weftOn = smoothstep(<span class="s">0.0</span>, <span class="s">0.22</span>, t - sx);</code></pre>
+      <h3>4 · A hand near the cloth</h3>
+      <p>The cursor doesn’t push pixels — it bows the threads. Sample positions are displaced away from the pointer with an exponential falloff (<code>exp(−distance × 3.2) × 9px</code>), so the cloth seems to dimple around your hand, and a faint gold shimmer follows like lamplight on silk. The pointer is smoothed with a simple lerp so the cloth feels heavy, not jumpy.</p>
+      <h3>What it costs, and the fallback</h3>
+      <ul>
+        <li>Device pixel ratio is capped at 2; the render loop pauses when the hero scrolls off-screen or the tab hides.</li>
+        <li>Under <code>prefers-reduced-motion</code> — or wherever WebGL is unavailable — the canvas is never started; a static woven-cloth SVG pattern takes its place. Same cloth, at rest.</li>
+        <li>The whole thing costs one draw call of a full-screen triangle per frame.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="weave-edge" style="--above:var(--emerald);--below:var(--ivory)" aria-hidden="true"><i></i></div>
+
+  <!-- ============ WOVEN BANDS ============ -->
+  <section class="band band--ivory section" id="weave" aria-labelledby="weave-h">
+    <div class="wrap--narrow prose">
+      <p class="eyebrow">Layout system</p>
+      <h2 id="weave-h" style="margin-top:0">Section edges that interlock</h2>
+      <p>Between every pair of bands sits a thin strip whose background is the band above, with the band below rising through it as rounded tabs — a CSS <code>mask-image</code> holding a tiny inline SVG of four staggered warp threads, repeated horizontally. Two custom properties tell each strip which colours it is joining:</p>
+      <pre aria-label="CSS excerpt"><code><span class="c">/* &lt;div class="weave-edge" style="--above:…;--below:…"&gt;&lt;i&gt;&lt;/i&gt;&lt;/div&gt; */</span>
+.weave-edge     { height: clamp(22px, 3.4vw, 40px); background: <span class="k">var(--above)</span>; }
+.weave-edge i   { position: absolute; inset: 0; background: <span class="k">var(--below)</span>;
+                  mask-image: url(<span class="s">"data:image/svg+xml,…four rounded rects…"</span>);
+                  mask-size: 96px 100%; mask-repeat: repeat-x; }</code></pre>
+      <p>It costs two elements and zero JavaScript, works at any width, and quietly carries the thesis: the sections aren’t stacked, they’re <strong>woven</strong>.</p>
+    </div>
+  </section>
+
+  <!-- ============ THREAD ICONS ============ -->
+  <section class="band band--ivory2 section" id="threads" aria-labelledby="threads-h">
+    <div class="wrap--narrow prose">
+      <p class="eyebrow">A lesson we learned</p>
+      <h2 id="threads-h" style="margin-top:0">Drawing icons through the shadow DOM</h2>
+      <p>The icons live once in the document as <code>&lt;symbol&gt;</code> definitions and are placed with <code>&lt;use&gt;</code>. Our first build styled them with <code>.t-icon path { stroke: … }</code> — and in the first design-critique screenshots every icon rendered as a solid black blob. The reason is worth knowing: <strong>CSS selectors cannot reach inside a <code>&lt;use&gt;</code> element’s shadow tree</strong>, so the paths never got their strokes; they fell back to SVG’s default black fill.</p>
+      <p>The fix is to stop selecting the paths and instead set <strong>inherited</strong> SVG presentation properties on the host <code>&lt;svg&gt;</code> — <code>fill</code>, <code>stroke</code>, <code>stroke-dasharray</code> and friends all cascade <em>through</em> the shadow boundary:</p>
+      <pre aria-label="CSS excerpt"><code>.t-icon          { fill: none; stroke: currentColor; stroke-width: 2.4; }
+<span class="c">/* every path carries pathLength="1", so one rule draws any icon: */</span>
+.js .t-icon.draw     { stroke-dasharray: 1 1; stroke-dashoffset: 1;
+                       transition: stroke-dashoffset 1.6s <span class="k">var(--ease-out)</span>; }
+.js .t-icon.draw.in  { stroke-dashoffset: 0; }</code></pre>
+      <p><code>pathLength="1"</code> is the quiet hero: it normalises every stroke to the same unit length, so the dash math never needs to know how long a path really is. When an icon scrolls into view, an IntersectionObserver adds <code>.in</code> and the whole icon sews itself in.</p>
+    </div>
+  </section>
+
+  <div class="weave-edge" style="--above:var(--ivory-2);--below:var(--ivory)" aria-hidden="true"><i></i></div>
+
+  <!-- ============ PHOTOGRAPHIC PLATES ============ -->
+  <section class="band band--ivory section" id="plates" aria-labelledby="plates-h">
+    <div class="wrap--narrow prose">
+      <p class="eyebrow">Second edition</p>
+      <h2 id="plates-h" style="margin-top:0">The photographic plates, honestly</h2>
+      <p>The first edition of this site was entirely code-drawn — a constraint of its environment that became a creative thesis. The second edition was allowed photography, and the client asked for the one thing typography could not deliver: <strong>the makers themselves</strong>. So the site gained six photographic plates: three persona portraits, a diaspora studio, Accra at dusk, and a macro of kente on the loom.</p>
+      <p><strong>Every plate is AI-generated</strong> (Higgsfield Soul, a photorealistic image model). <strong>No real person is depicted anywhere on this site.</strong> That is stated on the page where the portraits appear, in the footer, and here — because a product built on trust cannot decorate itself with an ambiguity.</p>
+      <h3>Art direction: one shoot, not six pictures</h3>
+      <p>Every prompt carries the same house grade — <em>golden-hour light, warm deep-emerald and antique-gold palette, shallow depth of field, dignified documentary craft photography</em> — so the set reads as a single commissioned session, not a scatter of stock. People are photographed mid-craft, hands working, never posed at the camera; the register is dignity, not pity and not gloss.</p>
+      <h3>Contact-sheet review</h3>
+      <p>Generated imagery betrays itself in lettering first, then in hands. Every frame was reviewed at full size like a contact sheet; frames with garbled signage, brand lettering on a machine, or an embroidered pseudo-logo were rejected and reshot with tighter constraints. Four of the first six frames failed this review. The reshoots did not.</p>
+      <h3>Joining the weave</h3>
+      <p>Photography enters through the site’s own furniture, never as naked stock: each plate carries a <strong>woven selvedge</strong> — the surface below rises through the photo’s bottom edge as rounded warp tabs, the same mask that interlocks the page’s bands — plus a quiet emerald-and-gold grade layered over the image so every frame sits inside the palette, and a thread caption set in the caption italic. The code-drawn spine (shader, map, dashboard, icons) is untouched.</p>
+      <h3>Delivery</h3>
+      <p>Plates ship as responsive WebP pairs (full-width and 800&nbsp;px) behind <code>srcset</code>, lazy-loaded below the fold with explicit dimensions, so the whole second edition costs a phone well under half a megabyte of imagery.</p>
+    </div>
+  </section>
+
+  <!-- ============ TOOLCHAIN ============ -->
+  <section class="band band--ivory section" id="toolchain" aria-labelledby="toolchain-h">
+    <div class="wrap--narrow prose">
+      <p class="eyebrow">Toolchain &amp; pipeline</p>
+      <h2 id="toolchain-h" style="margin-top:0">How it was actually made</h2>
+      <p>This site was <strong>designed and art-directed by Hannah Kwakye</strong> and <strong>engineered with Fable&nbsp;5</strong>, Anthropic’s frontier model, working as a designer-engineer under direction — writing the HTML, CSS, GLSL and JavaScript by hand, taking screenshots, critiquing them, and iterating. No page builder, no framework, no template.</p>
+      <ul>
+        <li><strong>Static, hand-authored HTML/CSS/JS.</strong> Zero libraries, zero runtime requests to third parties. The interactive machinery is IntersectionObserver, a rAF loop, and one WebGL context.</li>
+        <li><strong>Self-hosted variable fonts.</strong> Fraunces (upright + italic) and Archivo, subset to woff2 at build time and served from <code>/assets/fonts</code> — never from Google’s CDN. The display font is preloaded.</li>
+        <li><strong>The structural visuals are code-drawn.</strong> That began as an environment constraint — no stock photos, no generated rasters — and became the creative thesis of the first edition: if you can’t borrow warmth, you have to build it. The loom, the map, the dashboard, the icons: all SVG, CSS and shader. The <a href="#plates">second edition added photographic plates</a> — AI-generated, art-directed as one golden-hour shoot, reviewed frame by frame, delivered as responsive WebP. No real people are depicted.</li>
+        <li><strong>Netlify, CI-driven.</strong> Push to deploy; immutable caching on <code>/assets/*</code>; security headers in <code>netlify.toml</code>; the waitlist runs on Netlify Forms with a honeypot field and an inline success state.</li>
+      </ul>
+      <h3>Accessibility &amp; performance, concretely</h3>
+      <ul>
+        <li>Semantic landmarks, one <code>h1</code> per page, a skip link, and <code>:focus-visible</code> styles throughout; decorative SVG is <code>aria-hidden</code>, informative SVG carries real labels.</li>
+        <li><code>prefers-reduced-motion</code> is a first-class path: the shader never starts, reveals appear without translation, the icon and map draw-ins render complete, and transitions drop to 120&nbsp;ms.</li>
+        <li>Animations touch only <code>transform</code>, <code>opacity</code> and stroke offsets — nothing that provokes layout. Parallax is capped at ±40&nbsp;px.</li>
+        <li>First view is about 200&nbsp;KB transferred, all three font files included — the shader hero costs kilobytes, not megabytes, which is the point of writing it raw.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ ITERATION LOG ============ -->
+  <section class="band band--ivory2 section" id="log" aria-labelledby="log-h">
+    <div class="wrap--narrow prose">
+      <p class="eyebrow">Iteration protocol</p>
+      <h2 id="log-h" style="margin-top:0">Four passes, logged honestly</h2>
+      <p>Every site in this collection goes through the same discipline before it ships: screenshot everything at three widths, critique it as if it were someone else’s work, act on the findings — then push two things further, then hunt down whatever is broken. Here is what each pass actually changed on this site:</p>
+      <ol class="guide-log">
+        <li>
+          <h3><span class="pass-n">Pass i.</span> Design critique</h3>
+          <ul>
+            <li>The thread icons were rendering as solid black fills — CSS can’t select into <code>&lt;use&gt;</code> shadow trees. Restyled them with inherited presentation properties on the host SVG (the fix documented above), which also made the draw-in animation actually work for the first time.</li>
+            <li>The hero eyebrow was set in clay red on the dark loom — handsome on ivory, illegible on emerald. Switched it to light gold and deepened the scrim’s left side so the lede clears the brightest weft band.</li>
+            <li>Fast scrolling could shoot past a section before its reveal fired, leaving cards invisible; the observer now also reveals anything already scrolled past, so no viewer can outrun the loom.</li>
+          </ul>
+        </li>
+        <li>
+          <h3><span class="pass-n">Pass ii.</span> Elevation</h3>
+          <ul>
+            <li>The hero headline now rises word by word out of the weave — each word masked in its own clipping span, staggered 75&nbsp;ms apart, skipped entirely under reduced motion.</li>
+            <li>The “Born in Ghana” map gained weft packets: gold shuttles that travel the arcs from Accra outward once the threads have drawn in — SMIL motion started by JavaScript only when motion is allowed.</li>
+            <li>The workroom dashboard’s sparkline now weaves itself in when the section arrives, endpoint blinking on last — a small thing, but it makes the mock feel alive without a single fake metric changing.</li>
+          </ul>
+        </li>
+        <li>
+          <h3><span class="pass-n">Pass iii.</span> Ship quality</h3>
+          <ul>
+            <li>Every route, anchor, form state and cross-link tested; the waitlist form verified with its honeypot, inline success message, and <code>?success</code> return path.</li>
+            <li>Zero console errors at every width on all three pages; reduced-motion verified with the shader replaced by the static cloth and all draw-ins pre-completed.</li>
+            <li>Proofread every word — including the GLSL comments — and confirmed the pre-launch honesty notes (illustrative personas, founding pricing) survive on every page that needs them.</li>
+          </ul>
+        </li>
+        <li>
+          <h3><span class="pass-n">Pass iv.</span> Second edition — the makers arrive</h3>
+          <ul>
+            <li>The review verdict was blunt: a product for makers showed zero hands, zero cloth, zero workshops. Six photographic plates were commissioned from an image model under one art direction — golden-hour, emerald and gold, hands mid-craft — and the persona initials-in-a-square became portraits.</li>
+            <li>“Born in Ghana” opens on Accra at dusk with gold threads drawn over the photograph in SVG, and a kente macro band now breaks the long ivory stretch before the stories. Every plate is framed by the woven selvedge and a thread caption, so photography joins the identity instead of replacing it.</li>
+            <li>Four of the first six frames failed contact-sheet review (garbled signage, a pseudo-logo, awkward hands at the loom) and were reshot. Honesty labels — on the page, in the footer, and in this guide — say plainly that all photography is AI-generated and no real people are depicted.</li>
+            <li>Copy widened with the casting: the same system that holds an Osu order wall now names a London loft and a Brooklyn chair; scroll reveals were hardened so deep links and restored scroll positions never land on an empty viewport.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="weave-edge" style="--above:var(--ivory-2);--below:var(--emerald)" aria-hidden="true"><i></i></div>
+
+  <!-- ============ CLOSING ============ -->
+  <section class="band band--emerald band--texture section" aria-labelledby="close-h">
+    <div class="wrap--narrow prose prose--dark" style="text-align:center;justify-items:center">
+      <h2 id="close-h" style="margin-top:0">See it on the loom</h2>
+      <p style="margin-inline:auto">The best way to read this guide is with the site open beside it — watch the bands interlock, bow the threads with your cursor, and see the icons sew themselves in.</p>
+      <p style="display:flex;gap:0.9rem;flex-wrap:wrap;justify-content:center;max-width:none">
+        <a class="btn btn--gold" href="/">Visit the site</a>
+        <a class="btn btn--ghost" href="/process/">Read the design process</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/" aria-label="Makers Intelligence — home">
+          <svg aria-hidden="true"><use href="#mono"/></svg>
+          <span class="wordmark">Makers<span class="tm">™</span></span>
+        </a>
+        <p>The AI operating system for fashion, beauty, artisan and craft businesses. Born in Ghana. Built for the world.</p>
+      </div>
+      <nav class="foot-col" aria-label="Site">
+        <h4>Makers</h4>
+        <ul>
+          <li><a href="/#carries">What it carries</a></li>
+          <li><a href="/#ghana">Born in Ghana</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/#waitlist">Join the waitlist</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="The making of this site">
+        <h4>The making</h4>
+        <ul>
+          <li><a href="/guide/" aria-current="page">Build guide</a></li>
+          <li><a href="/process/">Design process</a></li>
+          <li><a href="https://hannah-kwakye.netlify.app" rel="noopener">Portfolio hub</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Sister projects">
+        <h4>Sister projects</h4>
+        <ul>
+          <li><a href="https://hk-orvantis-intelligence.netlify.app" rel="noopener">Orvantis Intelligence</a></li>
+          <li><a href="https://hk-ai-operations-launch.netlify.app" rel="noopener">AI Operations Launch™</a></li>
+          <li><a href="https://hk-next-builders-lab.netlify.app" rel="noopener">Next Builders Lab™</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-base">
+      <p>© <span id="yr">2026</span> Makers Intelligence™ · Accra, Ghana</p>
+      <p class="foot-honesty">The loom, icons and workroom are drawn in code; the photographic plates are AI-generated — no real makers are depicted.</p>
+      <p>Designed &amp; built by <a href="https://hannah-kwakye.netlify.app" rel="noopener">Hannah Kwakye</a> — engineered with Fable&nbsp;5</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

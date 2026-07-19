@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next Builders Lab™ — learn AI by building real things</title>
+<meta name="description" content="Next Builders Lab is a hands-on AI learning lab in Accra for kids, professionals, founders and teams. No lectures-for-the-sake-of-lectures — you ship a real project by week two. An Orvantis Intelligence initiative.">
+<meta property="og:title" content="Next Builders Lab™ — learn AI by building real things">
+<meta property="og:description" content="A hands-on AI learning lab in Accra. Kids, professionals, founders, teams — everyone leaves with something they built. Grab a block, toss it, join the Lab.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='3' width='28' height='27' rx='8' fill='%232B3CFF' stroke='%23141414' stroke-width='2.5'/%3E%3Cpath d='M11 9h6.2c2.8 0 4.6 1.4 4.6 3.7 0 1.5-.8 2.6-2 3.1 1.6.5 2.6 1.8 2.6 3.5 0 2.6-2 4.2-5 4.2H11V9zm3.4 5.7h2.3c1 0 1.7-.6 1.7-1.5s-.7-1.4-1.7-1.4h-2.3v2.9zm0 5.9h2.7c1.2 0 1.9-.6 1.9-1.6s-.7-1.6-1.9-1.6h-2.7v3.2z' fill='%23FFF6E9'/%3E%3C/svg%3E">
+<link rel="preload" href="/assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/schibsted.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap site-head__row">
+    <a class="logo" href="/" aria-label="Next Builders Lab — home">
+      <svg class="logo-blocks" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="3" y="21" width="16" height="16" rx="4.5" fill="#FFC93C" stroke="#141414" stroke-width="2.5" transform="rotate(-4 11 29)"/>
+        <rect x="21" y="21" width="16" height="16" rx="4.5" fill="#3ECF8E" stroke="#141414" stroke-width="2.5" transform="rotate(3 29 29)"/>
+        <rect x="12" y="3" width="16" height="16" rx="4.5" fill="#2B3CFF" stroke="#141414" stroke-width="2.5" transform="rotate(-6 20 11)"/>
+      </svg>
+      <span>Next Builders Lab<span class="tm">™</span></span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a class="nav-tight" href="#tracks">Tracks</a>
+      <a class="nav-hide" href="#make">Projects</a>
+      <a class="nav-hide" href="#calendar">Calendar</a>
+      <a class="nav-hide" href="#tuition">Tuition</a>
+      <a href="/guide/">Guide</a>
+      <a href="/process/">Process</a>
+      <a class="btn btn--ultra btn--small" href="#join"><span>Join<span class="btn-l">&nbsp;the Lab</span></span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO — PHYSICS PLAYGROUND ================= -->
+  <section class="hero" aria-label="Introduction">
+    <canvas id="playCanvas" role="img" aria-label="A playground of five chunky letter blocks spelling B-U-I-L-D. With motion enabled they tumble in with gravity and can be grabbed and tossed with the pointer."></canvas>
+
+    <svg class="hero__doodle doodle--plus" viewBox="0 0 60 60" aria-hidden="true">
+      <path d="M14 8v20M4 18h20M46 34v18M37 43h18" fill="none" stroke="#3ECF8E" stroke-width="6" stroke-linecap="round"/>
+    </svg>
+    <svg class="hero__doodle doodle--star" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M32 6l7 18 19 2-14 13 4 19-16-10-16 10 4-19L6 26l19-2z" fill="none" stroke="#FFC93C" stroke-width="5" stroke-linejoin="round"/>
+    </svg>
+    <svg class="hero__doodle doodle--spiral" viewBox="0 0 76 76" aria-hidden="true">
+      <path d="M38 38c0-4 5-6 9-3s5 10 0 15-15 5-21-2-6-19 2-26 22-7 30 2" fill="none" stroke="#FF6B4A" stroke-width="5.5" stroke-linecap="round"/>
+    </svg>
+    <svg class="hero__doodle doodle--bolt" viewBox="0 0 50 62" aria-hidden="true">
+      <path d="M28 4 8 34h13l-4 24 22-32H25z" fill="none" stroke="#2B3CFF" stroke-width="5" stroke-linejoin="round"/>
+    </svg>
+
+    <div class="hero__inner">
+      <div class="wrap">
+        <p class="hero__eyebrow">An Orvantis Intelligence initiative · Accra, Ghana</p>
+        <h1>
+          <span class="lite">Don&rsquo;t just learn AI&nbsp;&mdash;</span><br>
+          <span class="loud">build</span>
+          <span class="under">with&nbsp;it.<svg class="squig" viewBox="0 0 220 24" preserveAspectRatio="none" aria-hidden="true"><path d="M3 15 q 18 -16 36 0 t 36 0 t 36 0 t 36 0 t 36 0 t 34 0" fill="none" stroke="#FF6B4A" stroke-width="7" stroke-linecap="round"/></svg></span>
+        </h1>
+        <p class="hero__sub">A hands-on AI learning lab for kids, professionals, founders and teams. No slideshows about the future &mdash; by week two you&rsquo;ve shipped something real, and it has your name on it.</p>
+        <div class="hero__cta">
+          <a class="btn btn--ultra" href="#join">Join the Lab
+            <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13m-5-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#tracks">See the tracks</a>
+        </div>
+      </div>
+    </div>
+
+    <svg class="hero__badge" viewBox="0 0 140 140" aria-hidden="true">
+      <g class="spin">
+        <defs><path id="badgeCirc" d="M70,70 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs>
+        <circle cx="70" cy="70" r="66" fill="#FFFDF6" stroke="#141414" stroke-width="3"/>
+        <circle cx="70" cy="70" r="38" fill="none" stroke="#141414" stroke-width="2" stroke-dasharray="3 6"/>
+        <text font-family="Schibsted Grotesk, Arial, sans-serif" font-size="12.5" font-weight="800" letter-spacing="2.2" fill="#141414">
+          <textPath href="#badgeCirc">BUILD REAL THINGS ✶ NEXT BUILDERS LAB ✶ ACCRA ✶</textPath>
+        </text>
+      </g>
+      <path d="M70 48 l6.4 13 14.3 2.1 -10.3 10 2.4 14.2 -12.8 -6.7 -12.8 6.7 2.4 -14.2 -10.3 -10 14.3 -2.1 z" fill="#FFC93C" stroke="#141414" stroke-width="3" stroke-linejoin="round"/>
+    </svg>
+
+    <p class="sticker-hint" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 11.5V5.8a1.8 1.8 0 0 1 3.6 0v4.7m0-2.8a1.8 1.8 0 0 1 3.6 0v3.3m0-1.6a1.8 1.8 0 0 1 3.6 0v4.1c0 4.2-2.9 7-6.9 7-3.2 0-4.7-1.3-6.3-3.8L4 13.6c-.8-1.2-.3-2.6 1-3 .9-.3 1.9.1 2.5 1l.5.9" fill="#FFFDF6" stroke="#141414" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Go on &mdash; grab a block
+    </p>
+
+    <button class="tidy-btn" id="tidyBtn" type="button">↺ Tidy the blocks</button>
+  </section>
+
+  <!-- ================= RIBBON ================= -->
+  <div class="ribbon" aria-hidden="true">
+    <div class="ribbon__track">
+      <span class="ribbon__chunk">BUILD APPS <span class="star">✶</span></span>
+      <span class="ribbon__chunk">BUILD SITES <span class="star">✶</span></span>
+      <span class="ribbon__chunk">BUILD WORKFLOWS <span class="star">✶</span></span>
+      <span class="ribbon__chunk">BUILD CONTENT <span class="star">✶</span></span>
+      <span class="ribbon__chunk">BUILD BUSINESSES <span class="star">✶</span></span>
+      <span class="ribbon__chunk">BUILD CONFIDENCE <span class="star">✶</span></span>
+    </div>
+  </div>
+
+  <!-- ================= WHO BUILDS HERE ================= -->
+  <section class="section section--bordered cv" id="tracks" aria-labelledby="h-tracks">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="kicker kicker--fill-sun">Who builds here</span>
+        <h2 id="h-tracks">Four tracks. One rule: <span class="accent-word">everyone ships.</span></h2>
+        <p>Nine-year-olds and CEOs use the same door. Different pace, different projects &mdash; the same maker energy, the same &ldquo;look what I made&rdquo; at the end.</p>
+      </div>
+
+      <div class="tracks-grid">
+        <article class="track track--sun rv">
+          <span class="tape tape--tc" aria-hidden="true"></span>
+          <div class="track__top">
+            <span class="track__icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 48 48"><path d="M24 5c7 4 10 11 10 19l-4 8H18l-4-8c0-8 3-15 10-19z" fill="#FF6B4A" stroke="#141414" stroke-width="2.6" stroke-linejoin="round"/><circle cx="24" cy="19" r="4.5" fill="#FFF6E9" stroke="#141414" stroke-width="2.4"/><path d="M14 32l-6 8 9-2m17-6 6 8-9-2" fill="#FFC93C" stroke="#141414" stroke-width="2.4" stroke-linejoin="round"/><path d="M21 34c0 5-1 7 3 9 4-2 3-4 3-9" fill="#2B3CFF" stroke="#141414" stroke-width="2.4" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="track__who">Ages 9&ndash;15</span>
+          </div>
+          <h3>Kids Saturdays</h3>
+          <p>Saturday mornings of glorious, structured chaos. Kids storyboard a game, train a silly chatbot, build a website about their obsession of the month &mdash; and demo it to the room before lunch.</p>
+          <ul class="track__meta">
+            <li>✦ Sat 9:00&ndash;12:00</li>
+            <li>✦ 10-week terms</li>
+            <li>✦ Laptops provided</li>
+          </ul>
+        </article>
+
+        <article class="track track--ultra rv" style="--d:.08s">
+          <span class="tape tape--tl tape--blue" aria-hidden="true"></span>
+          <div class="track__top">
+            <span class="track__icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="24" rx="3" fill="#FFF6E9" stroke="#141414" stroke-width="2.6"/><path d="M13 18l6 5-6 5m10 0h10" fill="none" stroke="#2B3CFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 40h16m-8-6v6" stroke="#141414" stroke-width="2.6" stroke-linecap="round"/></svg>
+            </span>
+            <span class="track__who">Evenings</span>
+          </div>
+          <h3>Professionals</h3>
+          <p>Six weeks, two evenings a week, zero fluff. Bring the most annoying part of your job and leave with an AI workflow that does it for you &mdash; plus the judgement to know when not to trust it.</p>
+          <ul class="track__meta">
+            <li>✦ Tue &amp; Thu 18:30</li>
+            <li>✦ 6-week cohorts</li>
+            <li>✦ In-lab or hybrid</li>
+          </ul>
+        </article>
+
+        <article class="track track--coral rv" style="--d:.12s">
+          <span class="tape tape--tr" aria-hidden="true"></span>
+          <div class="track__top">
+            <span class="track__icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 48 48"><path d="M8 38c2-14 10-26 30-30-1 8-3 16-9 22l3 5-7 3-3-5c-5 2-9 3-14 5z" fill="#FFC93C" stroke="#141414" stroke-width="2.6" stroke-linejoin="round"/><circle cx="30" cy="17" r="4" fill="#FFF6E9" stroke="#141414" stroke-width="2.4"/><path d="M10 30l-4 2m8 4-3 4" stroke="#141414" stroke-width="2.4" stroke-linecap="round"/></svg>
+            </span>
+            <span class="track__who">Founders</span>
+          </div>
+          <h3>Founders Sprint</h3>
+          <p>Four weeks from idea to a working thing with customers poking at it. Prototype with AI, price it, pitch it at demo day. We&rsquo;re allergic to decks with no product behind them.</p>
+          <ul class="track__meta">
+            <li>✦ 4-week sprint</li>
+            <li>✦ Demo day finale</li>
+            <li>✦ Max 12 founders</li>
+          </ul>
+        </article>
+
+        <article class="track track--mint rv" style="--d:.16s">
+          <span class="tape tape--tc tape--mint" aria-hidden="true"></span>
+          <div class="track__top">
+            <span class="track__icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 48 48"><circle cx="16" cy="16" r="6" fill="#2B3CFF" stroke="#141414" stroke-width="2.6"/><circle cx="33" cy="14" r="5" fill="#FF6B4A" stroke="#141414" stroke-width="2.6"/><circle cx="25" cy="30" r="5.5" fill="#FFC93C" stroke="#141414" stroke-width="2.6"/><path d="M20 20l3 6m5-3 4-6m-16 1-2 16m9-4 8 8" fill="none" stroke="#141414" stroke-width="2.4" stroke-linecap="round"/></svg>
+            </span>
+            <span class="track__who">Companies</span>
+          </div>
+          <h3>Teams</h3>
+          <p>A build week for your whole department. We map your real processes, then your team builds the automations themselves &mdash; so the knowledge stays when we leave. Runs at your office or ours.</p>
+          <ul class="track__meta">
+            <li>✦ 2&ndash;5 day intensives</li>
+            <li>✦ Your real workflows</li>
+            <li>✦ On-site or in-lab</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RIBBON ================= -->
+  <div class="ribbon ribbon--sun" aria-hidden="true">
+    <div class="ribbon__track">
+      <span class="ribbon__chunk">MADE IN THE LAB <span class="star">✶</span></span>
+      <span class="ribbon__chunk">A BOOKING BOT <span class="star">✶</span></span>
+      <span class="ribbon__chunk">A PORTFOLIO SITE <span class="star">✶</span></span>
+      <span class="ribbon__chunk">A CONTENT ENGINE <span class="star">✶</span></span>
+      <span class="ribbon__chunk">AN OPS DASHBOARD <span class="star">✶</span></span>
+    </div>
+  </div>
+
+  <!-- ================= WHAT YOU'LL MAKE ================= -->
+  <section class="section section--bordered cv" id="make" aria-labelledby="h-make">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="kicker kicker--fill-coral">What you&rsquo;ll make</span>
+        <h2 id="h-make">Real projects, <span class="accent-word">not toy exercises.</span></h2>
+        <p>These four ship in every cohort, tuned to your track. Kids make the playful versions; founders make the money-making ones. All of them actually run.</p>
+      </div>
+
+      <div class="make-grid">
+        <article class="make-card rv">
+          <span class="make-card__tag">Week 2</span>
+          <div class="make-card__art" aria-hidden="true">
+            <svg viewBox="0 0 400 260">
+              <rect width="400" height="260" fill="#FFF6E9"/>
+              <path d="M0 218h400v42H0z" fill="#3ECF8E"/>
+              <rect x="42" y="38" width="176" height="64" rx="18" fill="#2B3CFF" stroke="#141414" stroke-width="5"/>
+              <path d="M74 102l-8 24 30-14z" fill="#2B3CFF" stroke="#141414" stroke-width="5" stroke-linejoin="round"/>
+              <circle cx="84" cy="70" r="7" fill="#FFF6E9"/><circle cx="120" cy="70" r="7" fill="#FFF6E9"/><circle cx="156" cy="70" r="7" fill="#FFF6E9"/>
+              <rect x="150" y="122" width="176" height="56" rx="16" fill="#FFFDF6" stroke="#141414" stroke-width="5"/>
+              <path d="M296 178l10 22-32-10z" fill="#FFFDF6" stroke="#141414" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M172 150h100" stroke="#141414" stroke-width="6" stroke-linecap="round"/>
+              <rect x="252" y="30" width="106" height="86" rx="12" fill="#FFC93C" stroke="#141414" stroke-width="5"/>
+              <path d="M252 58h106" stroke="#141414" stroke-width="5"/>
+              <path d="M278 24v14m54-14v14" stroke="#141414" stroke-width="6" stroke-linecap="round"/>
+              <circle cx="284" cy="80" r="6" fill="#141414"/><circle cx="308" cy="80" r="6" fill="#141414"/>
+              <circle cx="332" cy="80" r="9" fill="#FF6B4A" stroke="#141414" stroke-width="4"/>
+              <path d="M52 176c10-8 22-8 30 0" fill="none" stroke="#FF6B4A" stroke-width="6" stroke-linecap="round"/>
+              <path d="M96 190c8-6 16-6 24 0" fill="none" stroke="#FF6B4A" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>A booking bot</h3>
+          <p>A WhatsApp-style assistant that answers, checks a calendar and books the slot &mdash; for a salon, a clinic, a football pitch.</p>
+        </article>
+
+        <article class="make-card rv" style="--d:.07s">
+          <span class="make-card__tag">Yours forever</span>
+          <div class="make-card__art" aria-hidden="true">
+            <svg viewBox="0 0 400 260">
+              <rect width="400" height="260" fill="#FFF6E9"/>
+              <rect x="40" y="30" width="320" height="204" rx="16" fill="#FFFDF6" stroke="#141414" stroke-width="5"/>
+              <path d="M40 72h320" stroke="#141414" stroke-width="5"/>
+              <circle cx="66" cy="51" r="7" fill="#FF6B4A" stroke="#141414" stroke-width="3.5"/>
+              <circle cx="90" cy="51" r="7" fill="#FFC93C" stroke="#141414" stroke-width="3.5"/>
+              <circle cx="114" cy="51" r="7" fill="#3ECF8E" stroke="#141414" stroke-width="3.5"/>
+              <circle cx="118" cy="136" r="34" fill="#FFC93C" stroke="#141414" stroke-width="5"/>
+              <path d="M118 118v36m-18-18h36" stroke="#141414" stroke-width="5" stroke-linecap="round" transform="rotate(45 118 136)"/>
+              <rect x="176" y="102" width="150" height="14" rx="7" fill="#2B3CFF"/>
+              <rect x="176" y="130" width="118" height="11" rx="5.5" fill="#141414" opacity="0.75"/>
+              <rect x="176" y="152" width="132" height="11" rx="5.5" fill="#141414" opacity="0.75"/>
+              <rect x="66" y="192" width="92" height="26" rx="13" fill="#FF6B4A" stroke="#141414" stroke-width="4.5"/>
+              <rect x="176" y="192" width="70" height="26" rx="13" fill="#3ECF8E" stroke="#141414" stroke-width="4.5"/>
+              <path d="M330 208l24 24" stroke="#141414" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>A portfolio site</h3>
+          <p>A fast, handsome site that shows your work &mdash; designed with AI as your junior, deployed live in an afternoon.</p>
+        </article>
+
+        <article class="make-card rv" style="--d:.14s">
+          <span class="make-card__tag">Runs weekly</span>
+          <div class="make-card__art" aria-hidden="true">
+            <svg viewBox="0 0 400 260">
+              <rect width="400" height="260" fill="#FFF6E9"/>
+              <path d="M60 148 210 96l0 96z" fill="#FFC93C" stroke="#141414" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M210 84v120c46-16 84-16 122 6V92c-38-22-76-24-122-8z" fill="#FF6B4A" stroke="#141414" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M92 160l14 56 30-8-12-52" fill="#2B3CFF" stroke="#141414" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M352 76l26-16m-24 44 30-4m-38-58 14-24" stroke="#141414" stroke-width="6" stroke-linecap="round"/>
+              <rect x="54" y="36" width="70" height="46" rx="9" fill="#FFFDF6" stroke="#141414" stroke-width="4.5" transform="rotate(-6 89 59)"/>
+              <path d="M66 52h44m-44 14h30" stroke="#141414" stroke-width="4" stroke-linecap="round" transform="rotate(-6 89 59)"/>
+              <rect x="300" y="196" width="64" height="42" rx="9" fill="#3ECF8E" stroke="#141414" stroke-width="4.5" transform="rotate(5 332 217)"/>
+              <path d="M312 212l10 10 18-16" fill="none" stroke="#141414" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" transform="rotate(5 332 217)"/>
+            </svg>
+          </div>
+          <h3>A content engine</h3>
+          <p>One idea in, a week of on-brand posts out &mdash; drafted by AI, curated by you, scheduled automatically. Taste stays human.</p>
+        </article>
+
+        <article class="make-card rv" style="--d:.21s">
+          <span class="make-card__tag">Real data</span>
+          <div class="make-card__art" aria-hidden="true">
+            <svg viewBox="0 0 400 260">
+              <rect width="400" height="260" fill="#FFF6E9"/>
+              <rect x="36" y="34" width="328" height="192" rx="16" fill="#FFFDF6" stroke="#141414" stroke-width="5"/>
+              <rect x="60" y="132" width="34" height="66" rx="8" fill="#2B3CFF" stroke="#141414" stroke-width="4.5"/>
+              <rect x="106" y="102" width="34" height="96" rx="8" fill="#FFC93C" stroke="#141414" stroke-width="4.5"/>
+              <rect x="152" y="150" width="34" height="48" rx="8" fill="#FF6B4A" stroke="#141414" stroke-width="4.5"/>
+              <path d="M222 174c22-26 34-58 58-58 20 0 26 22 46 10" fill="none" stroke="#3ECF8E" stroke-width="7" stroke-linecap="round"/>
+              <circle cx="326" cy="126" r="8" fill="#FFFDF6" stroke="#141414" stroke-width="4.5"/>
+              <rect x="222" y="58" width="118" height="30" rx="15" fill="#FFC93C" stroke="#141414" stroke-width="4.5"/>
+              <path d="M236 73h68" stroke="#141414" stroke-width="5" stroke-linecap="round"/>
+              <path d="M60 76h96m-96 0" stroke="#141414" stroke-width="6" stroke-linecap="round"/>
+              <circle cx="180" cy="76" r="9" fill="#FF6B4A" stroke="#141414" stroke-width="4"/>
+            </svg>
+          </div>
+          <h3>An ops dashboard</h3>
+          <p>Sales, stock, bookings &mdash; pulled from the tools you already use into one clear morning view, with an AI summary on top.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= METHOD ================= -->
+  <section class="section section--ink cv" id="method" aria-labelledby="h-method">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="kicker kicker--fill-mint">The method</span>
+        <h2 id="h-method">Learn by <span class="accent-word">shipping.</span></h2>
+        <p>Tutorials evaporate. Shipped things stick. Every track runs the same three-beat loop, over and over, until building with AI feels like riding a bike.</p>
+      </div>
+
+      <div class="method-grid">
+        <article class="step rv">
+          <span class="step__num" aria-hidden="true">1</span>
+          <h3>Pick a real problem</h3>
+          <p>Yours, your family&rsquo;s, your business&rsquo;s. If nobody would notice it being solved, it doesn&rsquo;t make the cut. Real stakes make real builders.</p>
+          <svg class="step__arrow" viewBox="0 0 60 34" aria-hidden="true"><path d="M4 24C18 10 34 8 50 15m0 0-9-8m9 8-11 4" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </article>
+        <article class="step rv" style="--d:.08s">
+          <span class="step__num" aria-hidden="true">2</span>
+          <h3>Build it, together</h3>
+          <p>Small groups, a coach at your elbow, AI doing the heavy lifting. You learn to direct the tools &mdash; brief them, doubt them, correct them &mdash; not just prompt and pray.</p>
+          <svg class="step__arrow" viewBox="0 0 60 34" aria-hidden="true"><path d="M4 24C18 10 34 8 50 15m0 0-9-8m9 8-11 4" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </article>
+        <article class="step rv" style="--d:.16s">
+          <span class="step__num" aria-hidden="true">3</span>
+          <h3>Ship it, show it</h3>
+          <p>Every session ends with a demo. Applause is mandatory, polish is not. Then you pick the next problem &mdash; slightly bigger &mdash; and go again.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE LAB ================= -->
+  <section class="section section--bordered cv" id="lab" aria-labelledby="h-lab">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="kicker kicker--fill-ultra">The space</span>
+        <h2 id="h-lab">A workshop, <span class="accent-word">not a classroom.</span></h2>
+        <p>Twelve build stations in East Legon, Accra. Pegboards, sticky notes, a demo wall, and a strict no-rows-of-desks policy. It should feel like somewhere things get made &mdash; because they do.</p>
+      </div>
+
+      <figure class="lab-scene rv" aria-hidden="false">
+        <svg viewBox="0 0 1200 520" role="img" aria-label="Illustration of the Next Builders Lab workshop: a pegboard wall of tools and sticky notes, a demo screen reading SHIP IT, two build desks with laptops, letter blocks on a shelf, and a plant by the window.">
+          <rect width="1200" height="520" fill="#FFFDF6"/>
+          <rect width="1200" height="520" fill="url(#labgrid)"/>
+          <defs>
+            <pattern id="labgrid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M40 0H0v40" fill="none" stroke="#141414" stroke-opacity="0.06" stroke-width="2"/>
+            </pattern>
+          </defs>
+          <!-- floor -->
+          <path d="M0 420h1200v100H0z" fill="#FFF6E9" stroke="#141414" stroke-width="5"/>
+          <!-- window with sun -->
+          <rect x="60" y="60" width="230" height="180" rx="14" fill="#CFE7FF" stroke="#141414" stroke-width="6"/>
+          <path d="M175 60v180M60 150h230" stroke="#141414" stroke-width="5"/>
+          <circle cx="128" cy="112" r="26" fill="#FFC93C" stroke="#141414" stroke-width="5"/>
+          <path d="M128 70v-8m30 20 6-6m-66 6-6-6" stroke="#141414" stroke-width="5" stroke-linecap="round"/>
+          <path d="M212 182c10-12 26-12 34 0 8-10 22-10 28 0" fill="none" stroke="#141414" stroke-width="5" stroke-linecap="round"/>
+          <!-- pegboard -->
+          <rect x="340" y="52" width="360" height="200" rx="14" fill="#FFC93C" stroke="#141414" stroke-width="6"/>
+          <g fill="#141414" opacity="0.28">
+            <circle cx="372" cy="84" r="5"/><circle cx="420" cy="84" r="5"/><circle cx="468" cy="84" r="5"/><circle cx="516" cy="84" r="5"/><circle cx="564" cy="84" r="5"/><circle cx="612" cy="84" r="5"/><circle cx="660" cy="84" r="5"/>
+            <circle cx="372" cy="220" r="5"/><circle cx="420" cy="220" r="5"/><circle cx="468" cy="220" r="5"/><circle cx="516" cy="220" r="5"/><circle cx="564" cy="220" r="5"/><circle cx="612" cy="220" r="5"/><circle cx="660" cy="220" r="5"/>
+          </g>
+          <rect x="366" y="108" width="86" height="86" rx="10" fill="#FFFDF6" stroke="#141414" stroke-width="5" transform="rotate(-3 409 151)"/>
+          <path d="M384 136h50m-50 18h34m-34 18h44" stroke="#141414" stroke-width="4.5" stroke-linecap="round" transform="rotate(-3 409 151)"/>
+          <rect x="474" y="112" width="70" height="70" rx="9" fill="#FF6B4A" stroke="#141414" stroke-width="5" transform="rotate(4 509 147)"/>
+          <path d="M492 148l12 12 22-22" fill="none" stroke="#FFFDF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="rotate(4 509 147)"/>
+          <rect x="560" y="106" width="66" height="44" rx="8" fill="#3ECF8E" stroke="#141414" stroke-width="5" transform="rotate(-4 593 128)"/>
+          <rect x="562" y="164" width="98" height="30" rx="8" fill="#2B3CFF" stroke="#141414" stroke-width="5" transform="rotate(2 611 179)"/>
+          <path d="M576 179h70" stroke="#FFFDF6" stroke-width="5" stroke-linecap="round" transform="rotate(2 611 179)"/>
+          <!-- demo screen -->
+          <rect x="760" y="58" width="380" height="220" rx="16" fill="#141414" stroke="#141414" stroke-width="6"/>
+          <rect x="778" y="76" width="344" height="184" rx="10" fill="#2B3CFF"/>
+          <text x="950" y="160" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="56" fill="#FFF6E9">SHIP IT</text>
+          <text x="950" y="206" text-anchor="middle" font-family="Schibsted Grotesk, Arial, sans-serif" font-weight="700" font-size="22" fill="#FFC93C">demo day · 16:00</text>
+          <path d="M920 278v26m60-26v26" stroke="#141414" stroke-width="8" stroke-linecap="round"/>
+          <!-- shelf with BUILD blocks -->
+          <path d="M60 300h270" stroke="#141414" stroke-width="8" stroke-linecap="round"/>
+          <g font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="30" text-anchor="middle">
+            <rect x="76" y="248" width="46" height="46" rx="10" fill="#2B3CFF" stroke="#141414" stroke-width="5" transform="rotate(-5 99 271)"/>
+            <text x="99" y="282" fill="#FFF6E9" transform="rotate(-5 99 271)">B</text>
+            <rect x="132" y="250" width="46" height="46" rx="10" fill="#FFC93C" stroke="#141414" stroke-width="5" transform="rotate(4 155 273)"/>
+            <text x="155" y="284" fill="#141414" transform="rotate(4 155 273)">U</text>
+            <rect x="188" y="248" width="40" height="46" rx="10" fill="#FF6B4A" stroke="#141414" stroke-width="5"/>
+            <text x="208" y="282" fill="#141414">I</text>
+            <rect x="238" y="250" width="46" height="46" rx="10" fill="#3ECF8E" stroke="#141414" stroke-width="5" transform="rotate(-4 261 273)"/>
+            <text x="261" y="284" fill="#141414" transform="rotate(-4 261 273)">L</text>
+            <rect x="292" y="248" width="46" height="46" rx="10" fill="#141414" stroke="#141414" stroke-width="5" transform="rotate(5 315 271)"/>
+            <text x="315" y="282" fill="#FFF6E9" transform="rotate(5 315 271)">D</text>
+          </g>
+          <!-- desk 1 -->
+          <rect x="130" y="352" width="330" height="22" rx="8" fill="#FFC93C" stroke="#141414" stroke-width="5"/>
+          <path d="M158 374v96m274-96v96" stroke="#141414" stroke-width="7" stroke-linecap="round"/>
+          <path d="M196 352v-44l84-14v58" fill="#FFFDF6" stroke="#141414" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M206 322l20-3m-20 15 30-4" stroke="#3ECF8E" stroke-width="5" stroke-linecap="round"/>
+          <path d="M330 352v-50h78v50" fill="#141414" stroke="#141414" stroke-width="5"/>
+          <path d="M342 318h30m-30 14h44" stroke="#3ECF8E" stroke-width="4.5" stroke-linecap="round"/>
+          <!-- desk 2 -->
+          <rect x="700" y="352" width="330" height="22" rx="8" fill="#FF6B4A" stroke="#141414" stroke-width="5"/>
+          <path d="M728 374v96m274-96v96" stroke="#141414" stroke-width="7" stroke-linecap="round"/>
+          <path d="M756 352v-46l86 8v38" fill="#FFFDF6" stroke="#141414" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M770 322l26 2m-26 12 40 3" stroke="#2B3CFF" stroke-width="5" stroke-linecap="round"/>
+          <ellipse cx="920" cy="332" rx="34" ry="20" fill="#FFFDF6" stroke="#141414" stroke-width="5"/>
+          <path d="M898 348c8 6 36 6 44 0" fill="none" stroke="#141414" stroke-width="4.5"/>
+          <path d="M920 312v-16m0 0c0-8 10-12 16-8m-16 8c0-8-10-12-16-8" fill="none" stroke="#141414" stroke-width="4.5" stroke-linecap="round"/>
+          <!-- plant -->
+          <rect x="1080" y="380" width="70" height="66" rx="10" fill="#FFC93C" stroke="#141414" stroke-width="5"/>
+          <path d="M1115 380c0-40-22-52-40-58 4 24 12 42 40 58zm0 0c0-40 22-52 40-58-4 24-12 42-40 58zm0 0v-46" fill="#3ECF8E" stroke="#141414" stroke-width="5" stroke-linejoin="round"/>
+          <!-- rug -->
+          <ellipse cx="590" cy="470" rx="180" ry="30" fill="#3ECF8E" stroke="#141414" stroke-width="5"/>
+          <ellipse cx="590" cy="470" rx="120" ry="18" fill="none" stroke="#141414" stroke-width="4" stroke-dasharray="10 10"/>
+        </svg>
+      </figure>
+
+      <ul class="lab-facts">
+        <li class="rv"><strong>12 build stations</strong> Big screens, fast machines, every major AI tool set up and paid for. Just sit down and make.</li>
+        <li class="rv" style="--d:.08s"><strong>Fibre + backup power</strong> Dumsor doesn&rsquo;t attend our sessions. Inverters and a generator keep the lab building through anything.</li>
+        <li class="rv" style="--d:.16s"><strong>Open-lab Saturdays</strong> Alumni build free every Saturday afternoon. Once a builder here, always a builder here.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= RIBBON ================= -->
+  <div class="ribbon ribbon--mint" aria-hidden="true">
+    <div class="ribbon__track">
+      <span class="ribbon__chunk">NEW COHORTS ✦ SEPTEMBER 2026 <span class="star">✶</span></span>
+      <span class="ribbon__chunk">KIDS ✦ PROS ✦ FOUNDERS ✦ TEAMS <span class="star">✶</span></span>
+      <span class="ribbon__chunk">SMALL COHORTS ✦ HARD CAPS <span class="star">✶</span></span>
+    </div>
+  </div>
+
+  <!-- ================= CALENDAR ================= -->
+  <section class="section section--bordered cv" id="calendar" aria-labelledby="h-cal">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="kicker kicker--fill-sun">Cohort calendar</span>
+        <h2 id="h-cal">Pick your start line &mdash; <span class="accent-word">2026.</span></h2>
+        <p>Small cohorts, real coaches, hard caps. When a row fills, it&rsquo;s full &mdash; we&rsquo;d rather add a cohort than crowd one.</p>
+      </div>
+
+      <div class="cal-list">
+        <article class="cal-row cal-row--teams rv">
+          <span class="cal-row__badge badge--open">Open</span>
+          <p class="cal-row__date">Aug 17&ndash;21<small>Build week</small></p>
+          <p class="cal-row__what"><strong>Teams Open Intensive</strong> <span>Five days, one department, your real workflows automated by your own people.</span></p>
+          <span class="cal-row__pill pill--teams">Teams</span>
+          <a class="btn btn--small btn--ghost cal-row__cta" href="#join">Book the week</a>
+        </article>
+        <article class="cal-row cal-row--pro rv" style="--d:.05s">
+          <span class="cal-row__badge badge--open">Open</span>
+          <p class="cal-row__date">Sep 8 &ndash; Oct 15<small>Tue &amp; Thu 18:30</small></p>
+          <p class="cal-row__what"><strong>Professionals · Cohort 06</strong> <span>Six weeks. Bring the worst part of your job; leave with it automated.</span></p>
+          <span class="cal-row__pill pill--pro">Professionals</span>
+          <a class="btn btn--small btn--ghost cal-row__cta" href="#join">Save a seat</a>
+        </article>
+        <article class="cal-row cal-row--kids rv" style="--d:.1s">
+          <span class="cal-row__badge badge--full">Full</span>
+          <p class="cal-row__date">Sep 12 &ndash; Nov 14<small>Sat 9:00&ndash;12:00</small></p>
+          <p class="cal-row__what"><strong>Kids Saturdays · Term 3</strong> <span>Ten Saturdays of building games, bots and websites. Ages 9&ndash;15, laptops provided.</span></p>
+          <span class="cal-row__pill pill--kids">Kids</span>
+          <a class="btn btn--small btn--ghost cal-row__cta" href="#join">Join the waitlist</a>
+        </article>
+        <article class="cal-row cal-row--founders rv" style="--d:.15s">
+          <span class="cal-row__badge badge--open">Open</span>
+          <p class="cal-row__date">Oct 5&ndash;30<small>Demo day Oct 30</small></p>
+          <p class="cal-row__what"><strong>Founders Sprint · 04</strong> <span>Idea to working product in four weeks, then pitch it to a room that claps and asks hard questions.</span></p>
+          <span class="cal-row__pill pill--founders">Founders</span>
+          <a class="btn btn--small btn--ghost cal-row__cta" href="#join">Apply now</a>
+        </article>
+        <article class="cal-row cal-row--family rv" style="--d:.2s">
+          <span class="cal-row__badge badge--free">Free</span>
+          <p class="cal-row__date">Nov 7<small>Sat 10:00&ndash;14:00</small></p>
+          <p class="cal-row__what"><strong>Family Build Day</strong> <span>Free open house. Bring the kids, meet the coaches, build something small, keep it.</span></p>
+          <span class="cal-row__pill pill--kids">Everyone</span>
+          <a class="btn btn--small btn--ghost cal-row__cta" href="#join">RSVP free</a>
+        </article>
+      </div>
+      <p class="cal-note">Applications close two weeks before each start date. Kids Term 1 of 2027 opens for enrolment on 1 December 2026 &mdash; join the form below and tick your track to hear first.</p>
+    </div>
+  </section>
+
+  <!-- ================= TUITION ================= -->
+  <section class="section section--bordered cv" id="tuition" aria-labelledby="h-tuition">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="kicker kicker--fill-mint">Tuition</span>
+        <h2 id="h-tuition">Priced in cedis, <span class="accent-word">worth it in confidence.</span></h2>
+        <p>Everything included: coaching, tools, AI subscriptions during your cohort, and lifetime open-lab Saturdays. No textbooks. Definitely no exam fees.</p>
+      </div>
+
+      <div class="tuition-grid">
+        <article class="price-card rv">
+          <h3 class="price-card__band">Kids Saturdays</h3>
+          <div class="price-card__body">
+            <p class="price-card__amount"><small>GH₵</small> 950</p>
+            <p class="price-card__per">per 10-week term</p>
+            <ul>
+              <li>Lab laptops &amp; all tools provided</li>
+              <li>Max 16 kids, 3 coaches</li>
+              <li>Family demo on the last Saturday</li>
+            </ul>
+            <a class="btn btn--small" href="#join">Enrol a builder</a>
+          </div>
+        </article>
+        <article class="price-card rv" style="--d:.06s">
+          <h3 class="price-card__band">Professionals</h3>
+          <div class="price-card__body">
+            <p class="price-card__amount"><small>GH₵</small> 2,400</p>
+            <p class="price-card__per">per 6-week cohort</p>
+            <ul>
+              <li>12 evening sessions + office hours</li>
+              <li>Your own workflow, shipped</li>
+              <li>AI tool stack covered for the cohort</li>
+            </ul>
+            <a class="btn btn--small" href="#join">Save a seat</a>
+          </div>
+        </article>
+        <article class="price-card rv" style="--d:.12s">
+          <h3 class="price-card__band">Founders Sprint</h3>
+          <div class="price-card__body">
+            <p class="price-card__amount"><small>GH₵</small> 3,200</p>
+            <p class="price-card__per">per 4-week sprint</p>
+            <ul>
+              <li>Prototype, price, pitch &mdash; demo day</li>
+              <li>1:1 build clinics twice a week</li>
+              <li>Max 12 founders per sprint</li>
+            </ul>
+            <a class="btn btn--small" href="#join">Apply to sprint</a>
+          </div>
+        </article>
+        <article class="price-card rv" style="--d:.18s">
+          <h3 class="price-card__band">Teams</h3>
+          <div class="price-card__body">
+            <p class="price-card__amount"><small>from GH₵</small> 9,500</p>
+            <p class="price-card__per">per team build week</p>
+            <ul>
+              <li>Scoped to your real processes</li>
+              <li>Up to 10 people, on-site or in-lab</li>
+              <li>Playbook your team keeps</li>
+            </ul>
+            <a class="btn btn--small" href="#join">Request a quote</a>
+          </div>
+        </article>
+      </div>
+
+      <aside class="scholarship rv" aria-labelledby="h-fund">
+        <svg width="72" height="72" viewBox="0 0 72 72" aria-hidden="true">
+          <circle cx="36" cy="36" r="32" fill="#FFC93C" stroke="#FFF6E9" stroke-width="4"/>
+          <path d="M36 16l5.8 11.8 13 1.9-9.4 9.1 2.2 12.9L36 45.6l-11.6 6.1 2.2-12.9-9.4-9.1 13-1.9z" fill="#141414"/>
+        </svg>
+        <div>
+          <h3 id="h-fund">The Builders Fund &mdash; 1 in 5 seats is fully funded.</h3>
+          <p>Talent is everywhere; tuition money isn&rsquo;t. Every cohort reserves a fifth of its seats as full scholarships for builders who can&rsquo;t pay yet. If money is the only thing in your way, apply anyway &mdash; tick the scholarship box on the join form and tell us what you want to build. That&rsquo;s the whole application.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section section--bordered cv" id="faq" aria-labelledby="h-faq">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="kicker kicker--fill-coral">Fair questions</span>
+        <h2 id="h-faq">Before you ask&hellip;</h2>
+      </div>
+      <div class="faq-grid">
+        <details class="faq rv">
+          <summary>Do I need to know how to code?</summary>
+          <div><p>No. Most builders arrive never having written a line. You&rsquo;ll leave understanding how software fits together and how to direct AI to write, fix and explain code for you. The coders among you just go deeper, faster.</p></div>
+        </details>
+        <details class="faq rv">
+          <summary>Which AI tools do you teach?</summary>
+          <div><p>Whatever ships your project best &mdash; today that means frontier chat assistants, coding agents, image and voice tools, and the boring-but-mighty automation platforms. Tools change monthly; the method doesn&rsquo;t. We teach judgement, not menus.</p></div>
+        </details>
+        <details class="faq rv">
+          <summary>What should I bring?</summary>
+          <div><p>Professionals, founders and teams: your own laptop and one real problem you care about. Kids: just the kid &mdash; we provide laptops, accounts and snacks. Everyone: a healthy suspicion of anything that demos too smoothly.</p></div>
+        </details>
+        <details class="faq rv">
+          <summary>Can I visit before committing?</summary>
+          <div><p>Please do. Open-lab Saturday afternoons are exactly for this &mdash; drop in, watch a demo, interrogate the alumni. Or come to Family Build Day on 7 November 2026, which is free and finishes with cake.</p></div>
+        </details>
+        <details class="faq rv">
+          <summary>Is my child too young / am I too old?</summary>
+          <div><p>Kids Saturdays fits ages 9&ndash;15 comfortably. On the other end there is no end: our oldest graduate is 68 and automated her church&rsquo;s bookkeeping. Curiosity is the entry requirement; birth year isn&rsquo;t.</p></div>
+        </details>
+        <details class="faq rv">
+          <summary>What happens after my cohort?</summary>
+          <div><p>You keep building. Alumni get lifetime access to open-lab Saturdays, the community group, and first invitations to advanced sprints. The Lab is a door you walk through, not a course you finish.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= JOIN ================= -->
+  <section class="section cv" id="join" aria-labelledby="h-join">
+    <div class="wrap join-layout">
+      <div class="join-blurb rv">
+        <span class="kicker kicker--fill-ultra">Join the Lab</span>
+        <h2 id="h-join">Your first demo day is closer than you think.</h2>
+        <p>Tell us who&rsquo;s building and which track fits. A real human (usually Ama, our programmes lead) replies within two working days with next steps &mdash; no bots on this particular job.</p>
+        <p>Prefer to look around first? Come by on an open-lab Saturday afternoon, East Legon, Accra.</p>
+        <svg class="doodle-arrow" width="120" height="74" viewBox="0 0 120 74" aria-hidden="true">
+          <path d="M8 8c14 34 44 52 88 50m0 0-16-12m16 12-18 8" fill="none" stroke="#FF6B4A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <form class="join-form rv" name="join-the-lab" method="POST" action="/?success" data-netlify="true" netlify-honeypot="lab-nickname">
+        <input type="hidden" name="form-name" value="join-the-lab">
+        <p class="hp" aria-hidden="true">
+          <label>Leave this field empty: <input name="lab-nickname" tabindex="-1" autocomplete="off"></label>
+        </p>
+
+        <div class="form-success" id="formSuccess" hidden role="status">
+          <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#FFFDF6" stroke="#141414" stroke-width="2.5"/><path d="M10 16.5l4.2 4L22 12" fill="none" stroke="#141414" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>You&rsquo;re in the queue!</strong> Watch your inbox &mdash; Ama replies within two working days.</span>
+        </div>
+
+        <div class="form-row">
+          <p class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </p>
+          <p class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </p>
+        </div>
+        <div class="form-row">
+          <p class="field">
+            <label for="f-phone">Phone / WhatsApp <span class="opt">(optional)</span></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+          </p>
+          <p class="field">
+            <label for="f-track">Track</label>
+            <select id="f-track" name="track" required>
+              <option value="" selected disabled>Choose a track&hellip;</option>
+              <option>Kids Saturdays (ages 9–15)</option>
+              <option>Professionals — evening cohort</option>
+              <option>Founders Sprint</option>
+              <option>Teams — company build week</option>
+              <option>Not sure yet — help me choose</option>
+            </select>
+          </p>
+        </div>
+        <p class="field">
+          <label for="f-build">What do you want to build? <span class="opt">(a sentence is plenty)</span></label>
+          <textarea id="f-build" name="project" placeholder="e.g. A booking bot for my aunt&rsquo;s salon in Osu&hellip;"></textarea>
+        </p>
+        <p class="field-check">
+          <input id="f-fund" name="scholarship" type="checkbox" value="yes">
+          <label for="f-fund">I&rsquo;m applying for a Builders Fund scholarship seat.</label>
+        </p>
+        <button class="btn btn--ultra" type="submit">Send it &mdash; let&rsquo;s build
+          <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13m-5-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="form-note">No spam, no &ldquo;webinar funnels&rdquo;. Just a human reply about your cohort.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="/" aria-label="Next Builders Lab — home">
+          <svg class="logo-blocks" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true">
+            <rect x="3" y="21" width="16" height="16" rx="4.5" fill="#FFC93C" stroke="#FFF6E9" stroke-width="2.5"/>
+            <rect x="21" y="21" width="16" height="16" rx="4.5" fill="#3ECF8E" stroke="#FFF6E9" stroke-width="2.5"/>
+            <rect x="12" y="3" width="16" height="16" rx="4.5" fill="#2B3CFF" stroke="#FFF6E9" stroke-width="2.5"/>
+          </svg>
+          <span>Next Builders Lab<span class="tm">™</span></span>
+        </a>
+        <p>The hands-on AI learning lab of Orvantis Intelligence. East Legon, Accra &mdash; where kids, professionals, founders and teams learn AI by shipping real things.</p>
+      </div>
+      <nav aria-label="Explore">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#tracks">The four tracks</a></li>
+          <li><a href="#make">What you&rsquo;ll make</a></li>
+          <li><a href="#method">Learn by shipping</a></li>
+          <li><a href="#calendar">2026 calendar</a></li>
+          <li><a href="#tuition">Tuition &amp; scholarships</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="The Lab">
+        <h4>The Lab</h4>
+        <ul>
+          <li><a href="#join">Join the Lab</a></li>
+          <li><a href="#faq">Fair questions</a></li>
+          <li><a href="/guide/">How this site was built</a></li>
+          <li><a href="/process/">Design process</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Family">
+        <h4>The family</h4>
+        <ul>
+          <li><a href="https://hk-orvantis-intelligence.netlify.app" rel="noopener">Orvantis Intelligence &mdash; parent firm</a></li>
+          <li><a href="https://hk-makers-intelligence.netlify.app" rel="noopener">Makers Intelligence&trade;</a></li>
+          <li><a href="https://hk-ai-operations-launch.netlify.app" rel="noopener">AI Operations Launch&trade;</a></li>
+          <li><a href="https://hannah-kwakye.netlify.app" rel="noopener">Hannah Kwakye &mdash; portfolio hub</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <span>&copy; <span id="year">2026</span> Next Builders Lab&trade; · an Orvantis Intelligence initiative · Accra, Ghana</span>
+      <span>Designed &amp; built by <a href="https://hannah-kwakye.netlify.app" rel="noopener">Hannah Kwakye</a> &mdash; engineered with Fable&nbsp;5</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/playground.js" defer></script>
+</body>
+</html>

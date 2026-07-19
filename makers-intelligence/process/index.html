@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design process — Makers Intelligence™</title>
+<meta name="description" content="The design-thinking case study behind Makers Intelligence: the brief, the problem, the directions rejected, the decisions and trade-offs that shaped a Ghana-first launch site.">
+<meta property="og:title" content="Design process — Makers Intelligence™">
+<meta property="og:description" content="Why this launch site became a loom: the brief, the rejected directions, and the trade-offs, documented honestly.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A3B2E'/%3E%3Cpath d='M14 50V16l18 24 18-24v34' fill='none' stroke='%23F7F2E9' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M6 33h14M26 33h18M50 33h8' fill='none' stroke='%23C9973B' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" href="/assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- shared SVG defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="mono" viewBox="0 0 64 64">
+      <path d="M12 54V12l20 28 20-28v42" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4 33h19.5M29.5 33H49M55 33h5" fill="none" stroke="#C9973B" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="weave-motif" viewBox="0 0 96 96">
+      <g fill="currentColor">
+        <rect x="0" y="0" width="20" height="96" rx="8"/>
+        <rect x="28" y="0" width="20" height="96" rx="8"/>
+        <rect x="56" y="0" width="20" height="96" rx="8"/>
+        <rect x="84" y="0" width="12" height="96" rx="6"/>
+      </g>
+      <g fill="#C9973B">
+        <rect x="-2" y="28" width="100" height="18" rx="8"/>
+        <rect x="-2" y="66" width="100" height="12" rx="6"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Makers Intelligence — home">
+      <svg aria-hidden="true"><use href="#mono"/></svg>
+      <span class="wordmark">Makers<span class="tm">™</span></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/" class="nav-hide">Home</a>
+      <a href="/guide/" class="nav-hide">Build guide</a>
+      <a href="https://hannah-kwakye.netlify.app" rel="noopener" class="nav-hide">Portfolio hub</a>
+      <a class="btn btn--gold" href="/#waitlist">Join the waitlist</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero" aria-label="Introduction">
+    <svg class="hero-pattern" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="gp" width="96" height="96" patternUnits="userSpaceOnUse">
+          <use href="#weave-motif" width="96" height="96" style="color:#F7F2E9"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#gp)"/>
+    </svg>
+    <div class="wrap">
+      <p class="eyebrow">Design process</p>
+      <h1>Why a launch site became <em class="gold-it">a loom</em></h1>
+      <p class="lede">A case study in design thinking: the brief behind Makers Intelligence, the directions we walked away from, and the decisions — with their costs — that shaped what shipped.</p>
+    </div>
+  </section>
+
+  <div class="weave-edge" style="--above:var(--emerald);--below:var(--ivory)" aria-hidden="true"><i></i></div>
+
+  <!-- ============ BRIEF ============ -->
+  <section class="band band--ivory section" id="brief" aria-labelledby="brief-h">
+    <div class="wrap--narrow prose">
+      <p class="eyebrow">The client &amp; the brief</p>
+      <h2 id="brief-h" style="margin-top:0">A real product, before its first customer</h2>
+      <p><strong>Makers Intelligence™</strong> is a real, pre-launch venture: an AI operating system for fashion, beauty, artisan and craft businesses — customers, orders, bookings, follow-up, content and growth held in one system. Born in Ghana, priced in cedis first, built to travel.</p>
+      <p>The brief for this site: open a <strong>founding-makers waitlist</strong> of two hundred businesses, and earn the trust of people who have been burned before by software that wasn’t made for them. The site had to feel premium enough for an atelier exporting to London, and warm enough for a seamstress in Osu who runs her order book in an exercise book.</p>
+      <div class="honesty-note" role="note">
+        <p><strong>What’s real and what isn’t.</strong> The product is pre-launch: the dashboard shown on the home page is a design illustration, the three maker stories are composite personas from research conversations — not testimonials — and founding pricing is stated as pre-launch pricing, confirmed at launch. The photography added in the second edition is AI-generated (art-directed as one shoot); the persona portraits depict no real people. Every one of those caveats appears on the page where the claim is made, not buried here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROBLEM ============ -->
+  <section class="band band--ivory2 section" id="problem" aria-labelledby="problem-h">
+    <div class="wrap--narrow prose">
+      <p class="eyebrow">The problem</p>
+      <h2 id="problem-h" style="margin-top:0">Software speaks office; makers speak craft</h2>
+      <p>Talk to makers in Accra or Kumasi and the pattern repeats. The craft is under control — it’s the <em>remembering</em> that overwhelms: measurements, deposits, fitting dates, the forty December orders, the customer who only replies on WhatsApp voice notes. Existing tools fail them three ways:</p>
+      <ul>
+        <li><strong>Wrong language.</strong> CRMs speak “pipelines” and “contacts” to people who think in pieces, fittings and balances owed.</li>
+        <li><strong>Wrong assumptions.</strong> Dollar pricing, card-first billing, heavy apps that assume constant data — none of which describes a workshop that takes deposits in cash at Makola.</li>
+        <li><strong>Wrong feeling.</strong> Tech aesthetics read as <em>for someone else</em>. If the site looks like a fintech pitch deck, a weaver in Bonwire closes the tab — correctly.</li>
+      </ul>
+      <p>So the design problem was never “make an AI product look impressive.” It was: <strong>make intelligent software feel like it was made by people who respect the work of hands.</strong></p>
+    </div>
+  </section>
+
+  <div class="weave-edge" style="--above:var(--ivory-2);--below:var(--emerald)" aria-hidden="true"><i></i></div>
+
+  <!-- ============ DIRECTIONS ============ -->
+  <section class="band band--emerald band--texture section" id="directions" aria-labelledby="directions-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Creative direction</p>
+        <h2 id="directions-h">Four directions, three rejections</h2>
+        <p class="lede">Each candidate direction was tested against one question: does it serve the maker looking at it, or the technology behind it?</p>
+      </div>
+      <div class="decision-grid">
+        <article class="decision decision--dark">
+          <p class="verdict cut">Rejected</p>
+          <h3>“Serious AI” — obsidian, particles, glow</h3>
+          <p>The default costume of AI products: dark gradients, orbiting particles, terminal type. It photographs well and says absolutely nothing to a seamstress. It sells the technology, not the care — and technology-first is precisely the posture Makers exists to reject.</p>
+        </article>
+        <article class="decision decision--dark">
+          <p class="verdict cut">Rejected · then revisited</p>
+          <h3>Warm lifestyle photography</h3>
+          <p>Beautiful hands at sewing machines, golden-hour workshops. Two fatal flaws at the time: the first edition permitted no photography — every visual had to be drawn in code — and borrowed warmth is a lie anyway. Stock photos of “African artisans” are exactly how software that wasn’t built here decorates itself. The second edition returned here on different terms: photography, yes — but generated under our own art direction, inside our own palette, labelled as AI-generated, depicting no real person. Warmth built, not borrowed.</p>
+        </article>
+        <article class="decision decision--dark">
+          <p class="verdict cut">Rejected</p>
+          <h3>Clean Swiss SaaS</h3>
+          <p>Ample white space, tidy grid, feature cards — competent, safe and placeless. Nothing of Ghana survives except the copy. When “Born in Ghana” is the first line of the brand, the design system itself has to prove it, not just the words.</p>
+        </article>
+        <article class="decision decision--dark">
+          <p class="verdict kept">Chosen</p>
+          <h3>The loom</h3>
+          <p>Kente is Ghana’s most sophisticated information system — pattern as language, woven by hand. So the site became a loom: pages compose as woven bands, edges interlock, icons are single threads, and the hero literally weaves itself. The craft metaphor is structural, not decorative — which is the same promise the product makes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="weave-edge" style="--above:var(--emerald);--below:var(--ivory)" aria-hidden="true"><i></i></div>
+
+  <!-- ============ DECISIONS ============ -->
+  <section class="band band--ivory section" id="decisions" aria-labelledby="decisions-h">
+    <div class="wrap--narrow prose">
+      <p class="eyebrow">Key decisions</p>
+      <h2 id="decisions-h" style="margin-top:0">Decisions and what they cost</h2>
+      <h3>Raw WebGL, no library</h3>
+      <p>The woven hero could have been a Three.js scene or a looping video. A hand-written fragment shader costs ~8&nbsp;KB and one draw call; Three.js would add ~150&nbsp;KB for capabilities we don’t use, and video would betray the code-drawn thesis. <strong>Trade-off:</strong> more engineering care — context loss, DPR capping, a designed SVG fallback — all of which is documented in the <a href="/guide/">build guide</a>.</p>
+      <h3>Ivory-dominant, emerald in chapters</h3>
+      <p>The dramatic move would be a full dark site. But makers will read this on mid-range phones in daylight, and long ivory passages read better and feel more like paper — more like a pattern book than a pitch deck. Emerald is saved for chapters that carry weight: origin, the waitlist. <strong>Trade-off:</strong> the site leads quieter than a full-dark flagship; the loom hero carries the drama instead.</p>
+      <h3>Cedis first, dollars in parentheses</h3>
+      <p>Pricing leads with GH₵ — not converted from USD, and not hidden behind “contact us.” The dollar approximation sits second, for makers who sell abroad. It is a small typographic decision that makes the entire positioning credible. <strong>Trade-off:</strong> international visitors do a little math; that’s the right person doing the work.</p>
+      <h3>WhatsApp-first, spreadsheet-never</h3>
+      <p>The product moment shows follow-up drafts and a Makola shopping list — not analytics dashboards. Copy names real conditions: tro-tro data, cash deposits, Sunday booking messages. <strong>Trade-off:</strong> it reads intensely local. That is the moat, not a bug: “built for the world” only lands after “born in Ghana” is proven.</p>
+      <h3>Honesty over momentum</h3>
+      <p>Pre-launch products are usually dressed in fake social proof. Here the personas are labelled as composites on the page itself, the dashboard is captioned as an illustration, and pricing carries its pre-launch note. <strong>Trade-off:</strong> the page loses fake credibility signals and instead earns the durable kind.</p>
+      <h3>Second edition: the makers arrive, honestly</h3>
+      <p>The client’s review of the first edition was one sentence: show the people we are talking to. So the second edition commissioned photographic plates from an image model (Higgsfield Soul), generated under a single art direction — golden hour, emerald and gold, hands mid-craft — each frame reviewed like a contact sheet and reshot when hands or lettering betrayed it. Every plate is framed by the site’s own woven selvedges and thread captions, and every page says plainly that the photography is AI-generated with no real people depicted. The casting also widened with the copy — a London loft, a Brooklyn chair — because “built for the world” deserves faces too. <strong>Trade-off:</strong> generated imagery costs vigilance (review, reshoots, labels) — cheaper than a lie, which costs trust.</p>
+    </div>
+  </section>
+
+  <!-- ============ IMPACT ============ -->
+  <section class="band band--ivory2 section" id="impact" aria-labelledby="impact-h">
+    <div class="wrap--narrow prose">
+      <p class="eyebrow">Intended impact</p>
+      <h2 id="impact-h" style="margin-top:0">What this design is built to do</h2>
+      <p>The product hasn’t launched, so there are no conversion numbers to report — and none will be invented. The design goals it will be measured against:</p>
+      <ul>
+        <li><strong>Qualify trust, not just traffic.</strong> A maker should feel, within one screen, that this was made by people who understand her working day; the waitlist form asks about her craft, not her company size.</li>
+        <li><strong>Convert warmth into signatures.</strong> Every path on the page ends at the founding waitlist, and the form itself stays short enough to complete on a phone between customers.</li>
+        <li><strong>Set the brand’s ceiling.</strong> As the flagship of the venture — and of this portfolio — the site demonstrates that a Ghana-first product can hold an international design register without costume-changing.</li>
+      </ul>
+      <p>The build itself — the shader, the identity system, the accessibility and performance work — is documented as a teaching artifact in the <a href="/guide/">build guide</a>.</p>
+    </div>
+  </section>
+
+  <div class="weave-edge" style="--above:var(--ivory-2);--below:var(--emerald)" aria-hidden="true"><i></i></div>
+
+  <!-- ============ CLOSING ============ -->
+  <section class="band band--emerald band--texture section" aria-labelledby="close-h">
+    <div class="wrap--narrow prose prose--dark" style="text-align:center;justify-items:center">
+      <h2 id="close-h" style="margin-top:0">Judge it on the loom</h2>
+      <p style="margin-inline:auto">Process pages are arguments; the site is the evidence. See whether the decisions above hold up in the cloth itself.</p>
+      <p style="display:flex;gap:0.9rem;flex-wrap:wrap;justify-content:center;max-width:none">
+        <a class="btn btn--gold" href="/">Visit the site</a>
+        <a class="btn btn--ghost" href="/guide/">Read the build guide</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/" aria-label="Makers Intelligence — home">
+          <svg aria-hidden="true"><use href="#mono"/></svg>
+          <span class="wordmark">Makers<span class="tm">™</span></span>
+        </a>
+        <p>The AI operating system for fashion, beauty, artisan and craft businesses. Born in Ghana. Built for the world.</p>
+      </div>
+      <nav class="foot-col" aria-label="Site">
+        <h4>Makers</h4>
+        <ul>
+          <li><a href="/#carries">What it carries</a></li>
+          <li><a href="/#ghana">Born in Ghana</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/#waitlist">Join the waitlist</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="The making of this site">
+        <h4>The making</h4>
+        <ul>
+          <li><a href="/guide/">Build guide</a></li>
+          <li><a href="/process/" aria-current="page">Design process</a></li>
+          <li><a href="https://hannah-kwakye.netlify.app" rel="noopener">Portfolio hub</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Sister projects">
+        <h4>Sister projects</h4>
+        <ul>
+          <li><a href="https://hk-orvantis-intelligence.netlify.app" rel="noopener">Orvantis Intelligence</a></li>
+          <li><a href="https://hk-ai-operations-launch.netlify.app" rel="noopener">AI Operations Launch™</a></li>
+          <li><a href="https://hk-next-builders-lab.netlify.app" rel="noopener">Next Builders Lab™</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-base">
+      <p>© <span id="yr">2026</span> Makers Intelligence™ · Accra, Ghana</p>
+      <p class="foot-honesty">The loom, icons and workroom are drawn in code; the photographic plates are AI-generated — no real makers are depicted.</p>
+      <p>Designed &amp; built by <a href="https://hannah-kwakye.netlify.app" rel="noopener">Hannah Kwakye</a> — engineered with Fable&nbsp;5</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

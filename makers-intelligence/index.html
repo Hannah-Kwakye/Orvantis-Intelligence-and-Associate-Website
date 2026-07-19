@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Makers Intelligence™ — The AI operating system for makers</title>
+<meta name="description" content="Customers, orders, bookings, follow-up, content and growth — woven into one warm, intelligent system for fashion, beauty, artisan and craft businesses. Born in Ghana. Built for the world.">
+<meta property="og:title" content="Makers Intelligence™ — The AI operating system for makers">
+<meta property="og:description" content="Every thread of your craft business, held in one warm system. Born in Ghana. Built for the world.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://hk-makers-intelligence.netlify.app/assets/img/accra-dusk.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A3B2E'/%3E%3Cpath d='M14 50V16l18 24 18-24v34' fill='none' stroke='%23F7F2E9' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M6 33h14M26 33h18M50 33h8' fill='none' stroke='%23C9973B' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ======= shared SVG defs: monogram + thread-drawn icon system ======= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- loom-thread M monogram: the M is the warp, gold is the weft,
+         passing over the uprights and under the diagonals -->
+    <symbol id="mono" viewBox="0 0 64 64">
+      <path d="M12 54V12l20 28 20-28v42" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4 33h19.5M29.5 33H49M55 33h5" fill="none" stroke="#C9973B" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <!-- thread icons: one continuous stroke language, drawn-in on scroll -->
+    <symbol id="ic-customers" viewBox="0 0 48 48">
+      <path pathLength="1" d="M13 19a7 7 0 1 0 14 0 7 7 0 1 0-14 0"/>
+      <path pathLength="1" d="M7 41c1-8 6-12 13-12s12 4 13 12"/>
+      <path pathLength="1" d="M32 13a5.5 5.5 0 0 1 4 10m3 4c2.5 2 4 5 4.5 9"/>
+    </symbol>
+    <symbol id="ic-orders" viewBox="0 0 48 48">
+      <path pathLength="1" d="M9 17l15-8 15 8v17l-15 8-15-8z"/>
+      <path pathLength="1" d="M9 17l15 8 15-8"/>
+      <path pathLength="1" d="M24 25v17"/>
+    </symbol>
+    <symbol id="ic-bookings" viewBox="0 0 48 48">
+      <path pathLength="1" d="M9 14h30a3 3 0 0 1 3 3v21a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V17a3 3 0 0 1 3-3z"/>
+      <path pathLength="1" d="M16 8v9m16-9v9M6 23h36"/>
+      <path pathLength="1" d="M17 31l5 5 9-9"/>
+    </symbol>
+    <symbol id="ic-followup" viewBox="0 0 48 48">
+      <path pathLength="1" d="M39 26a15 15 0 1 1-4.5-12.5"/>
+      <path pathLength="1" d="M39 7l-.8 7.2L31 13"/>
+      <path pathLength="1" d="M18 25l5 5 8-9"/>
+    </symbol>
+    <symbol id="ic-content" viewBox="0 0 48 48">
+      <path pathLength="1" d="M10 11h28a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4H23l-9 9v-9h-4a4 4 0 0 1-4-4V15a4 4 0 0 1 4-4z"/>
+      <path pathLength="1" d="M24 17v10"/>
+      <path pathLength="1" d="M19 22h10"/>
+    </symbol>
+    <symbol id="ic-growth" viewBox="0 0 48 48">
+      <path pathLength="1" d="M7 41c9 0 12-5 16-13s8-13 17-15"/>
+      <path pathLength="1" d="M33 14c3-4 7-5.5 9.5-4.5.3 4-2.5 7.5-7 7.5"/>
+      <path pathLength="1" d="M27 23c-.6-4-3.4-6.4-7-6.5-.2 4 2 7.3 6.4 7.5"/>
+    </symbol>
+    <!-- small woven corner motif -->
+    <symbol id="weave-motif" viewBox="0 0 96 96">
+      <g fill="currentColor">
+        <rect x="0" y="0" width="20" height="96" rx="8"/>
+        <rect x="28" y="0" width="20" height="96" rx="8"/>
+        <rect x="56" y="0" width="20" height="96" rx="8"/>
+        <rect x="84" y="0" width="12" height="96" rx="6"/>
+      </g>
+      <g fill="#C9973B">
+        <rect x="-2" y="28" width="100" height="18" rx="8"/>
+        <rect x="-2" y="66" width="100" height="12" rx="6"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Makers Intelligence — home">
+      <svg aria-hidden="true"><use href="#mono"/></svg>
+      <span class="wordmark">Makers<span class="tm">™</span></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="#carries" class="nav-hide">What it carries</a>
+      <a href="#ghana" class="nav-hide">Born in Ghana</a>
+      <a href="#pricing" class="nav-hide">Pricing</a>
+      <a href="/guide/" class="nav-hide">Guide</a>
+      <a class="btn btn--gold" href="#waitlist">Join the waitlist</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO — the loom ================= -->
+  <section class="hero" aria-label="Introduction">
+    <canvas id="loom" class="hero-loom" aria-hidden="true"></canvas>
+    <!-- static woven cloth for reduced-motion / no-WebGL -->
+    <svg class="hero-fallback" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 960 960">
+      <defs>
+        <pattern id="cloth" width="96" height="96" patternUnits="userSpaceOnUse">
+          <rect width="96" height="96" fill="#041F18"/>
+          <rect y="0" width="96" height="22" fill="#0D4132"/>
+          <rect y="24" width="96" height="22" fill="#0F4C3A"/>
+          <rect y="48" width="96" height="22" fill="#E3B65C"/>
+          <rect y="72" width="96" height="22" fill="#0B3A2D"/>
+          <rect x="0" width="22" height="96" fill="#0E4D3A"/>
+          <rect x="24" width="22" height="96" fill="#0C4534"/>
+          <rect x="48" width="22" height="96" fill="#C9973B"/>
+          <rect x="72" width="22" height="96" fill="#0A3B2E"/>
+          <rect x="22" y="0" width="26" height="22" fill="#0D4132"/>
+          <rect x="70" y="0" width="26" height="22" fill="#0D4132"/>
+          <rect x="-2" y="24" width="26" height="22" fill="#0F4C3A"/>
+          <rect x="46" y="24" width="26" height="22" fill="#0F4C3A"/>
+          <rect x="22" y="48" width="26" height="22" fill="#E3B65C"/>
+          <rect x="70" y="48" width="26" height="22" fill="#E3B65C"/>
+          <rect x="-2" y="72" width="26" height="22" fill="#0B3A2D"/>
+          <rect x="46" y="72" width="26" height="22" fill="#0B3A2D"/>
+        </pattern>
+        <radialGradient id="clothvg" cx="50%" cy="45%" r="75%">
+          <stop offset="0%" stop-color="#062B21" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#041F18" stop-opacity="0.75"/>
+        </radialGradient>
+      </defs>
+      <rect width="960" height="960" fill="url(#cloth)"/>
+      <rect width="960" height="960" fill="url(#clothvg)"/>
+    </svg>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Makers Intelligence™ — the AI operating system for makers</p>
+      <h1>Every thread of your business, <em>held.</em></h1>
+      <p class="lede">Customers, orders, bookings, follow-up, content, growth — woven into one warm, intelligent system for fashion, beauty, artisan and craft businesses.</p>
+      <div class="hero-cta">
+        <a class="btn btn--gold" href="#waitlist">Become a founding maker</a>
+        <a class="btn btn--ghost" href="#carries">See what Makers carries</a>
+      </div>
+      <div class="hero-foot">
+        <span class="origin">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="#C9973B"/><circle cx="12" cy="12" r="9" fill="none" stroke="#C9973B" stroke-width="1.4" opacity="0.5"/></svg>
+          Born in Ghana. Built for the world.
+        </span>
+        <span>Pre-launch · founding waitlist open</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="weave-edge" style="--above:var(--emerald-deep);--below:var(--ivory)" aria-hidden="true"><i></i></div>
+
+  <!-- ================= WHAT MAKERS CARRIES ================= -->
+  <section class="band band--ivory section" id="carries" aria-labelledby="carries-h">
+    <div class="wrap">
+      <div class="section-head rv">
+        <p class="eyebrow">One system, six threads</p>
+        <h2 id="carries-h">What Makers carries, so your hands don’t have to</h2>
+        <p class="lede">Your craft already fills your day. The admin around it — remembering, chasing, posting, counting — is what Makers takes onto the loom.</p>
+      </div>
+      <div class="carries-grid">
+        <article class="carry rv">
+          <svg class="t-icon draw" aria-hidden="true"><use href="#ic-customers"/></svg>
+          <h3><span class="n">i.</span> Customers</h3>
+          <p><strong>Every client, remembered.</strong> Measurements, preferences, birthdays, the lace she loved last Christmas — Makers keeps each customer’s story so you never start from scratch.</p>
+        </article>
+        <article class="carry rv" data-rv-d="1">
+          <svg class="t-icon draw" aria-hidden="true"><use href="#ic-orders"/></svg>
+          <h3><span class="n">ii.</span> Orders</h3>
+          <p><strong>From deposit to delivery.</strong> Track each piece through cutting, sewing and finishing — and let customers see honest progress without calling you at 9pm to ask.</p>
+        </article>
+        <article class="carry rv" data-rv-d="2">
+          <svg class="t-icon draw" aria-hidden="true"><use href="#ic-bookings"/></svg>
+          <h3><span class="n">iii.</span> Bookings</h3>
+          <p><strong>A calendar that guards your hands.</strong> Fittings, consultations and appointments book themselves around your making time — not through the middle of it.</p>
+        </article>
+        <article class="carry rv" data-rv-d="1">
+          <svg class="t-icon draw" aria-hidden="true"><use href="#ic-followup"/></svg>
+          <h3><span class="n">iv.</span> Follow-up</h3>
+          <p><strong>The gentle nudge, sent for you.</strong> Makers notices who has gone quiet — a fitting unconfirmed, a balance unpaid — and drafts the warm message you would have sent anyway.</p>
+        </article>
+        <article class="carry rv" data-rv-d="2">
+          <svg class="t-icon draw" aria-hidden="true"><use href="#ic-content"/></svg>
+          <h3><span class="n">v.</span> Content</h3>
+          <p><strong>Your work, worth showing.</strong> Turn a finished piece into captions, product pages and WhatsApp status posts — in your voice. You approve; Makers publishes.</p>
+        </article>
+        <article class="carry rv" data-rv-d="3">
+          <svg class="t-icon draw" aria-hidden="true"><use href="#ic-growth"/></svg>
+          <h3><span class="n">vi.</span> Growth</h3>
+          <p><strong>See what your hands earned.</strong> Plain-language numbers: best sellers, busiest seasons, who to thank. Real insight, without ever opening a spreadsheet.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCT MOMENT ================= -->
+  <section class="band band--ivory band--texture section product" id="product" aria-labelledby="product-h">
+    <div class="wrap product-grid">
+      <div class="product-copy rv">
+        <p class="eyebrow">The workroom view</p>
+        <h2 id="product-h">A workroom, not a dashboard</h2>
+        <p class="lede">Software for makers usually speaks the language of offices. Makers speaks yours — pieces, fittings, deposits, the customer by name.</p>
+        <ul class="product-points">
+          <li><span class="dot" aria-hidden="true"></span><span><strong>One warm view of today</strong> Orders in progress, fittings booked, balances due — everything your morning needs before Makola gets loud.</span></li>
+          <li><span class="dot" aria-hidden="true"></span><span><strong>Suggestions, never surprises</strong> The intelligence drafts and proposes. Nothing reaches a customer until you say so.</span></li>
+          <li><span class="dot" aria-hidden="true"></span><span><strong>WhatsApp-first by design</strong> Your customers already live there. Makers meets them in the thread they know.</span></li>
+        </ul>
+      </div>
+      <div class="rv" data-rv-d="1">
+        <div class="dash-frame plx" data-plx="0.045">
+          <div class="dash" role="img" aria-label="Illustration of the Makers dashboard: morning greeting, order statistics, an orders list and an assistant suggestion">
+            <div class="dash-side" aria-hidden="true">
+              <span class="dash-brand"><svg><use href="#mono"/></svg>Makers</span>
+              <nav class="dash-nav">
+                <span class="on"><svg viewBox="0 0 48 48" class="t-icon"><use href="#ic-orders"/></svg>Orders</span>
+                <span><svg viewBox="0 0 48 48" class="t-icon"><use href="#ic-customers"/></svg>Customers</span>
+                <span><svg viewBox="0 0 48 48" class="t-icon"><use href="#ic-bookings"/></svg>Bookings</span>
+                <span><svg viewBox="0 0 48 48" class="t-icon"><use href="#ic-followup"/></svg>Follow-up</span>
+                <span><svg viewBox="0 0 48 48" class="t-icon"><use href="#ic-content"/></svg>Content</span>
+                <span><svg viewBox="0 0 48 48" class="t-icon"><use href="#ic-growth"/></svg>Growth</span>
+              </nav>
+            </div>
+            <div class="dash-main" aria-hidden="true">
+              <div class="dash-hello">
+                <h3>Good morning, Efe</h3>
+                <time>Saturday · Osu, Accra</time>
+              </div>
+              <div class="dash-stats">
+                <div class="dash-stat"><b>12</b><span>orders in progress</span></div>
+                <div class="dash-stat"><b>8</b><span>fittings this week</span></div>
+                <div class="dash-stat"><b>GH₵4,150</b><span>balances due</span></div>
+              </div>
+              <div class="dash-cols">
+                <div class="dash-card">
+                  <h4>Orders on the table</h4>
+                  <div class="dash-row"><span class="who"><b>Adjoa Mensima</b><i>Kente-trim wedding gown</i></span><span class="dash-tag sew">Sewing</span><span class="amt">GH₵2,400</span></div>
+                  <div class="dash-row"><span class="who"><b>Nana Yaa B.</b><i>Two office dresses</i></span><span class="dash-tag fit">Fitting Tue</span><span class="amt">GH₵950</span></div>
+                  <div class="dash-row"><span class="who"><b>Kojo Antwi</b><i>Agbada, full set</i></span><span class="dash-tag sew">Cutting</span><span class="amt">GH₵1,800</span></div>
+                  <div class="dash-row"><span class="who"><b>Maame Esi</b><i>Graduation kaba &amp; slit</i></span><span class="dash-tag done">Ready</span><span class="amt">GH₵680</span></div>
+                  <svg class="dash-spark" viewBox="0 0 320 56" aria-hidden="true">
+                    <polyline pathLength="1" points="0,44 36,40 72,42 108,32 144,35 180,24 216,28 252,16 288,20 320,8" fill="none" stroke="#C9973B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="320" cy="8" r="3.4" fill="#E3B65C"/>
+                  </svg>
+                </div>
+                <div class="dash-card dash-assist">
+                  <h4>Makers suggests</h4>
+                  <p class="msg">Three customers haven’t heard from you since their fitting. <em>Send a warm check-in?</em> I’ve drafted each one in your voice.</p>
+                  <div class="acts"><span class="a1">Review drafts</span><span class="a2">Not today</span></div>
+                  <p class="msg" style="margin-top:0.6em">Adjoa’s gown is due in 9 days. Fabric for the second sleeve panel runs low — <em>add to Saturday’s Makola list?</em></p>
+                  <div class="acts"><span class="a2">Add to list</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="caption-it dash-note">A design illustration of the Makers workroom — drawn entirely in code, like the loom it sits on.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="weave-edge" style="--above:var(--ivory);--below:var(--emerald-deep)" aria-hidden="true"><i></i></div>
+
+  <!-- ================= BORN IN GHANA ================= -->
+  <section class="band band--emerald band--texture section band--flush-top" id="ghana" aria-labelledby="ghana-h">
+    <figure class="ghana-plate rv">
+      <img src="assets/img/accra-dusk.webp"
+           srcset="assets/img/accra-dusk-800.webp 800w, assets/img/accra-dusk.webp 1536w"
+           sizes="100vw"
+           width="1536" height="1024" loading="lazy" decoding="async"
+           alt="A fabric market street in Accra at dusk: stalls hung with kente and wax-print cloth, a tailor's open atelier spilling warm light onto the street under a deep blue-green sky">
+      <span class="grade" aria-hidden="true"></span>
+      <svg class="ghana-thread-svg" viewBox="0 0 1440 560" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <path class="gth" pathLength="1" d="M-30 470 C 260 430, 470 350, 700 372 S 1130 300, 1470 150"/>
+        <path class="gth gth--soft" pathLength="1" d="M-30 500 C 300 480, 560 402, 810 416 S 1220 350, 1470 250"/>
+        <path class="gth gth--soft" pathLength="1" d="M-30 436 C 220 380, 430 300, 640 330 S 1080 240, 1470 60"/>
+      </svg>
+      <figcaption class="caption-it">Accra at dusk — the market packs up, the ateliers keep sewing. An AI-generated plate, graded to the cloth of this site.</figcaption>
+      <span class="plate-weave" style="--plate-below:var(--emerald)" aria-hidden="true"></span>
+    </figure>
+    <div class="wrap ghana-grid">
+      <div class="ghana-copy rv">
+        <p class="eyebrow">Origin</p>
+        <h2 id="ghana-h">Born in Ghana. <em>Built for the world.</em></h2>
+        <p>Makers Intelligence is designed in Accra and priced in cedis first. It is tested against real conditions — patchy data on a tro-tro, a deposit taken in cash at Makola, a customer who only ever replies on WhatsApp voice notes.</p>
+        <p>We believe the world’s best software for craft businesses will come from a place where craft is still an economy, not an aesthetic. From here, the thread runs outward.</p>
+        <ul class="ghana-facts">
+          <li><span class="th" aria-hidden="true"></span><span><strong>Cedi-first, mobile-money-ready.</strong> GH₵ pricing on every plan, built around how makers here actually get paid.</span></li>
+          <li><span class="th" aria-hidden="true"></span><span><strong>Light on data, heavy on care.</strong> Designed to work beautifully on the connection you have, not the one San Francisco assumes.</span></li>
+          <li><span class="th" aria-hidden="true"></span><span><strong>Onboarding in person.</strong> Founding makers in Accra and Kumasi are set up face to face, over a proper conversation.</span></li>
+        </ul>
+      </div>
+      <div class="rv" data-rv-d="1">
+        <svg class="map-thread plx" data-plx="0.035" viewBox="0 0 640 480" role="img" aria-label="A stylized map: threads run from Accra to Kumasi and Tamale, then outward to Abidjan, Lagos, London, New York and Nairobi">
+          <g aria-hidden="true">
+            <line class="grid-line" x1="0" y1="120" x2="640" y2="120"/>
+            <line class="grid-line" x1="0" y1="240" x2="640" y2="240"/>
+            <line class="grid-line" x1="0" y1="360" x2="640" y2="360"/>
+            <line class="grid-line" x1="160" y1="0" x2="160" y2="480"/>
+            <line class="grid-line" x1="320" y1="0" x2="320" y2="480"/>
+            <line class="grid-line" x1="480" y1="0" x2="480" y2="480"/>
+          </g>
+          <!-- stylized Ghana -->
+          <path class="ghana" d="M262 132l56-8 22 12 4 34-8 40 12 44-10 40-34 18-40-6-14-34 2-56-6-46z"/>
+          <!-- threads outward from Accra -->
+          <path class="arc" pathLength="1" d="M330 305Q303 282 285 245"/>
+          <path class="arc" pathLength="1" d="M330 305Q332 220 295 155"/>
+          <path class="arc arc--soft" pathLength="1" d="M330 305Q240 338 150 322"/>
+          <path class="arc arc--soft" pathLength="1" d="M330 305Q392 332 455 320"/>
+          <path class="arc arc--soft" pathLength="1" d="M330 305Q470 160 522 62"/>
+          <path class="arc arc--soft" pathLength="1" d="M330 305Q170 190 62 122"/>
+          <path class="arc arc--soft" pathLength="1" d="M330 305Q480 302 598 262"/>
+          <!-- weft packets: shuttles carrying the thread outward (started by JS) -->
+          <g aria-hidden="true">
+            <circle class="packet" r="2.6">
+              <animateMotion dur="5.2s" repeatCount="indefinite" begin="indefinite" path="M330 305Q470 160 522 62" keyPoints="0;1;1" keyTimes="0;0.55;1" calcMode="linear"/>
+            </circle>
+            <circle class="packet" r="2.6">
+              <animateMotion dur="6.4s" repeatCount="indefinite" begin="indefinite" path="M330 305Q170 190 62 122" keyPoints="0;1;1" keyTimes="0;0.5;1" calcMode="linear"/>
+            </circle>
+            <circle class="packet" r="2.6">
+              <animateMotion dur="5.8s" repeatCount="indefinite" begin="indefinite" path="M330 305Q480 302 598 262" keyPoints="0;1;1" keyTimes="0;0.5;1" calcMode="linear"/>
+            </circle>
+            <circle class="packet" r="2.4">
+              <animateMotion dur="4.6s" repeatCount="indefinite" begin="indefinite" path="M330 305Q332 220 295 155" keyPoints="0;1;1" keyTimes="0;0.55;1" calcMode="linear"/>
+            </circle>
+          </g>
+          <!-- nodes -->
+          <circle class="halo" cx="330" cy="305" r="10"/>
+          <circle class="node node--home" cx="330" cy="305" r="6"/>
+          <circle class="node" cx="285" cy="245" r="3.5"/>
+          <circle class="node" cx="295" cy="155" r="3.5"/>
+          <circle class="node" cx="150" cy="322" r="3"/>
+          <circle class="node" cx="455" cy="320" r="3"/>
+          <circle class="node" cx="522" cy="62" r="3"/>
+          <circle class="node" cx="62" cy="122" r="3"/>
+          <circle class="node" cx="598" cy="262" r="3"/>
+          <text class="t-home" x="344" y="312">Accra</text>
+          <text x="297" y="250">Kumasi</text>
+          <text x="307" y="160">Tamale</text>
+          <text x="112" y="345">Abidjan</text>
+          <text x="440" y="343">Lagos</text>
+          <text x="534" y="58">London</text>
+          <text x="30" y="106">New York</text>
+          <text x="548" y="286">Nairobi</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="weave-edge" style="--above:var(--emerald);--below:var(--ivory)" aria-hidden="true"><i></i></div>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section class="band band--ivory section" id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="section-head rv">
+        <p class="eyebrow">How it works</p>
+        <h2 id="how-h">On the loom in an afternoon</h2>
+        <p class="lede">No migrations, no consultants, no six-week setup. Makers is threaded into the way you already work.</p>
+      </div>
+      <div class="steps">
+        <article class="step rv">
+          <span class="num" aria-hidden="true">1</span>
+          <h3>Bring your craft in</h3>
+          <p>Share your contacts, your order book — even if it’s a photo of the exercise book you keep by the machine. Makers sets the warp: customers, open orders, upcoming dates.</p>
+        </article>
+        <article class="step rv" data-rv-d="1">
+          <span class="num" aria-hidden="true">2</span>
+          <h3>Let it learn your rhythm</h3>
+          <p>For the first weeks, Makers watches how you greet customers, how you price, when you like to work — and starts drafting in your voice. You correct it like an apprentice.</p>
+        </article>
+        <article class="step rv" data-rv-d="2">
+          <span class="num" aria-hidden="true">3</span>
+          <h3>Make more, manage less</h3>
+          <p>Follow-ups go out, bookings settle themselves, content is ready to post, and the numbers read like a friend explaining them. Your hands go back to the work only they can do.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MACRO TEXTURE BAND ================= -->
+  <figure class="texture-band rv">
+    <span class="plate-weave plate-weave--top" style="--plate-below:var(--ivory)" aria-hidden="true"></span>
+    <img src="assets/img/kente-macro.webp"
+         srcset="assets/img/kente-macro-800.webp 800w, assets/img/kente-macro.webp 1536w"
+         sizes="100vw"
+         width="1536" height="1024" loading="lazy" decoding="async"
+         alt="Macro photograph of handwoven kente cloth on the loom: interlaced emerald, gold and ivory threads catching low golden light">
+    <span class="grade" aria-hidden="true"></span>
+    <figcaption class="caption-it">The weave, up close — every thread held. AI-generated macro plate.</figcaption>
+    <span class="plate-weave" style="--plate-below:var(--ivory-2)" aria-hidden="true"></span>
+  </figure>
+
+  <!-- ================= MAKER STORIES ================= -->
+  <section class="band band--ivory2 section" id="stories" aria-labelledby="stories-h">
+    <div class="wrap">
+      <div class="section-head rv">
+        <p class="eyebrow">Who it’s for</p>
+        <h2 id="stories-h">Makers we’re building for</h2>
+        <p class="lede">Three makers stand for thousands — in Accra and Kumasi first, and everywhere hands make things for other people.</p>
+        <p class="stories-note"><strong>Illustrative personas.</strong> Makers Intelligence is pre-launch — these three portraits are composites drawn from research conversations, shown to explain the design. They are not client testimonials, and their photographs are AI-generated: no real makers are depicted.</p>
+      </div>
+      <div class="stories">
+        <article class="story rv">
+          <figure class="story-plate">
+            <img src="assets/img/efe-800.webp"
+                 srcset="assets/img/efe-800.webp 800w, assets/img/efe.webp 1280w"
+                 sizes="(min-width: 940px) 30vw, 92vw"
+                 width="1280" height="1920" loading="lazy" decoding="async"
+                 alt="A seamstress at her machine in a small Accra atelier, guiding an emerald gown with kente trim under the needle in golden-hour light — an AI-generated portrait of the illustrative persona Efe">
+            <span class="plate-weave" aria-hidden="true"></span>
+          </figure>
+          <div class="story-body">
+            <p class="who">Seamstress · Osu, Accra</p>
+            <h3>Efe Anan</h3>
+            <blockquote>“December alone, I sew forty pieces. The sewing I can do in my sleep — it’s the remembering that finishes me.”</blockquote>
+            <p class="uses">For Efe, Makers is designed to hold measurements and fitting dates, chase deposits gently, and keep her December order wall from living entirely in her head.</p>
+          </div>
+        </article>
+        <article class="story story--clay rv" data-rv-d="1">
+          <figure class="story-plate">
+            <img src="assets/img/yaw-800.webp"
+                 srcset="assets/img/yaw-800.webp 800w, assets/img/yaw.webp 1280w"
+                 sizes="(min-width: 940px) 30vw, 92vw"
+                 width="1280" height="1920" loading="lazy" decoding="async"
+                 alt="A kente weaver at his wooden strip loom, shuttle mid-throw through taut warp threads as an emerald-and-gold strip forms — an AI-generated portrait of the illustrative persona Yaw">
+            <span class="plate-weave" aria-hidden="true"></span>
+          </figure>
+          <div class="story-body">
+            <p class="who">Kente weaver · Bonwire, Ashanti</p>
+            <h3>Yaw Mensah</h3>
+            <blockquote>“A cloth takes me three weeks. A buyer in London asks for photos, prices, shipping — that takes me three weeks too.”</blockquote>
+            <p class="uses">For Yaw, Makers is designed to turn one finished cloth into a product page, quote in cedis or dollars, and answer the London messages while he stays at the loom.</p>
+          </div>
+        </article>
+        <article class="story story--forest rv" data-rv-d="2">
+          <figure class="story-plate">
+            <img src="assets/img/naana-800.webp"
+                 srcset="assets/img/naana-800.webp 800w, assets/img/naana.webp 1280w"
+                 sizes="(min-width: 940px) 30vw, 92vw"
+                 width="1280" height="1920" loading="lazy" decoding="async"
+                 alt="A braider working behind a seated client in her studio, fingers mid-braid in warm window light — an AI-generated portrait of the illustrative persona Naana">
+            <span class="plate-weave" aria-hidden="true"></span>
+          </figure>
+          <div class="story-body">
+            <p class="who">Braiding studio · Adum, Kumasi</p>
+            <h3>Naana Agyeman</h3>
+            <blockquote>“My chair is booked solid, but my Sundays go to answering ‘are you free Saturday?’ eighty times.”</blockquote>
+            <p class="uses">For Naana, Makers is designed to answer the Saturday question by itself, fill cancellations from her waitlist, and remind clients before their appointment — not after they miss it.</p>
+          </div>
+        </article>
+      </div>
+      <figure class="plate-fig stories-wide rv">
+        <div class="plate" style="--plate-below:var(--ivory-2)">
+          <img src="assets/img/studio-800.webp"
+               srcset="assets/img/studio-800.webp 800w, assets/img/studio.webp 1536w"
+               sizes="(min-width: 1200px) 74rem, 92vw"
+               width="1536" height="1024" loading="lazy" decoding="async"
+               alt="A ceramicist of the diaspora at her potter's wheel in a loft studio, shelves of emerald-glazed vessels behind her and low evening light through tall windows — an AI-generated plate">
+          <span class="plate-weave" aria-hidden="true"></span>
+        </div>
+        <figcaption class="caption-it plate-cap">…and the thread runs outward: the same system holds a ceramicist’s commissions in a London loft, a braider’s chair in Brooklyn, an atelier’s export orders anywhere. Every photograph on this page is AI-generated, art-directed as one shoot.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= PRICING ================= -->
+  <section class="band band--ivory section pricing-band" id="pricing" aria-labelledby="pricing-h">
+    <div class="wrap">
+      <div class="section-head rv">
+        <p class="eyebrow">Founding maker pricing</p>
+        <h2 id="pricing-h">Priced in cedis, like it should be</h2>
+        <p class="lede">The first two hundred founding makers lock their rate for life — and help us weave the product around real workrooms.</p>
+        <p><span class="founding-note">Pre-launch pricing — confirmed at launch; founding rates never rise.</span></p>
+      </div>
+      <div class="tiers">
+        <article class="tier rv">
+          <h3>Thread</h3>
+          <p class="for">For a maker working solo, ready to stop keeping the business in an exercise book.</p>
+          <p class="price"><b>GH₵160</b><span>/month · ≈ $14</span></p>
+          <ul>
+            <li>Customers, orders &amp; bookings</li>
+            <li>WhatsApp follow-up drafts</li>
+            <li>Monthly plain-language numbers</li>
+            <li>Mobile-money &amp; cash tracking</li>
+          </ul>
+        </article>
+        <article class="tier tier--featured rv" data-rv-d="1">
+          <span class="flag">Most makers start here</span>
+          <h3>Loom</h3>
+          <p class="for">For a busy studio — you plus an apprentice or two, and a customer list that outgrew your memory.</p>
+          <p class="price"><b>GH₵380</b><span>/month · ≈ $33</span></p>
+          <ul>
+            <li>Everything in Thread</li>
+            <li>Content studio: captions, pages, posts</li>
+            <li>Automatic booking &amp; waitlist filling</li>
+            <li>Three team seats</li>
+            <li>Priority WhatsApp support</li>
+          </ul>
+        </article>
+        <article class="tier rv" data-rv-d="2">
+          <h3>Atelier</h3>
+          <p class="for">For an established house selling beyond Ghana — wholesale, export, a name to protect.</p>
+          <p class="price"><b>GH₵780</b><span>/month · ≈ $68</span></p>
+          <ul>
+            <li>Everything in Loom</li>
+            <li>Multi-currency quotes (GH₵ / $ / £ / €)</li>
+            <li>Export paperwork assistant</li>
+            <li>Ten team seats &amp; roles</li>
+            <li>In-person onboarding, Accra &amp; Kumasi</li>
+          </ul>
+        </article>
+      </div>
+      <p class="pricing-fine rv">Approximate dollar figures at time of writing, for makers who think in both. Billing is in Ghana cedis; annual billing saves two months. No plan locks your data in — it’s your business, on your loom.</p>
+    </div>
+  </section>
+
+  <div class="weave-edge" style="--above:var(--ivory);--below:var(--emerald)" aria-hidden="true"><i></i></div>
+
+  <!-- ================= WAITLIST ================= -->
+  <section class="band band--emerald band--texture section waitlist" id="waitlist" aria-labelledby="waitlist-h">
+    <div class="wrap waitlist-grid">
+      <div class="waitlist-copy rv">
+        <p class="eyebrow">The founding two hundred</p>
+        <h2 id="waitlist-h">Take your place <em>on the loom</em></h2>
+        <p>We’re opening Makers Intelligence to two hundred founding makers — fashion, beauty, artisan and craft businesses, from Accra to anywhere, who want the admin off their hands and their name on the work.</p>
+        <p>Founding makers get lifetime pricing, onboarding in person in Accra and Kumasi — or over a proper video call wherever your workroom is — and a direct line to the people building this. Your craft shapes the product.</p>
+      </div>
+      <div class="rv" data-rv-d="1">
+        <form class="wl-form" name="waitlist" method="POST" action="/?success" data-netlify="true" netlify-honeypot="weft-field">
+          <input type="hidden" name="form-name" value="waitlist">
+          <p class="hp-field" aria-hidden="true">
+            <label>Leave this field empty: <input name="weft-field" tabindex="-1" autocomplete="off"></label>
+          </p>
+          <div class="row row--2">
+            <div class="field">
+              <label for="wl-name">Your name</label>
+              <input id="wl-name" name="name" type="text" autocomplete="name" required placeholder="Efe Anan">
+            </div>
+            <div class="field">
+              <label for="wl-biz">Business name</label>
+              <input id="wl-biz" name="business" type="text" autocomplete="organization" required placeholder="House of Efe">
+            </div>
+          </div>
+          <div class="row row--2">
+            <div class="field">
+              <label for="wl-craft">Your craft</label>
+              <select id="wl-craft" name="craft" required>
+                <option value="" selected disabled>Choose one…</option>
+                <option>Fashion &amp; tailoring</option>
+                <option>Hair &amp; beauty</option>
+                <option>Weaving &amp; textiles</option>
+                <option>Leather &amp; accessories</option>
+                <option>Skincare &amp; body care</option>
+                <option>Jewellery &amp; metalwork</option>
+                <option>Another craft entirely</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="wl-city">City</label>
+              <input id="wl-city" name="city" type="text" autocomplete="address-level2" required placeholder="Accra · London · anywhere">
+            </div>
+          </div>
+          <div class="field">
+            <label for="wl-email">Email or WhatsApp number</label>
+            <input id="wl-email" name="contact" type="text" autocomplete="email" required placeholder="you@example.com or +233 …">
+          </div>
+          <button class="btn btn--gold" type="submit">Join the founding waitlist</button>
+          <p class="fine">We’ll only write when there’s something real to say — your invitation, or a question about your craft.</p>
+        </form>
+        <div class="wl-success" role="status">
+          <p><strong>You’re on the loom.</strong> Thank you — we’ve saved your place among the founding two hundred. Expect a personal note from us, not a newsletter blast, when your invitation is ready.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/" aria-label="Makers Intelligence — home">
+          <svg aria-hidden="true"><use href="#mono"/></svg>
+          <span class="wordmark">Makers<span class="tm">™</span></span>
+        </a>
+        <p>The AI operating system for fashion, beauty, artisan and craft businesses. Born in Ghana. Built for the world.</p>
+      </div>
+      <nav class="foot-col" aria-label="Site">
+        <h4>Makers</h4>
+        <ul>
+          <li><a href="#carries">What it carries</a></li>
+          <li><a href="#ghana">Born in Ghana</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#waitlist">Join the waitlist</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="The making of this site">
+        <h4>The making</h4>
+        <ul>
+          <li><a href="/guide/">Build guide</a></li>
+          <li><a href="/process/">Design process</a></li>
+          <li><a href="https://hannah-kwakye.netlify.app" rel="noopener">Portfolio hub</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Sister projects">
+        <h4>Sister projects</h4>
+        <ul>
+          <li><a href="https://hk-orvantis-intelligence.netlify.app" rel="noopener">Orvantis Intelligence</a></li>
+          <li><a href="https://hk-ai-operations-launch.netlify.app" rel="noopener">AI Operations Launch™</a></li>
+          <li><a href="https://hk-next-builders-lab.netlify.app" rel="noopener">Next Builders Lab™</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-base">
+      <p>© <span id="yr">2026</span> Makers Intelligence™ · Accra, Ghana</p>
+      <p class="foot-honesty">The loom, icons and workroom are drawn in code; the photographic plates are AI-generated — no real makers are depicted.</p>
+      <p>Designed &amp; built by <a href="https://hannah-kwakye.netlify.app" rel="noopener">Hannah Kwakye</a> — engineered with Fable&nbsp;5</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/loom.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

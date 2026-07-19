@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide — how Next Builders Lab™ was built</title>
+<meta name="description" content="A teaching artifact: how the Next Builders Lab site was designed and engineered — the hand-rolled verlet physics hero, the crayon cursor trail, the sticker-collage system, and the three-pass iteration log.">
+<meta property="og:title" content="Guide — how Next Builders Lab™ was built">
+<meta property="og:description" content="Hand-rolled verlet physics, SAT collisions, a crayon cursor trail and a sticker-collage design system — explained so you could rebuild them.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='3' width='28' height='27' rx='8' fill='%232B3CFF' stroke='%23141414' stroke-width='2.5'/%3E%3Cpath d='M11 9h6.2c2.8 0 4.6 1.4 4.6 3.7 0 1.5-.8 2.6-2 3.1 1.6.5 2.6 1.8 2.6 3.5 0 2.6-2 4.2-5 4.2H11V9zm3.4 5.7h2.3c1 0 1.7-.6 1.7-1.5s-.7-1.4-1.7-1.4h-2.3v2.9zm0 5.9h2.7c1.2 0 1.9-.6 1.9-1.6s-.7-1.6-1.9-1.6h-2.7v3.2z' fill='%23FFF6E9'/%3E%3C/svg%3E">
+<link rel="preload" href="/assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/schibsted.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap site-head__row">
+    <a class="logo" href="/" aria-label="Next Builders Lab — home">
+      <svg class="logo-blocks" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="3" y="21" width="16" height="16" rx="4.5" fill="#FFC93C" stroke="#141414" stroke-width="2.5" transform="rotate(-4 11 29)"/>
+        <rect x="21" y="21" width="16" height="16" rx="4.5" fill="#3ECF8E" stroke="#141414" stroke-width="2.5" transform="rotate(3 29 29)"/>
+        <rect x="12" y="3" width="16" height="16" rx="4.5" fill="#2B3CFF" stroke="#141414" stroke-width="2.5" transform="rotate(-6 20 11)"/>
+      </svg>
+      <span>Next Builders Lab<span class="tm">™</span></span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a aria-current="page" href="/guide/">Guide</a>
+      <a href="/process/">Process</a>
+      <a class="btn btn--ultra btn--small" href="/#join"><span>Join<span class="btn-l">&nbsp;the Lab</span></span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero" aria-labelledby="h-guide">
+    <div class="wrap">
+      <a class="breadcrumb" href="/">← Back to the Lab</a>
+      <span class="kicker kicker--fill-sun" style="display:table">Build guide · teaching artifact</span>
+      <h1 id="h-guide">How this site was built &mdash; blocks, springs and crayons.</h1>
+      <p class="lead">Everything you see here is drawn in code and simulated by hand &mdash; no stock photos, no physics library, no CDN. This page explains the whole machine honestly enough that you could rebuild it yourself. That&rsquo;s the point: this is a learning lab, so the site teaches too.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+
+      <h2>Concept &amp; creative direction</h2>
+      <p>Next Builders Lab is the education arm of Orvantis Intelligence &mdash; a real initiative teaching kids, professionals, founders and teams to build with AI. Orvantis&rsquo;s own site is quiet and cinematic; the Lab needed the opposite register: <strong>the first day of a workshop</strong>, not the lobby of a firm. The direction we committed to is a <em>workshop collage</em> &mdash; a disciplined grid underneath, with everything on top slightly rotated, taped down, stickered and springy, like a pegboard that got organised by an enthusiastic nine-year-old and then quietly re-aligned by a designer.</p>
+      <p>Two guardrails kept it from tipping into a kindergarten poster: the palette is joyous but weighted (cream ground, one dominant ultramarine, sunshine/coral/mint as accents, everything outlined in near-black ink), and every rotation on the page is under two degrees. Chaos is the flavour; the grid is the meal.</p>
+
+      <div class="callout callout--sun">
+        <span class="callout-title">The thesis, in one line</span>
+        <p>AI doesn&rsquo;t replace taste &mdash; it amplifies the builder who has it. The site argues that by being handmade: the &ldquo;playful&rdquo; parts are the most rigorously engineered parts.</p>
+      </div>
+
+      <h2>Toolchain</h2>
+      <ul>
+        <li><strong>Direction:</strong> Hannah Kwakye &mdash; brief, palette, art direction, copy voice, and every accept/reject call across three review passes.</li>
+        <li><strong>Engineering:</strong> Fable 5 (Anthropic) working as designer-engineer under that direction &mdash; hand-authoring the HTML, CSS and JavaScript you&rsquo;re reading now.</li>
+        <li><strong>Stack:</strong> static HTML/CSS/JS. Zero frameworks, zero build step, zero external requests. The physics engine is ~640 lines of vanilla JS; the whole site&rsquo;s JS is under 30&nbsp;KB unminified.</li>
+        <li><strong>Type:</strong> Bricolage Grotesque (display) and Schibsted Grotesk (body), self-hosted as three woff2 files, <code>font-display: swap</code>, display face preloaded.</li>
+        <li><strong>Deploy:</strong> Netlify, CI-driven from the repo. The join form is a Netlify Form &mdash; honeypot field, <code>?success</code> redirect handled inline. Static hosting plus one platform feature covers the whole backend.</li>
+      </ul>
+
+      <h2>Why everything is code-drawn</h2>
+      <p>This portfolio ships with a hard constraint: no stock photography, no AI-generated rasters, no downloaded images. What began as an environment constraint became the creative thesis. The lab scene is one inline SVG (a pegboard, a demo screen, two desks, a plant &mdash; about 60 shapes). The project-card illustrations, badges, tape strips, squiggle underline and doodle arrow are all SVG or CSS. The hero letters aren&rsquo;t images either: they&rsquo;re rounded rectangles and live text drawn to a canvas every frame. Total image payload: <strong>0&nbsp;bytes</strong>.</p>
+      <p>The practical win is enormous for a site like this: every visual inherits the palette variables, scales losslessly, respects reduced motion, and can be art-directed in a text editor.</p>
+
+      <h2>The signature: a hand-rolled verlet physics hero</h2>
+      <p>Five letter blocks spelling <strong>B-U-I-L-D</strong> tumble into the hero, stack, and can be grabbed and thrown. There&rsquo;s no physics library &mdash; here&rsquo;s the whole trick, honestly, so you can build one too.</p>
+
+      <h3>1. Each block is four particles and six springs</h3>
+      <p>A rigid body is faked with <em>position-based (verlet) dynamics</em>: a block is just its four corner particles. Each stores its current and previous position; velocity is implicit (<code>x&nbsp;&minus;&nbsp;px</code>). Six distance constraints &mdash; the four edges plus both diagonals &mdash; are repeatedly relaxed, and the quad behaves like a rigid box. Rotation falls out for free: you never store an angle, you read it back off the corners when drawing.</p>
+      <pre class="code"><code><span class="c">// integrate: verlet step with gravity, damping, speed clamp</span>
+<span class="k">var</span> vx = (pt.x - pt.px) * DAMP;
+<span class="k">var</span> vy = (pt.y - pt.py) * DAMP + GRAV * STEP * STEP;
+<span class="k">var</span> sp = Math.<span class="f">hypot</span>(vx, vy);
+<span class="k">if</span> (sp &gt; MAXV) { vx *= MAXV / sp; vy *= MAXV / sp; }  <span class="c">// anti-tunnel</span>
+pt.px = pt.x; pt.py = pt.y;
+pt.x += vx;  pt.y += vy;</code></pre>
+
+      <h3>2. A fixed timestep, no matter the display</h3>
+      <p>Physics explodes when the timestep varies &mdash; a 120&nbsp;Hz laptop and a janky phone would produce different worlds. So the simulation always steps at exactly 1/120&nbsp;s inside an accumulator loop; rendering happens once per animation frame, whatever the refresh rate. The per-substep speed clamp above doubles as tunnelling insurance: no particle may move further than a fraction of a block per substep, so nothing can pass through anything between checks.</p>
+      <pre class="code"><code>accumulator = Math.<span class="f">min</span>(accumulator + dt, STEP * 6);  <span class="c">// spiral-of-death cap</span>
+<span class="k">while</span> (accumulator &gt;= STEP) {
+  <span class="f">substep</span>();          <span class="c">// integrate → 8× (constraints + collisions)</span>
+  accumulator -= STEP;
+}
+<span class="f">drawFrame</span>();</code></pre>
+
+      <h3>3. Collisions: SAT with a positional response</h3>
+      <p>Block-vs-block contact uses the <em>separating axis theorem</em>: project both quads onto each edge normal of each body (8 axes); if any projection gap exists, they don&rsquo;t touch; otherwise the axis with the smallest overlap is the contact normal. The response is purely positional &mdash; push the deepest vertex out along the normal, and distribute the opposite push across the two vertices of the touched edge, weighted by where along the edge the contact sits. Run inside the 8-iteration relaxation loop, stacks settle without jitter and without ever computing an impulse.</p>
+
+      <h3>4. Grabbing is just another constraint</h3>
+      <p>On pointer-down we record the grab point in the block&rsquo;s local edge-basis (u,v). Every substep, the four corners are pulled toward wherever the pointer says that local point should now be, weighted by their distance to it &mdash; and the constraint solver converts that asymmetric tug into drag <em>and torque</em>. Release mid-fling and the verlet history is the throw velocity. No special &ldquo;throw&rdquo; code exists at all.</p>
+
+      <h3>5. Squash-and-stretch on impact</h3>
+      <p>Hard landings feed a little spring (<code>squashV</code>) that scales the block ±22% on its own axis for a few frames &mdash; classic animation-principle squash, driven by real impact velocity rather than a canned keyframe. It&rsquo;s the difference between &ldquo;physics demo&rdquo; and &ldquo;toy you want to touch&rdquo;.</p>
+
+      <h2>The crayon cursor trail</h2>
+      <p>Desktop, <code>pointer:&nbsp;fine</code>, motion-allowed only. Pointer positions land in a short queue; each segment is stroked <strong>three times with deterministic jitter</strong> (a hash of the segment index &mdash; no randomness, no shimmer between frames) at descending opacity, which is what makes it read as wax rather than vector. Points expire after 850&nbsp;ms; the rAF loop stops entirely when the queue is empty, so an idle cursor costs zero frames. The canvas sits above the page with <code>mix-blend-mode:&nbsp;multiply</code>, so strokes tint the cream page like real crayon on paper.</p>
+
+      <h2>Reduced motion, honestly handled</h2>
+      <ul>
+        <li>The hero spawns the five blocks <strong>pre-settled</strong> in their tidy row and renders exactly one static frame &mdash; the composition is fully art-directed even with the simulation off. Grabbing and the &ldquo;tidy&rdquo; button are disabled.</li>
+        <li>The crayon trail never mounts. Marquee ribbons don&rsquo;t animate (they also pause on hover for everyone). Scroll-reveals render visible; the spinning badge holds still.</li>
+        <li>Everything is also lifecycle-aware for performance: the simulation sleeps when the tab hides or the hero scrolls off-screen (IntersectionObserver), and the canvas devicePixelRatio is capped at 2.</li>
+      </ul>
+
+      <h2>Iteration log &mdash; four passes, as run</h2>
+      <p>Per the collection&rsquo;s protocol, the site was screenshot at mobile/tablet/desktop after each pass (plus <code>/guide</code> and <code>/process</code>), the images actually read, and the findings acted on before logging:</p>
+
+      <div class="pass-log">
+        <article>
+          <h3><span>1</span>Design critique</h3>
+          <ul>
+            <li>The 390px header was a wreck in screenshots: the wordmark wrapped to three lines and the Join button clipped off-canvas. Tightened the logo scale, let quieter nav items drop away by width, and gave the button a collapsing label (&ldquo;Join&rdquo; on small screens).</li>
+            <li>The physics floor sat just below the fold on a 900px viewport &mdash; the hero was sized in raw <code>svh</code> under a sticky header, so the settled B-U-I-L-D row was invisible. Re-derived the hero height from viewport-minus-header so the resting blocks are the fold&rsquo;s punchline.</li>
+            <li>Anchor navigation buried each section&rsquo;s kicker under the translucent sticky header; added <code>scroll-margin-top</code> to every id. On mobile the grab-hint sticker collided with the CTA stack &mdash; moved it to the opposite corner of the tidy button.</li>
+          </ul>
+        </article>
+        <article>
+          <h3><span>2</span>Elevation</h3>
+          <ul>
+            <li>Gave the collage its hover voice: badges, kickers, calendar pills and sticker tags now wobble with a springy keyframe on pointer-fine hover, and card hovers straighten their rotation &mdash; the page answers back everywhere you poke it.</li>
+            <li>Hand-drew crayon wall-doodles (star, spiral, lightning bolt, plus-marks) into the hero&rsquo;s quiet corners, and threaded doodle arrows between the three method steps so the &ldquo;learn by shipping&rdquo; loop literally points forward.</li>
+            <li>Rebuilt the scroll-reveal from a pre-hidden opacity state into keyframe entrances: identical spring-in for visitors, but content is never invisible if an observer doesn&rsquo;t fire &mdash; sturdier for old browsers, crawlers and full-page screenshots alike.</li>
+          </ul>
+        </article>
+        <article>
+          <h3><span>3</span>Ship quality</h3>
+          <ul>
+            <li>Scripted a headless audit of all three routes: every anchor, route and cross-link (Orvantis, Makers, AI Ops Launch, the hub) resolves; the join form&rsquo;s <code>?success</code> state shows, takes focus and scrolls into view; zero console errors at mobile, tablet and desktop widths.</li>
+            <li>Emulated <code>prefers-reduced-motion</code> end-to-end and read the screenshots: blocks pre-settled in one static frame, tidy button hidden, no crayon canvas mounted, marquees and badge spin inert &mdash; the still composition stands on its own.</li>
+            <li>Proofread every word; cross-checked GH₵ amounts, cohort caps and 2026 dates against each other (calendar ↔ FAQ ↔ ribbons); confirmed both fonts preload and the whole site ships with zero raster images.</li>
+          </ul>
+        </article>
+        <article>
+          <h3><span>4</span>One touch</h3>
+          <ul>
+            <li>Dressed the cohort calendar so the table joins the collage: a track-coloured dot on every date, and rotated OPEN / FULL / FREE stickers pinned to each row&rsquo;s top edge (Kids Term 3 is genuinely full &mdash; its button now says so). Nothing else was touched; the client likes the rest exactly as it is.</li>
+          </ul>
+        </article>
+      </div>
+
+      <h2>Deploy pipeline</h2>
+      <p>The site lives in a monorepo of 26 sibling sites, each deployed as its own Netlify project from its folder (<code>publish = "."</code>). Pushing to the main branch triggers CI; Netlify serves the static files with immutable cache headers on <code>/assets/*</code> and picks up the join form automatically at deploy time. There is no server, no database, and nothing to patch at 2am &mdash; which, for a lab that teaches shipping, is its own little lesson.</p>
+
+      <div class="callout callout--mint">
+        <span class="callout-title">Steal this</span>
+        <p>The full physics engine is one readable file: <code>/assets/js/playground.js</code>. View source, copy it, break it, rebuild it. That&rsquo;s how building works around here.</p>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-legal">
+      <span>&copy; 2026 Next Builders Lab&trade; · an Orvantis Intelligence initiative · <a href="/">Back to the Lab</a> · <a href="/process/">Design process</a></span>
+      <span>Designed &amp; built by <a href="https://hannah-kwakye.netlify.app" rel="noopener">Hannah Kwakye</a> &mdash; engineered with Fable&nbsp;5</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

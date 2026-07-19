@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide — how AI Operations Launch™ was built</title>
+<meta name="description" content="The teaching artifact behind AI Operations Launch™: blueprint creative direction, the packet-advection SVG technique, the 30-day scrubber, the asset pipeline (code-drawn, plus one documented photographic plate), and the four-pass iteration log.">
+<meta property="og:title" content="Guide — how AI Operations Launch™ was built">
+<meta property="og:description" content="Sheet set G — creative direction, toolchain, the orchestration diagram explained, iteration log, deploy pipeline.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FAFAF7'/%3E%3Cpath d='M4 16h8M20 16h8M16 4v8M16 20v8' stroke='%231B4DFF' stroke-width='1.5'/%3E%3Crect x='11' y='11' width='10' height='10' fill='none' stroke='%230D0D0C' stroke-width='2'/%3E%3Crect x='14' y='14' width='4' height='4' fill='%23FF4D00'/%3E%3C/svg%3E">
+<link rel="preload" href="../assets/fonts/spacegrotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/plexmono-500.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <a class="site-head__brand" href="../" aria-label="AI Operations Launch — back to the site">
+    <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 16h8M20 16h8M16 4v8M16 20v8" stroke="#1B4DFF" stroke-width="1.5"/><rect x="11" y="11" width="10" height="10" fill="none" stroke="#0D0D0C" stroke-width="2"/><rect x="14" y="14" width="4" height="4" fill="#FF4D00"/></svg>
+    <span class="b-name">AI Operations Launch™ <span class="b-sub">/ Guide</span></span>
+  </a>
+  <nav aria-label="Primary">
+    <a href="#direction">Direction</a>
+    <a href="#toolchain">Toolchain</a>
+    <a href="#signature">Signature</a>
+    <a href="#scrubber">Scrubber</a>
+    <a href="#pipeline">Assets</a>
+    <a href="#iteration">Iteration</a>
+    <a href="../process/">Process</a>
+  </nav>
+  <a class="site-head__cta" href="../">← The site</a>
+</header>
+
+<div class="page">
+<main id="main">
+
+  <!-- ============ SHEET G-01 — COVER ============ -->
+  <section class="sheet" aria-labelledby="h-cover">
+    <header class="sheet__head">
+      <span class="sh-no">Sheet G-01 / 07</span>
+      <h1 class="sh-title" id="h-cover">Guide — how this site was built</h1>
+      <span class="sh-fig">Teaching artifact</span>
+      <span class="sh-scale">Read time ~9 min</span>
+    </header>
+    <div class="sheet__body reveal-group">
+      <div data-reveal>
+        <div class="hero__kicker">
+          <span class="tag tag--box">As-built documentation</span>
+          <span class="tag tag--box tag--blue">Sheet set G</span>
+        </div>
+        <h2 class="display-l" style="max-width: 20ch; margin-bottom: 24px;">A sales page drawn as an engineering document — and every line of it is a line of code.</h2>
+      </div>
+      <p class="lede" data-reveal>This page documents how AI Operations Launch™ was designed and engineered, generously enough that another designer-developer could reproduce every technique. No build tools, no frameworks — one HTML file per route, one stylesheet, one script, five small font files. Everything you see is drawn by code, with one second-edition exception: a single photographic plate (Fig 06), documented on the asset sheet below.</p>
+    </div>
+  </section>
+
+  <!-- ============ SHEET G-02 — CREATIVE DIRECTION ============ -->
+  <section class="sheet below-fold" id="direction" aria-labelledby="h-direction">
+    <header class="sheet__head">
+      <span class="sh-no">Sheet G-02 / 07</span>
+      <h2 class="sh-title" id="h-direction">Concept &amp; creative direction</h2>
+      <span class="sh-fig">The blueprint</span>
+      <span class="sh-scale">Palette · type · layout</span>
+    </header>
+    <div class="sheet__body reveal-group">
+      <div class="two-col">
+        <div class="prose" data-reveal>
+          <h3>Why a blueprint?</h3>
+          <p>AI Operations Launch™ sells a 30-day <em>installation</em> — voice, WhatsApp and web chat wired into one operations system. The category it lives in is loud: gradients, glassmorphism, galaxy purple, promises. The creative decision was to do the opposite of magic: treat the offer like an engineering project and present it as a <strong>technical drawing set</strong>. Sheets, figure numbers, revision blocks, dimension ticks. If the pitch is “we install a system, measure it, and hand you the keys,” the page itself should feel like the document you'd sign off.</p>
+          <p>Every section is literally framed as a numbered sheet (<code>Sheet 01 / 08</code>) with a title strip, a figure reference, and a scale note. The footer is a revision block. The form is <code>Form F-01</code>. The metaphor is carried all the way down or it isn't carried at all.</p>
+          <h3>Palette</h3>
+          <p>Paper <code>#FAFAF7</code>, ink <code>#0D0D0C</code>, signal orange <code>#FF4D00</code>, blueprint blue <code>#1B4DFF</code>, silver grid <code>#E4E4DE</code>. Light, technical, warm — deliberately against the dark-mode AI-site convention. Blue is reserved for thin lines and annotations (drawing pen no. 2); orange is the signal colour: packets, live markers, the CTA. Neither is ever used as a slab of background except the one orange button.</p>
+          <h3>Type</h3>
+          <p>Space Grotesk carries display and body; IBM Plex Mono carries <em>every</em> label, number and annotation — sheet titles, tags, day numbers, table headers, axis ticks. The rule that makes the drawing language read instantly: <strong>if it's data, it's mono; if it's an argument, it's grotesk.</strong> Captions follow drawing convention: <code>FIG 02 — ORCHESTRATION DIAGRAM</code>, letter-spaced, uppercase, small.</p>
+        </div>
+        <div data-reveal>
+          <div class="fig-label" style="margin-bottom:16px;"><span class="fig-no">FIG G-01</span> The system in five inks</div>
+          <svg viewBox="0 0 520 300" class="schem" style="width:100%;height:auto;border:1px solid var(--ink);background:var(--paper);" role="img" aria-label="Palette specimen: five swatches labelled paper, ink, signal, blueprint and silver, plotted like a drawing legend.">
+            <g>
+              <rect x="30" y="30" width="80" height="80" fill="#FAFAF7" stroke="#0D0D0C"/>
+              <rect x="120" y="30" width="80" height="80" fill="#0D0D0C"/>
+              <rect x="210" y="30" width="80" height="80" fill="#FF4D00"/>
+              <rect x="300" y="30" width="80" height="80" fill="#1B4DFF"/>
+              <rect x="390" y="30" width="80" height="80" fill="#E4E4DE"/>
+              <text class="anno" x="70" y="128" text-anchor="middle">PAPER</text>
+              <text class="anno" x="160" y="128" text-anchor="middle">INK</text>
+              <text class="anno" x="250" y="128" text-anchor="middle">SIGNAL</text>
+              <text class="anno" x="340" y="128" text-anchor="middle">BLUEPRINT</text>
+              <text class="anno" x="430" y="128" text-anchor="middle">SILVER</text>
+              <text class="anno" x="70" y="142" text-anchor="middle">#FAFAF7</text>
+              <text class="anno" x="160" y="142" text-anchor="middle">#0D0D0C</text>
+              <text class="anno" x="250" y="142" text-anchor="middle">#FF4D00</text>
+              <text class="anno" x="340" y="142" text-anchor="middle">#1B4DFF</text>
+              <text class="anno" x="430" y="142" text-anchor="middle">#E4E4DE</text>
+              <path class="leader" d="M30,170 H470" />
+              <text class="n-label" x="30" y="205">Aa Space Grotesk — display &amp; body</text>
+              <text class="n-sub" x="30" y="232">AA IBM PLEX MONO — LABELS · NUMBERS · ANNOTATIONS</text>
+              <text class="anno anno--blue" x="30" y="266">RULE: DATA IS MONO. ARGUMENT IS GROTESK.</text>
+              <text class="anno" x="470" y="266" text-anchor="end">FIG G-01</text>
+            </g>
+          </svg>
+          <div class="note-box" style="margin-top:20px;">
+            <span class="tag tag--blue">Layout system</span>
+            The visible grid is the body background itself: two pairs of CSS <code>repeating-linear-gradient</code> layers — a 96px major grid in silver over a 12px minor grid in a fainter tone. Sheets float on it at 55% paper opacity so the grid ghosts through. The crosshair registration marks on sheet corners are <code>::before</code>/<code>::after</code> pseudo-elements. Zero images, zero SVG backgrounds.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHEET G-03 — TOOLCHAIN ============ -->
+  <section class="sheet below-fold" id="toolchain" aria-labelledby="h-toolchain">
+    <header class="sheet__head">
+      <span class="sh-no">Sheet G-03 / 07</span>
+      <h2 class="sh-title" id="h-toolchain">Toolchain — who and what built this</h2>
+      <span class="sh-fig">Bill of tools</span>
+      <span class="sh-scale">Zero dependencies</span>
+    </header>
+    <div class="sheet__body reveal-group">
+      <div class="two-col">
+        <div class="prose" data-reveal>
+          <p>This site is part of a 26-site collection with a shared thesis: <strong>AI doesn't replace taste — it amplifies the designer who has it.</strong> The direction, brief, critique and final judgment are Hannah Kwakye's; the engineering hands are Fable 5 (Anthropic's Claude), working as a designer-engineer inside the constraints below. Every decision on this page survived three critique passes before shipping.</p>
+          <h3>The constraint set</h3>
+          <ul>
+            <li><strong>Static, hand-authored HTML/CSS/JS.</strong> No framework, no build step, no bundler. What ships is what was written.</li>
+            <li><strong>Zero external requests.</strong> No CDNs, no analytics, no font services at runtime. The page is self-contained and works from a folder.</li>
+            <li><strong>Zero libraries.</strong> The diagram engine, scrubber and reveal system are ~340 lines of vanilla JavaScript. <code>IntersectionObserver</code> + <code>requestAnimationFrame</code> cover everything a scroll library would.</li>
+            <li><strong>Every drawing code-drawn.</strong> Schematics, mocks, grids and marks are pure HTML/CSS/SVG. The second edition admits exactly one raster: the Fig 06 photographic plate, AI-generated, art-directed and labelled as such — see the asset pipeline sheet.</li>
+          </ul>
+          <h3>Self-hosted fonts, plus a trick worth stealing</h3>
+          <p>Space Grotesk (variable, 300–700) and IBM Plex Mono (400 + 500) are subsetted latin woff2 files, self-hosted, preloaded, <code>font-display: swap</code>. But latin subsets are missing the glyphs an engineering drawing leans on: <code>→</code>, <code>↗</code>, <code>≤</code>, <code>✓</code>. Left alone, those characters silently fall back to a system font — a one-pixel-wrong detail that reads as sloppiness. The fix costs ~3&nbsp;KB: two symbol-sliver fonts containing only those six glyphs, scoped with <code>unicode-range</code> so the browser only ever uses them for those code points.</p>
+        </div>
+        <div data-reveal>
+          <pre class="code" aria-label="CSS code excerpt"><span class="c">/* symbol sliver — only the glyphs the latin
+   subset is missing, scoped to their range */</span>
+<span class="k">@font-face</span> {
+  font-family: <span class="s">'IBM Plex Mono'</span>;
+  src: url(<span class="s">'plexmono-sym.woff2'</span>) format(<span class="s">'woff2'</span>);
+  font-weight: 400 500;
+  <span class="k">unicode-range</span>: U+2190, U+2192, U+2197,
+                 U+2264-2265, U+2713;
+}</pre>
+          <div class="note-box" style="margin-top:20px;">
+            <span class="tag tag--blue">Payload discipline</span>
+            First view transfers well under the collection's 250&nbsp;KB budget: five woff2 files (~55&nbsp;KB), one stylesheet, one deferred script, and HTML. The diagrams are inline SVG — they compress with the document and cost no requests. Long below-fold sections use <code>content-visibility:&nbsp;auto</code> so first paint doesn't lay out the whole sheet set.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHEET G-04 — SIGNATURE ============ -->
+  <section class="sheet below-fold" id="signature" aria-labelledby="h-signature">
+    <header class="sheet__head">
+      <span class="sh-no">Sheet G-04 / 07</span>
+      <h2 class="sh-title" id="h-signature">The signature — packets on a living schematic</h2>
+      <span class="sh-fig">Fig G-02</span>
+      <span class="sh-scale">How it works</span>
+    </header>
+    <div class="sheet__body reveal-group">
+      <p class="lede" data-reveal style="margin-bottom: clamp(28px,4vw,44px);">The orchestration diagram on the main page assembles itself, then runs live: small orange packets travel the drawn wires, routed correctly for whichever scenario tab is active. Here is the entire technique, in four moves — reproducible in an afternoon.</p>
+      <div class="two-col">
+        <div class="prose" data-reveal>
+          <h3>Move 1 — edges that draw themselves</h3>
+          <p>Every wire is an SVG <code>&lt;path&gt;</code> plotted by hand on the viewBox grid, using only horizontal and vertical runs (schematics don't do diagonals). On load, each path's real length is measured with <code>getTotalLength()</code> and written into a custom property; CSS then does the classic dash trick — <code>stroke-dasharray: var(--len); stroke-dashoffset: var(--len)</code> — and an <code>IntersectionObserver</code> flips a class that transitions the offset to zero. The edge appears to be drawn with a pen.</p>
+          <h3>Move 2 — packets as advected points</h3>
+          <p>A packet is a <code>&lt;circle&gt;</code> whose position is sampled from a path. A route is just an ordered list of path ids. Each frame, distance travelled is advanced by <code>speed × Δt</code> (so speed is framerate-independent), the current segment is found, and <code>getPointAtLength()</code> converts that scalar distance into x,y. When the distance overruns a segment, the remainder carries into the next — packets never stutter at joints.</p>
+          <h3>Move 3 — passing through the modules</h3>
+          <p>The illusion that packets enter a node and emerge on the other side costs nothing: SVG paints in document order, and the node boxes are drawn <em>after</em> the packet layer. Invisible “transit paths” run beneath each box, so the packet keeps moving — occluded — and reappears at the exit pin at exactly the right moment. A segment id prefixed <code>!</code> is traversed in reverse; scenario S2 uses this to send a follow-up packet back out to WhatsApp.</p>
+          <h3>Move 4 — re-routing live</h3>
+          <p>The three scenario tabs each own a routing table: which segments a packet chains through, which standing lines dim, which modules run hot (orange stroke). Switching tabs clears in-flight packets, swaps the table, and the spawner simply reads the new one. The animation pauses whenever the diagram scrolls off-screen or the tab is hidden, and under <code>prefers-reduced-motion</code> packets never spawn at all — the diagram renders complete, with numbered step markers keyed to the written scenario below it.</p>
+        </div>
+        <div data-reveal>
+          <pre class="code" aria-label="JavaScript code excerpt"><span class="c">// the advection loop, unabridged</span>
+p.d += speed * dt / 1000;
+<span class="k">while</span> (p.i &lt; p.segs.length
+       &amp;&amp; p.d &gt; p.segs[p.i].len) {
+  p.d -= p.segs[p.i].len;  <span class="c">// carry remainder</span>
+  p.i++;                   <span class="c">// next wire</span>
+}
+<span class="k">const</span> s  = p.segs[p.i];
+<span class="k">const</span> pt = s.el.getPointAtLength(
+  s.rev ? s.len - p.d : p.d
+);
+p.c.setAttribute(<span class="s">'cx'</span>, pt.x);
+p.c.setAttribute(<span class="s">'cy'</span>, pt.y);
+
+<span class="c">// a scenario is only a routing table</span>
+s3: {
+  routes: [[<span class="s">'e-web-q'</span>, <span class="s">'tC'</span>,
+    <span class="s">'e-q-staff'</span>, <span class="s">'t-staff'</span>,
+    <span class="s">'e-staff-crm'</span>, <span class="s">'t-crm-top'</span>,
+    <span class="s">'e-crm-summary'</span>, <span class="s">'t-sum'</span>,
+    <span class="s">'e-summary-owner'</span>]],
+  nodes: [<span class="s">'webchat'</span>, <span class="s">'qualify'</span>,
+          <span class="s">'staff'</span>, <span class="s">'crm'</span>, ...]
+}</pre>
+          <div class="note-box" style="margin-top:20px;">
+            <span class="tag tag--blue">Why not a canvas?</span>
+            SVG keeps the diagram in the accessibility tree (it carries a full <code>role="img"</code> description), keeps the packet math trivial (<code>getPointAtLength</code> is free geometry), scales crisply at any zoom, and lets CSS own every visual state — hot nodes and dimmed wires are just classes. A canvas would buy nothing here but pixels.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHEET G-05 — SCRUBBER ============ -->
+  <section class="sheet below-fold" id="scrubber" aria-labelledby="h-scrubber">
+    <header class="sheet__head">
+      <span class="sh-no">Sheet G-05 / 07</span>
+      <h2 class="sh-title" id="h-scrubber">The 30-day scrubber</h2>
+      <span class="sh-fig">D01–D30</span>
+      <span class="sh-scale">Scroll-linked</span>
+    </header>
+    <div class="sheet__body reveal-group">
+      <div class="two-col">
+        <div class="prose" data-reveal>
+          <p>The programme is thirty days, so the page is thirty days: a fixed rail on the right edge (a slim strip under the header on smaller screens) maps total scroll progress onto <code>D01–D30</code>, with week ticks at D01, D08, D15, D22 and D30. Scrolling the page <em>is</em> scrubbing the timeline — by the time you reach the engagement form you've arrived at D30, which is exactly the argument the offer wants to make.</p>
+          <p>Inside Sheet 04 a second, sticky ruler runs the same mapping against that section alone, so the four week chapters scrub D01→D30 while you read them. Both are one cheap computation in a <code>requestAnimationFrame</code>-throttled scroll handler — no scroll library, no layout thrash; the marker moves with <code>transform</code> only.</p>
+        </div>
+        <div data-reveal>
+          <pre class="code" aria-label="JavaScript code excerpt"><span class="c">// scroll → day, one line of arithmetic</span>
+<span class="k">const</span> p   = scrollY / (scrollHeight - innerHeight);
+<span class="k">const</span> day = 1 + Math.round(p * 29);
+<span class="c">// weeks are lookup, not math</span>
+W1 MAP 01–07 · W2 BUILD 08–14
+W3 CONNECT 15–21 · W4 MEASURE 22–30</pre>
+          <div class="note-box" style="margin-top:20px;">
+            <span class="tag tag--blue">Motion language</span>
+            Everything moves like an instrument, not an organism: short 200–400ms durations, a snap easing curve (<code>cubic-bezier(0.1, 0, 0, 1)</code>), <code>steps()</code> timing on state flips, and reveals that translate a strict 16px. Nothing bounces. Under reduced motion, transitions collapse to 1ms and every reveal is pre-completed.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHEET G-06 — ASSET PIPELINE ============ -->
+  <section class="sheet below-fold" id="pipeline" aria-labelledby="h-pipeline">
+    <header class="sheet__head">
+      <span class="sh-no">Sheet G-06 / 07</span>
+      <h2 class="sh-title" id="h-pipeline">Asset pipeline — drawn in code, plus one photograph</h2>
+      <span class="sh-fig">Constraint → thesis</span>
+      <span class="sh-scale">1 plate</span>
+    </header>
+    <div class="sheet__body reveal-group">
+      <div class="two-col">
+        <div class="prose" data-reveal>
+          <p>The collection this site belongs to began in an environment with no stock libraries and no image generation — so “no photography” was first a constraint. It became a thesis: <strong>a designer who can draw with code doesn't need the stock library.</strong> On this site that still means:</p>
+          <ul>
+            <li><strong>The schematics</strong> (hero general arrangement, orchestration, decision tree) are hand-plotted inline SVG — coordinates chosen on paper first, on a consistent module grid, orthogonal runs only.</li>
+            <li><strong>The UI mocks</strong> (daily summary, CRM sync) are HTML tables and lists styled to spec — which is why their type is perfectly crisp and their “data” is honest placeholder narrative, labelled as a spec render.</li>
+            <li><strong>The grid, sheet frames, registration marks, dimension ticks</strong> are CSS gradients and pseudo-elements. The dimension tick under each statistic — <code>|——&nbsp;label&nbsp;——|</code> — is three tiny linear-gradients on a <code>::before</code>/<code>::after</code> pair.</li>
+            <li><strong>The favicon</strong> is an inline SVG data-URI of the brand mark: a module square with crosshair pins and an orange core.</li>
+          </ul>
+          <p>The second edition amends the record deliberately rather than quietly: the site now carries <strong>exactly one raster image</strong> — the Fig 06 photographic plate on the handover sheet. The critique that prompted it was fair: the page was all system and no consequence. Fig 06 is the consequence — the staff member the handover rules exist to protect. One plate; more would dilute the drawing set.</p>
+          <p>No route makes an external request; the plate is self-hosted WebP, lazy-loaded below the fold, so the first-view payload is unchanged.</p>
+        </div>
+        <div data-reveal>
+          <div class="note-box">
+            <span class="tag tag--blue">The Fig 06 imagery pipeline</span>
+            The plate is AI-generated (Higgsfield Soul 2) — no real person is depicted, and the plate says so in its own margin. It was art-directed like a commissioned site-record photograph: one grade sentence (neutral window daylight, quiet documentary workplace tones, slightly desaturated), prompts ending with “no legible text anywhere”, candidates reviewed like a contact sheet — waxy skin, garbled lettering or extra fingers meant regeneration, not retouching.
+          </div>
+          <div class="note-box" style="margin-top:20px;">
+            <span class="tag tag--blue">The duotone treatment, exactly</span>
+            To sit on the sheet rather than on top of it, the photograph is graded into the drawing's own inks: chroma reduced to ~45%, then blended 55% with a luminance duotone ramped from deep blueprint <code>#10265E</code> (shadows) to paper <code>#FAFAF7</code> (highlights), with a slight contrast lift. Delivered as WebP q78 in two widths (1536w + 800w) via <code>srcset</code>, <code>loading="lazy"</code>, explicit dimensions. The leader-line annotations are an SVG overlay in the site's normal drawing furniture — the photo is captioned like a figure because here, it is one.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHEET G-07 — ITERATION LOG + DEPLOY ============ -->
+  <section class="sheet below-fold" id="iteration" aria-labelledby="h-iteration">
+    <header class="sheet__head">
+      <span class="sh-no">Sheet G-07 / 07</span>
+      <h2 class="sh-title" id="h-iteration">Iteration log &amp; deploy</h2>
+      <span class="sh-fig">Passes 1–4</span>
+      <span class="sh-scale">Rev A → D</span>
+    </header>
+    <div class="sheet__body reveal-group">
+      <div class="two-col">
+        <div data-reveal>
+          <div class="fig-label" style="margin-bottom:16px;"><span class="fig-no">LOG</span> Four passes — three before ship, one second edition</div>
+          <ol class="passlog">
+            <li>
+              <span class="pl-t">Pass 1 — design critique</span>
+              <ul>
+                <li>Full-page screenshots at 390 / 834 / 1440px exposed that scenario steps stacked — all three lists rendered at once because a display:grid rule silently beat the hidden attribute. Fixed with an explicit [hidden] rule and re-shot.</li>
+                <li>Zoomed crops caught ≤, →, ↗ and ✓ falling back to a system font: the latin subsets don't carry them. Solved with 3&nbsp;KB unicode-range symbol slivers rather than rewording the annotations.</li>
+                <li>The hero's “≤ 60 SEC” callout sat too close to a vertical wire at drawing scale; the annotation block was re-seated clear of the edge run.</li>
+              </ul>
+            </li>
+            <li>
+              <span class="pl-t">Pass 2 — elevation</span>
+              <ul>
+                <li>Deepened the scenario tabs from a visual toggle into full re-routing: standing lines dim, active modules run hot in signal orange, numbered step markers swap with the routing table, and S2 gained the reversed follow-up packet travelling back out to WhatsApp.</li>
+                <li>Gave the assembly moment more ceremony: nodes snap in on a steps() curve after their wires finish drawing, and annotations fade in last — survey lines before buildings.</li>
+                <li>Added the sticky in-section day ruler to Sheet 04 so the 30-day claim is scrubbed twice: once by the page, once by the programme itself.</li>
+              </ul>
+            </li>
+            <li>
+              <span class="pl-t">Pass 3 — ship quality</span>
+              <ul>
+                <li>Zero console errors across all three routes and widths; every anchor, footer link and cross-link resolves. One real bug caught here: <code>content-visibility</code> sections materialising mid-jump shifted long anchor scrolls, so a settle routine now re-aligns the target (and yields to any user input).</li>
+                <li>Reduced-motion verified by emulation: diagrams render complete with numbered flow, packets never spawn, the scrubbers still read correctly as position indicators.</li>
+                <li>Keyboard walk: skip link, roving-tabindex scenario tabs with arrow keys, focus-visible outlines on paper, form fully operable; SVG diagrams carry full prose descriptions.</li>
+                <li>Proofread every sheet against the copy rule: outcomes and engineering targets only — industry figures appear once, labelled as illustrative ranges, never as promises.</li>
+              </ul>
+            </li>
+            <li>
+              <span class="pl-t">Pass 4 — second edition (Rev D)</span>
+              <ul>
+                <li>The brief promised “the full system drawn as one schematic” in the hero, but the fold was type-only. The general-arrangement schematic was redrawn compact and vertical and seated in the hero's right half — claim and machine now share the fold, packets running from first paint.</li>
+                <li>One photographic plate added, and only one: Fig 06 on the handover sheet — the human in the loop. AI-generated, duotoned into the sheet's own inks, annotated with leader lines; pipeline and treatment documented on Sheet G-06.</li>
+                <li>Hardened the diagrams' initial state: hidden pre-assembly styles now apply only when JavaScript is live (an <code>html.js</code> gate), and a viewport fallback force-completes any schematic the observer misses — deep links and jump scrolls can no longer land on a blank sheet. Without JavaScript the full static drawing renders immediately.</li>
+                <li>The 30-day rail and programme ruler now keep score: day ticks snap on as the marker passes them. Copy widened for businesses beyond Ghana — summaries land at 07:30 in the owner's time zone, wherever that is.</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+        <div class="prose" data-reveal>
+          <h3>Deploy pipeline</h3>
+          <p>The site deploys to Netlify from a monorepo of 26 sites — each site is a folder with its own <code>netlify.toml</code> publishing <code>.</code> (no build command, because there is no build). Immutable cache headers on <code>/assets/*</code>, conservative security headers on everything. The dossier form is Netlify Forms: a plain HTML <code>&lt;form data-netlify="true"&gt;</code> with a honeypot field, redirecting back to <code>/?success=1#engage</code>, where twelve lines of JavaScript swap the fieldset for the confirmation state.</p>
+          <h3>What to steal</h3>
+          <ul>
+            <li>The <code>unicode-range</code> symbol-sliver pattern — fixes subset fallback everywhere, costs kilobytes.</li>
+            <li>Routing tables + <code>getPointAtLength</code> — any “system diagram” can run live for ~100 lines.</li>
+            <li>Transit paths under opaque nodes — free through-the-box packet illusion.</li>
+            <li>Sheet framing as a copy discipline: numbering sections forces you to know what each one is <em>for</em>.</li>
+          </ul>
+          <p style="margin-top:1.6em;"><a class="btn" href="../process/">Read the design case study <span class="arrow" aria-hidden="true">→</span></a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rev-footer" aria-label="Revision block and site information">
+  <div class="rev-footer__grid">
+    <div class="rev-block">
+      <table>
+        <caption>Revision block — sheet set G</caption>
+        <thead><tr><th scope="col">Rev</th><th scope="col">Date</th><th scope="col">Description</th><th scope="col">By</th></tr></thead>
+        <tbody>
+          <tr><td class="rv">A</td><td>2026-07-08</td><td>Guide drafted alongside the build</td><td>F5</td></tr>
+          <tr><td class="rv">B</td><td>2026-07-09</td><td>Iteration log completed after pass 3</td><td>HK / F5</td></tr>
+          <tr><td class="rv">C</td><td>2026-07-11</td><td>Second edition — imagery pipeline documented (Fig 06) · pass 4 logged</td><td>HK / F5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="title-block">
+      <div><span class="tb-l">Document</span><span class="tb-v">Guide — teaching artifact</span></div>
+      <div><span class="tb-l">Belongs to</span><span class="tb-v"><a href="../">AI Operations Launch™</a></span></div>
+      <div><span class="tb-l">Sibling</span><span class="tb-v"><a href="../process/">Process — design case study</a></span></div>
+    </div>
+  </div>
+  <nav class="foot-nav" aria-label="Footer">
+    <a href="../">← Back to the sheet set</a>
+    <a href="../process/">Design case study — /process</a>
+    <a href="https://hk-orvantis-intelligence.netlify.app" rel="noopener">Orvantis Intelligence ↗</a>
+    <a href="https://hannah-kwakye.netlify.app" rel="noopener">All 26 sites ↗</a>
+  </nav>
+  <div class="credit">
+    <span>Designed &amp; built by <a href="https://hannah-kwakye.netlify.app" rel="noopener">Hannah Kwakye</a> — engineered with Fable&nbsp;5 · every drawing is code; the one photographic plate (Fig 06) is AI-generated — no real person depicted</span>
+    <span>© 2026 Orvantis Intelligence · Accra, Ghana · serving clients worldwide</span>
+  </div>
+</footer>
+</div>
+
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>
